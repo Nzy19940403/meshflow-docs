@@ -27,6 +27,7 @@ editLink: false
 全球实时效能指数是c区所有值的和的平均值
 
 ## 依赖图
+ 
 ![Factory Dependency Graph](/images/factory-dependency.png)
  
 **在线交互 Demo：** [点击进入 StackBlitz 编辑器](https://stackblitz.com/edit/vitejs-vite-zwzqbnhn?file=src%2Fcomponents%2FEditor.vue)
