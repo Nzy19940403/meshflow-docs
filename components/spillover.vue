@@ -312,11 +312,11 @@ const toggleAutoSpawn = () => {
 const initBoxEntangle = (path:any)=>{
   ZoneArray.forEach((zone) => {
     engine.config.SetRule(path, zone.path, "children", {
-      logic: async ({ slot }) => {
+      logic:   ({ slot }) => {
         // 🌟 改为对象
         let newChildren:any = {};
         for (let node of slot.triggerTargets) {
-         
+          
           if (node.parent == zone.path && !node.isDead) {
             newChildren[node.path] = node.maxAmount || 0;
           } else {
@@ -343,14 +343,14 @@ const initBoxEntangle = (path:any)=>{
         return (childrenObj[impactState.path as string] || 0) > 0;
       
       },
-      emit: (causeState, impactState, propose) => {
+      emit:(causeState, impactState, propose) => {
           const observer = causeState.state;
           const target = impactState.state;
           const nextX = (observer.position?.x ?? 0) 
           const nextY = (observer.position?.y ?? 0) + 240;
  
           if (target.parentPos?.x === nextX && target.parentPos?.y === nextY ) return;
-       
+         
           propose.set("parentPos", { x: nextX, y: nextY });
       },
     });
@@ -364,7 +364,11 @@ const initBoxEntangle = (path:any)=>{
         return impactState.state.parent === causeState.path && !impactState.state.isDead 
         // && layoutMode.value === 'judge';
       },
-      emit: (causeState, impactState, propose) => {
+      emit:  async(causeState, impactState, propose) => {
+        // if(layoutMode.value !== 'judge'){
+        //   await new Promise((resolve) => setTimeout(resolve, 100)); 
+        // }
+        
         const obsPath = impactState.path as string;
         const parent = impactState.state.parent;
         const siblings = BoxArray.filter((b) => b.parent === parent && !b.isDead).sort((a, b) => a.uid - b.uid);
@@ -395,6 +399,8 @@ const initBoxEntangle = (path:any)=>{
 
         const currentPos = impactState.state.pos || { x: 0, y: 0 };
         if (Math.abs(nextX - currentPos.x) < 0.5 && Math.abs(nextY - currentPos.y) < 0.5) return;
+
+       
         propose.set("pos", { x: nextX, y: nextY });
       }
     });
@@ -419,10 +425,10 @@ const initBoxEntangle = (path:any)=>{
       },
       emit: async (causeState, impactState, propose) => {
         const targetBoxPath = impactState.path as string;
-        
-        // 1. 睡 200ms 展示物理拥挤效果
-        await new Promise((resolve) => setTimeout(resolve, 200)); 
-    
+        await  new Promise<void>(resolve=>setTimeout(() => {
+          resolve()
+        },150))
+         
         // 2. 双重检查：复核容量和最弱者
         const siblings = BoxArray.filter((b) => b.parent === zone.path && !b.isDead);
         const realCurrentLoad = siblings.reduce((sum, b) => sum + (b.maxAmount || 0), 0);
@@ -453,10 +459,14 @@ const initBoxEntangle = (path:any)=>{
 
         propose.set('parent', nextZonePath);
         propose.set('parentPos', { x: targetZoneX, y: targetZoneY });
+        
       }
     });
 
   });
+
+ 
+ 
 
   engine.config.SetRule(path, judgementNode.path, "cellAmounts", {
     logic: ({ slot }) => {
@@ -484,8 +494,9 @@ const initBoxEntangle = (path:any)=>{
   engine.config.SetStrategy(judgementNode.path, "publicSeaMinUid", DefaultStrategy.MERGE);
 
   engine.config.SetRule(path, judgementNode.path, "zoneMaxUidMap", {
-    logic: ({ slot }) => {
+    logic:  ({ slot }) => {
       const [trigger] = slot.triggerTargets;
+  
       if (trigger.parent && trigger.parent !== "" && !trigger.isDead) {
         return { [trigger.path]:trigger.uid || -1 };
       }
@@ -535,11 +546,16 @@ const initBoxEntangle = (path:any)=>{
 
       return isCrowded || isThreatened;
     },
-    emit:   (causeState, impactState, propose) => {
+    emit:  async  (causeState, impactState, propose) => {
+      await new Promise<void>((resolve)=>{
+      setTimeout(() => {
+        resolve()
+      }, 100);
+    })
       const observer = causeState.state;
       const target = impactState.state;
       const targetPath = impactState.path as string;
-
+  
       const state = observer.zoneState || {};
       const zoneChildren = observer.zoneChildren || {};
       const cellAmounts = observer.cellAmounts || {};
@@ -725,7 +741,9 @@ engine.config.useEntangle({
     if (impactState.state.isDead) return false;
     return true; 
   },
-  emit: (causeState, impactState, propose) => {
+  emit:(causeState, impactState, propose) => {
+ 
+    
     const obs = causeState.state; 
     const obsPath = causeState.path as string;
     const isPublicSea = !obs.parent || obs.parent === "";
@@ -807,7 +825,8 @@ BoxArray.forEach((nodeA) => {
       // 只有当 cause 排在我正前方（即 causeIndex + 1 就是我），才放行
       return siblings[causeIndex + 1]?.path === impactState.path;
     },
-    emit: (causeState, impactState, propose) => {
+    emit:  (causeState, impactState, propose) => {
+    
       const obs = causeState.state; // 前驱兄弟
       const tgt = impactState.state; // 我自己
       
@@ -902,8 +921,8 @@ const setupSortingEntangle = () => {
       cause: zone.path,
       impact: zone.path,
       via: ["children", "value"], 
-      emit:   (causeState, impactState, propose) => {
-        // await new Promise((resolve) => setTimeout(resolve, 0));
+      emit: (causeState, impactState, propose) => {
+     
         const obs = causeState.state;
         const realValue = obs.value ?? ZoneArray.find(z => z.path === causeState.path)?.value ?? 1;
         
@@ -917,9 +936,8 @@ const setupSortingEntangle = () => {
     });
     // 3. 上报法官
     engine.config.SetRule(zone.path, judgementNode.path, "zoneState", {
-      logic: ({ slot }) => {
+      logic:({ slot }) => {
         const [trigger] = slot.triggerTargets;
-       
         return { [trigger.path]: { capacity: trigger.capacity, value: trigger.value } };
        
       },
