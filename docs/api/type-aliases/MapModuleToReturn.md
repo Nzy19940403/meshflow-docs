@@ -8,7 +8,7 @@
 
 > **MapModuleToReturn**\<`K`, `F`, `P`\> = `K` *extends* `"useSchemaValidators"` \| `"schemaValidators"` ? `object` : `K` *extends* `"useHistory"` \| `"history"` \| `"useMeshRenderGate"` \| `"meshRenderGate"` ? `F` *extends* (...`args`) => infer R ? `R` *extends* (...`args`) => infer R2 ? `R2` : `R` : `any` : `F` *extends* (...`args`) => infer R ? `R` : `any`
 
-Defined in: [engine/useEngineManager.ts:49](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L49)
+Defined in: [engine/useEngineManager.ts:49](https://github.com/Nzy19940403/meshflow/blob/e259a6e485fc52435b132166020a182f8a3408b7/utils/core/engine/useEngineManager.ts#L49)
 
 ## Type Parameters
 
