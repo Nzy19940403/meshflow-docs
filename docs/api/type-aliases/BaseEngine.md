@@ -8,7 +8,7 @@
 
 > **BaseEngine**\<`T`\> = `object`
 
-Defined in: [engine/useEngineManager.ts:13](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/engine/useEngineManager.ts#L13)
+Defined in: [engine/useEngineManager.ts:13](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L13)
 
 ## Type Parameters
 
@@ -22,7 +22,7 @@ Defined in: [engine/useEngineManager.ts:13](https://github.com/Nzy19940403/meshf
 
 > **config**: `object`
 
-Defined in: [engine/useEngineManager.ts:20](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/engine/useEngineManager.ts#L20)
+Defined in: [engine/useEngineManager.ts:20](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L20)
 
 #### hasRenderGate
 
@@ -62,7 +62,7 @@ Defined in: [engine/useEngineManager.ts:20](https://github.com/Nzy19940403/meshf
 
 > **data**: `object`
 
-Defined in: [engine/useEngineManager.ts:14](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/engine/useEngineManager.ts#L14)
+Defined in: [engine/useEngineManager.ts:14](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L14)
 
 #### GetGroupByPath
 
@@ -86,7 +86,7 @@ Defined in: [engine/useEngineManager.ts:14](https://github.com/Nzy19940403/meshf
 
 > **dependency**: `object`
 
-Defined in: [engine/useEngineManager.ts:32](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/engine/useEngineManager.ts#L32)
+Defined in: [engine/useEngineManager.ts:32](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L32)
 
 #### GetAllDependency
 
@@ -102,7 +102,7 @@ Defined in: [engine/useEngineManager.ts:32](https://github.com/Nzy19940403/meshf
 
 > **hooks**: `object`
 
-Defined in: [engine/useEngineManager.ts:36](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/engine/useEngineManager.ts#L36)
+Defined in: [engine/useEngineManager.ts:36](https://github.com/Nzy19940403/meshflow/blob/47ac7d8887ac6f97774d28f8b40ad68bf4c44856/utils/core/engine/useEngineManager.ts#L36)
 
 #### onError
 
