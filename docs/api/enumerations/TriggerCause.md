@@ -6,7 +6,7 @@
 
 # Enumeration: TriggerCause
 
-Defined in: [types/types.ts:222](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L222)
+Defined in: [types/types.ts:222](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L222)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [types/types.ts:222](https://github.com/Nzy19940403/meshflow/blob/06
 
 > **CAUSALITY**: `0`
 
-Defined in: [types/types.ts:223](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L223)
+Defined in: [types/types.ts:223](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L223)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/types.ts:223](https://github.com/Nzy19940403/meshflow/blob/06
 
 > **INVERSION**: `1`
 
-Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L224)
+Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L224)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/06
 
 > **REPERCUSSION**: `2`
 
-Defined in: [types/types.ts:225](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L225)
+Defined in: [types/types.ts:225](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L225)

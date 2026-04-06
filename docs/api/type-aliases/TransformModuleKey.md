@@ -8,7 +8,7 @@
 
 > **TransformModuleKey**\<`T`\> = `T` *extends* `"useMeshRenderGate"` ? `"render"` : `T` *extends* `` `use${infer Rest}` `` ? `Uncapitalize`\<`Rest`\> : `T`
 
-Defined in: [engine/useEngineManager.ts:43](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/engine/useEngineManager.ts#L43)
+Defined in: [engine/useEngineManager.ts:43](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/engine/useEngineManager.ts#L43)
 
 ## Type Parameters
 

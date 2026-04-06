@@ -6,7 +6,7 @@
 
 # Interface: SetRuleOptions\<NM, TKeys\>
 
-Defined in: [types/types.ts:172](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L172)
+Defined in: [types/types.ts:172](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L172)
 
 ## Type Parameters
 
@@ -24,7 +24,7 @@ Defined in: [types/types.ts:172](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **cacheStrategy?**: `"none"` \| `"shallow"`
 
-Defined in: [types/types.ts:179](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L179)
+Defined in: [types/types.ts:179](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L179)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types/types.ts:179](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **effect?**: (`args`) => `any`
 
-Defined in: [types/types.ts:177](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L177)
+Defined in: [types/types.ts:177](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L177)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [types/types.ts:177](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **effectArgs?**: `KeysOfUnion`\<`NM`\>[]
 
-Defined in: [types/types.ts:178](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L178)
+Defined in: [types/types.ts:178](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L178)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [types/types.ts:178](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **forceNotify?**: `boolean`
 
-Defined in: [types/types.ts:175](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L175)
+Defined in: [types/types.ts:175](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L175)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: [types/types.ts:175](https://github.com/Nzy19940403/meshflow/blob/06
 
 > **logic**: (`api`) => `any`
 
-Defined in: [types/types.ts:176](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L176)
+Defined in: [types/types.ts:176](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L176)
 
 #### Parameters
 
@@ -84,15 +84,15 @@ Defined in: [types/types.ts:176](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **priority?**: `number`
 
-Defined in: [types/types.ts:174](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L174)
+Defined in: [types/types.ts:174](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L174)
 
 ***
 
 ### triggerKeys?
 
-> `optional` **triggerKeys?**: (`"path"` \| `"uid"` \| `"type"` \| `"meta"` \| `TKeys`)[]
+> `optional` **triggerKeys?**: (`"type"` \| `"path"` \| `"uid"` \| `"meta"` \| `TKeys`)[]
 
-Defined in: [types/types.ts:180](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L180)
+Defined in: [types/types.ts:180](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L180)
 
 ***
 
@@ -100,4 +100,4 @@ Defined in: [types/types.ts:180](https://github.com/Nzy19940403/meshflow/blob/06
 
 > `optional` **value?**: `any`
 
-Defined in: [types/types.ts:173](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/types/types.ts#L173)
+Defined in: [types/types.ts:173](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/types/types.ts#L173)

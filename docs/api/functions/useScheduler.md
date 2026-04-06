@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:8](https://github.com/Nzy19940403/meshflow/blob/06255bb01ccac6c7e81729dae21d316af549df18/utils/core/engine/useScheduler.ts#L8)
+Defined in: [engine/useScheduler.ts:8](https://github.com/Nzy19940403/meshflow/blob/9bafa68a569a7cd262f7efea04182988da755396/utils/core/engine/useScheduler.ts#L8)
 
 ## Type Parameters
 
