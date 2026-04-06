@@ -8,7 +8,7 @@
 
 > **MeshEmit** = \<`K`\>(`event`, `data`) => `void`
 
-Defined in: [types/types.ts:73](https://github.com/Nzy19940403/meshflow/blob/851e3f10573edbcfafb6ad53b079e4487ddd4cd5/utils/core/types/types.ts#L73)
+Defined in: [types/types.ts:73](https://github.com/Nzy19940403/meshflow/blob/6a4b044441d79e8fd7ef78238d15993e3c41f1d5/utils/core/types/types.ts#L73)
 
 ## Type Parameters
 
