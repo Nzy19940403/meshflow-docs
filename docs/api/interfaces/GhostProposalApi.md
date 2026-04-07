@@ -6,7 +6,7 @@
 
 # Interface: GhostProposalApi\<T\>
 
-Defined in: [types/types.ts:186](https://github.com/Nzy19940403/meshflow/blob/e259a6e485fc52435b132166020a182f8a3408b7/utils/core/types/types.ts#L186)
+Defined in: [types/types.ts:186](https://github.com/Nzy19940403/meshflow/blob/1c1e459b6c781a1712afce2f8b15740760f99c59/utils/core/types/types.ts#L186)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [types/types.ts:186](https://github.com/Nzy19940403/meshflow/blob/e2
 
 > **patch**: (`key`, `patchFn`) => `void`
 
-Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/e259a6e485fc52435b132166020a182f8a3408b7/utils/core/types/types.ts#L192)
+Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/1c1e459b6c781a1712afce2f8b15740760f99c59/utils/core/types/types.ts#L192)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/e2
 
 > **set**: (`key`, `value`, `weight?`) => `void`
 
-Defined in: [types/types.ts:188](https://github.com/Nzy19940403/meshflow/blob/e259a6e485fc52435b132166020a182f8a3408b7/utils/core/types/types.ts#L188)
+Defined in: [types/types.ts:188](https://github.com/Nzy19940403/meshflow/blob/1c1e459b6c781a1712afce2f8b15740760f99c59/utils/core/types/types.ts#L188)
 
 #### Parameters
 
@@ -68,7 +68,7 @@ Defined in: [types/types.ts:188](https://github.com/Nzy19940403/meshflow/blob/e2
 
 > **update**: (`key`, `delta`, `op?`) => `void`
 
-Defined in: [types/types.ts:190](https://github.com/Nzy19940403/meshflow/blob/e259a6e485fc52435b132166020a182f8a3408b7/utils/core/types/types.ts#L190)
+Defined in: [types/types.ts:190](https://github.com/Nzy19940403/meshflow/blob/1c1e459b6c781a1712afce2f8b15740760f99c59/utils/core/types/types.ts#L190)
 
 #### Parameters
 
