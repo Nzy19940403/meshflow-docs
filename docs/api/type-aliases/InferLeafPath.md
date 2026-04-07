@@ -8,7 +8,7 @@
 
 > **InferLeafPath**\<`T`, `Prefix`\> = `Unwrap`\<`T`\> *extends* infer Node ? `Node` *extends* `object` ? `N` *extends* `string` ? `N` *extends* `""` ? `Node` *extends* `object` ? `InferLeafPath`\<`C`, `Prefix`\> : `never` : `Node` *extends* `object` ? `InferLeafPath`\<`C`, `Prefix` *extends* `""` ? `N` : `` `${Prefix}.${N}` ``\> : `Prefix` *extends* `""` ? `N` : `` `${Prefix}.${N}` `` : `N` *extends* `number` \| `symbol` ? `Node` *extends* `object` ? `InferLeafPath`\<`C`, `Prefix`\> : `N` : `never` : `never` : `never`
 
-Defined in: [utils/util.ts:52](https://github.com/Nzy19940403/meshflow/blob/1c1e459b6c781a1712afce2f8b15740760f99c59/utils/core/utils/util.ts#L52)
+Defined in: [utils/util.ts:52](https://github.com/Nzy19940403/meshflow/blob/4d9f648c486613b32bfc0f05f797f5a9e64fb45d/utils/core/utils/util.ts#L52)
 
 ## Type Parameters
 
