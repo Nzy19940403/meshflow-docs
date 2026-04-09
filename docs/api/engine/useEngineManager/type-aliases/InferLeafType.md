@@ -8,7 +8,7 @@
 
 > **InferLeafType**\<`T`\> = `Unwrap`\<`T`\> *extends* infer Node ? `Node` *extends* `object` ? `Node` *extends* `object` ? `InferLeafType`\<`C`\> : `Node` : `never` : `never`
 
-Defined in: [utils/util.ts:41](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/utils/util.ts#L41)
+Defined in: [utils/util.ts:41](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/utils/util.ts#L41)
 
 ## Type Parameters
 

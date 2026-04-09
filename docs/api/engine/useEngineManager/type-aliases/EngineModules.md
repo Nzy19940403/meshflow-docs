@@ -8,7 +8,7 @@
 
 > **EngineModules**\<`M`, `P`\> = `{ [K in keyof M as TransformModuleKey<string & K>]: M[K] extends (args: any) => any ? MapModuleToReturn<K, M[K], P> : M[K] extends Record<string, any> ? EngineModules<M[K], P> : M[K] }`
 
-Defined in: [engine/useEngineManager.ts:73](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/engine/useEngineManager.ts#L73)
+Defined in: [engine/useEngineManager.ts:73](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/engine/useEngineManager.ts#L73)
 
 ## Type Parameters
 

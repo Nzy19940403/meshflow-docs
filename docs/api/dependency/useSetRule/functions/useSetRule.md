@@ -8,7 +8,7 @@
 
 > **useSetRule**\<`P`, `NM`\>(`Finder`, `SetBucket`, `GetBucket`, `dependencyGraph`, `predecessorGraph`, `_dependencyGraph`, `_predecessorGraph`, `activeTopologyUids`): [`RulesContext`](../interfaces/RulesContext.md)\<`P`, `NM`\>
 
-Defined in: [dependency/useSetRule.ts:136](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/dependency/useSetRule.ts#L136)
+Defined in: [dependency/useSetRule.ts:136](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/dependency/useSetRule.ts#L136)
 
 ## Type Parameters
 

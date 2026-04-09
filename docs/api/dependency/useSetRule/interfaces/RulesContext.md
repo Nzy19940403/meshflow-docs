@@ -6,7 +6,7 @@
 
 # Interface: RulesContext\<P, NM\>
 
-Defined in: [dependency/useSetRule.ts:78](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/dependency/useSetRule.ts#L78)
+Defined in: [dependency/useSetRule.ts:78](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/dependency/useSetRule.ts#L78)
 
 ## Type Parameters
 
@@ -26,7 +26,7 @@ Defined in: [dependency/useSetRule.ts:78](https://github.com/Nzy19940403/meshflo
 
 > **SetRule**: \<`K`, `TKeys`\>(`outDegreePath`, `inDegreePath`, `key`, `options`) => `void`
 
-Defined in: [dependency/useSetRule.ts:100](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/dependency/useSetRule.ts#L100)
+Defined in: [dependency/useSetRule.ts:100](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/dependency/useSetRule.ts#L100)
 
 ##### Type Parameters
 
@@ -97,7 +97,7 @@ engine.config.SetRule('path/A', 'path/B', 'value', {
 
 > **SetRules**: \<`K`, `TKeys`\>(`outDegreePaths`, `inDegreePath`, `key`, `options`) => `void`
 
-Defined in: [dependency/useSetRule.ts:127](https://github.com/Nzy19940403/meshflow/blob/31d0736a20e62927e2bd9b4877bcced689822f29/utils/core/dependency/useSetRule.ts#L127)
+Defined in: [dependency/useSetRule.ts:127](https://github.com/Nzy19940403/meshflow/blob/8c1ecd0b9cc43addfb610f9c38650dcef7391de1/utils/core/dependency/useSetRule.ts#L127)
 
 ##### Type Parameters
 
