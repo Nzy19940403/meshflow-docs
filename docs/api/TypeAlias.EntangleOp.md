@@ -8,7 +8,7 @@
 
 > **EntangleOp** = `"add"` \| `"intersect"` \| `"union"` \| `"merge"` \| `"remove"`
 
-Defined in: [types/types.ts:304](https://github.com/Nzy19940403/meshflow/blob/a406462dc201f501810f2f1c98e8f16c7b8fe956/utils/core/types/types.ts#L304)
+Defined in: [types/types.ts:304](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L304)
 
 ## Description
 
