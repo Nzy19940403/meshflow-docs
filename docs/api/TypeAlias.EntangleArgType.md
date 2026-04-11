@@ -4,11 +4,11 @@
 
 [MeshFlow Core API](README.md) / EntangleArgType
 
-# Type Alias: EntangleArgType\<P, IsProxy\>
+# Type Alias: EntangleArgType\<P, T, IsProxy\>
 
-> **EntangleArgType**\<`P`, `IsProxy`\> = `object`
+> **EntangleArgType**\<`P`, `T`, `IsProxy`\> = `object`
 
-Defined in: [types/types.ts:383](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L383)
+Defined in: [types/types.ts:383](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L383)
 
 量子纠缠机制的配置选项
 
@@ -20,6 +20,10 @@ Defined in: [types/types.ts:383](https://github.com/Nzy19940403/meshflow/blob/b7
 
 路径标识类型
 
+### T
+
+`T` = `any`
+
 ### IsProxy
 
 `IsProxy` *extends* `boolean` = `boolean`
@@ -30,21 +34,15 @@ Defined in: [types/types.ts:383](https://github.com/Nzy19940403/meshflow/blob/b7
 
 > **cause**: `P`
 
-Defined in: [types/types.ts:384](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L384)
+Defined in: [types/types.ts:384](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L384)
 
 ***
 
 ### emit
 
-> **emit**: \<`T`\>(`cause`, `impact`, `propose`) => `void` \| `EntangleGhost`\<`T`\> \| `undefined` \| `Promise`\<`void` \| `EntangleGhost`\<`T`\> \| `undefined`\>
+> **emit**: (`cause`, `impact`, `propose`) => `void` \| `EntangleGhost`\<`T`\> \| `undefined` \| `Promise`\<`void` \| `EntangleGhost`\<`T`\> \| `undefined`\>
 
-Defined in: [types/types.ts:395](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L395)
-
-#### Type Parameters
-
-##### T
-
-`T`
+Defined in: [types/types.ts:395](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L395)
 
 #### Parameters
 
@@ -74,7 +72,7 @@ propose  提案调用参考[GhostProposalApi](Interface.GhostProposalApi.md)
 
 > `optional` **filter?**: (`cause`, `impact`) => `boolean`
 
-Defined in: [types/types.ts:388](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L388)
+Defined in: [types/types.ts:388](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L388)
 
 #### Parameters
 
@@ -96,7 +94,7 @@ Defined in: [types/types.ts:388](https://github.com/Nzy19940403/meshflow/blob/b7
 
 > **impact**: `P`
 
-Defined in: [types/types.ts:385](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L385)
+Defined in: [types/types.ts:385](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L385)
 
 ***
 
@@ -104,7 +102,7 @@ Defined in: [types/types.ts:385](https://github.com/Nzy19940403/meshflow/blob/b7
 
 > `optional` **isProxy?**: `IsProxy`
 
-Defined in: [types/types.ts:387](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L387)
+Defined in: [types/types.ts:387](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L387)
 
 ***
 
@@ -112,4 +110,4 @@ Defined in: [types/types.ts:387](https://github.com/Nzy19940403/meshflow/blob/b7
 
 > **via**: `string`[]
 
-Defined in: [types/types.ts:386](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/types/types.ts#L386)
+Defined in: [types/types.ts:386](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L386)

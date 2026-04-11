@@ -6,7 +6,7 @@
 
 # Interface: SchemaBucket\<P\>
 
-Defined in: [engine/bucket.ts:266](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L266)
+Defined in: [engine/bucket.ts:266](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L266)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [engine/bucket.ts:266](https://github.com/Nzy19940403/meshflow/blob/
 
 > **evaluate**(`api`): `any`
 
-Defined in: [engine/bucket.ts:480](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L480)
+Defined in: [engine/bucket.ts:480](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L480)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [engine/bucket.ts:480](https://github.com/Nzy19940403/meshflow/blob/
 
 > **forceNotify**(): `void`
 
-Defined in: [engine/bucket.ts:321](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L321)
+Defined in: [engine/bucket.ts:321](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L321)
 
 #### Returns
 
@@ -50,7 +50,7 @@ Defined in: [engine/bucket.ts:321](https://github.com/Nzy19940403/meshflow/blob/
 
 > **setStrategy**(`type`): `void`
 
-Defined in: [engine/bucket.ts:331](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L331)
+Defined in: [engine/bucket.ts:331](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L331)
 
 #### Parameters
 
@@ -68,7 +68,7 @@ Defined in: [engine/bucket.ts:331](https://github.com/Nzy19940403/meshflow/blob/
 
 > **promiseToken**: `any` = `null`
 
-Defined in: [engine/bucket.ts:292](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L292)
+Defined in: [engine/bucket.ts:292](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L292)
 
 ***
 
@@ -76,4 +76,4 @@ Defined in: [engine/bucket.ts:292](https://github.com/Nzy19940403/meshflow/blob/
 
 > **useCache**: `boolean` = `true`
 
-Defined in: [engine/bucket.ts:294](https://github.com/Nzy19940403/meshflow/blob/b7f91311a42ef1343f61c95646dc8eaa7375fde8/utils/core/engine/bucket.ts#L294)
+Defined in: [engine/bucket.ts:294](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/engine/bucket.ts#L294)
