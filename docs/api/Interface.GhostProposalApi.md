@@ -4,9 +4,9 @@
 
 [MeshFlow Core API](README.md) / GhostProposalApi
 
-# Interface: GhostProposalApi\<T\>
+# Interface: GhostProposalApi\<State, NM\>
 
-Defined in: [types/types.ts:329](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L329)
+Defined in: [types/types.ts:329](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L329)
 
 幽灵提案 API (Ghost Proposal API)
 * ### 架构思想：延迟决议 (Deferred Resolution)
@@ -34,31 +34,45 @@ propose.update('totalPrice', src.price, 'add');
 
 ## Type Parameters
 
-### T
+### State
 
-`T`
+`State`
+
+### NM
+
+`NM`
 
 ## Properties
 
 ### patch
 
-> **patch**: (`key`, `patchFn`) => `void`
+> **patch**: \<`K`, `V`\>(`key`, `patchFn`) => `void`
 
-Defined in: [types/types.ts:356](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L356)
+Defined in: [types/types.ts:356](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L356)
 
 提交【函数式补丁】提案
+
+#### Type Parameters
+
+##### K
+
+`K` *extends* `string` \| `number` \| `symbol` \| `string` & `object`
+
+##### V
+
+`V` = `IsAny`\<`State`\> *extends* `false` ? `State` : `IsNever`\<`NM`\> *extends* `true` ? `any` : `IsAny`\<`NM`\> *extends* `false` ? `K` *extends* keyof `NM` ? `NM`\[`K`\] : `any` : `any`
 
 #### Parameters
 
 ##### key
 
-`string`
+`K`
 
 目标节点的状态属性名
 
 ##### patchFn
 
-(`oldState`) => `T`
+(`oldState`) => `V`
 
 状态计算回调。接收该 key 的当前旧值 (`oldState`)，需返回计算后的新值。
 *
@@ -84,7 +98,7 @@ Defined in: [types/types.ts:356](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **set**: (`key`, `value`, `weight?`) => `void`
 
-Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L337)
+Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L337)
 
 提交【绝对值覆盖】提案
 
@@ -92,7 +106,7 @@ Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/9a
 
 ##### key
 
-`string`
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
 目标节点的状态属性名
 
@@ -122,7 +136,7 @@ Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **update**: (`key`, `delta`, `op?`) => `void`
 
-Defined in: [types/types.ts:345](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L345)
+Defined in: [types/types.ts:345](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L345)
 
 提交【增量运算】提案
 
@@ -130,7 +144,7 @@ Defined in: [types/types.ts:345](https://github.com/Nzy19940403/meshflow/blob/9a
 
 ##### key
 
-`string`
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
 目标节点的状态属性名
 

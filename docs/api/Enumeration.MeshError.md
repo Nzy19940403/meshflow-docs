@@ -6,7 +6,7 @@
 
 # Enumeration: MeshError
 
-Defined in: [types/types.ts:452](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L452)
+Defined in: [types/types.ts:474](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L474)
 
 异常字典：汇总内核运行时的循环依赖、实例缺失等核心错误
 
@@ -21,7 +21,7 @@ Defined in: [types/types.ts:452](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **cycle**: `"Circular dependency detected"`
 
-Defined in: [types/types.ts:453](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L453)
+Defined in: [types/types.ts:475](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L475)
 
 ***
 
@@ -29,7 +29,7 @@ Defined in: [types/types.ts:453](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **EngineIdRepeated**: `"engineID repeated"`
 
-Defined in: [types/types.ts:455](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L455)
+Defined in: [types/types.ts:477](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L477)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [types/types.ts:455](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **EngineNotFound**: `"Engine not found."`
 
-Defined in: [types/types.ts:454](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L454)
+Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L476)
 
 ***
 
@@ -45,4 +45,4 @@ Defined in: [types/types.ts:454](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **WrongId**: `"Wrong id"`
 
-Defined in: [types/types.ts:456](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L456)
+Defined in: [types/types.ts:478](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L478)

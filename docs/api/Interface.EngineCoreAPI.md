@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:511](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L511)
+Defined in: [types/types.ts:533](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L533)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:516](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L516)
+Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L538)
 
 引擎配置与规则管理
 
@@ -291,7 +291,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:619](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L619)
+Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L641)
 
 数据大盘读写接口
 
@@ -381,7 +381,7 @@ Defined in: [types/types.ts:619](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L641)
+Defined in: [types/types.ts:663](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L663)
 
 拓扑图与依赖分析
 
@@ -411,7 +411,7 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/9a
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:653](https://github.com/Nzy19940403/meshflow/blob/9abe0421af55a0540911971b38d7e62bd578ea71/utils/core/types/types.ts#L653)
+Defined in: [types/types.ts:675](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L675)
 
 引擎生命周期钩子
 

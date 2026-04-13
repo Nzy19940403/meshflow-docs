@@ -25,6 +25,10 @@
 - [SchemaBucket](Interface.SchemaBucket.md)
 - [useScheduler](Function.useScheduler.md)
 
+## Type Aliases
+
+- [SuggestKey](TypeAlias.SuggestKey.md)
+
 ## 参数类型
 
 ### 入口函数
