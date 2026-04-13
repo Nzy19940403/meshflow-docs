@@ -8,7 +8,7 @@
 
 > **HistoryActionItem** = `object`
 
-Defined in: [types/types.ts:90](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L90)
+Defined in: [types/types.ts:90](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L90)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/types.ts:90](https://github.com/Nzy19940403/meshflow/blob/d47
 
 > **redoAction**: () => `void`
 
-Defined in: [types/types.ts:92](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L92)
+Defined in: [types/types.ts:92](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L92)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [types/types.ts:92](https://github.com/Nzy19940403/meshflow/blob/d47
 
 > **undoAction**: () => `void`
 
-Defined in: [types/types.ts:91](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L91)
+Defined in: [types/types.ts:91](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L91)
 
 #### Returns
 
