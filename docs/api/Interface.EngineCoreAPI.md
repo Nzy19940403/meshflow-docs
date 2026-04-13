@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:533](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L533)
+Defined in: [types/types.ts:533](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L533)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L538)
+Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L538)
 
 引擎配置与规则管理
 
@@ -291,7 +291,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L641)
+Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L641)
 
 数据大盘读写接口
 
@@ -325,7 +325,7 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/47
 
 ###### key
 
-`any`
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
 ##### Returns
 
@@ -347,7 +347,7 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/47
 
 ###### key
 
-`string` & `object` \| `KeysOfUnion`\<`NM`\>
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
 ###### value
 
@@ -375,13 +375,65 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/47
 
 `void`
 
+#### StageValue
+
+> **StageValue**: (`path`, `key`, `value`) => `void`
+
+🌟 静默属性注入 (熵减缓冲区)
+*
+
+##### Parameters
+
+###### path
+
+`P`
+
+目标节点的路径 (nodeProxy.path)
+
+###### key
+
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+
+需要修改的属性键名 (必须是模型定义的 SuggestKey)
+
+###### value
+
+`any`
+
+注入的原始物理值 (注入后将作为下一轮纠缠的种子)
+*
+
+##### Returns
+
+`void`
+
+##### Description
+
+该方法不会立即中断当前引擎任务，而是将修改意图推入 `stageBuffer`。
+主要用于处理外部高频干预（如自动空投、WebSocket 流、或是跨帧的连续修改）。
+*
+
+##### Features
+
+1. **非侵入性**：如果引擎正在运行，它会静默排队，待当前纠缠落地后再通过 monitor 自动收割。
+2. **自动点火**：如果引擎处于静止态，它会触发微任务级别的“聚合点火”，确保多笔修改只启动一次 Task。
+3. **协助纠缠**：作为外部与纠缠系统之间的“避震器”，防止高频交互导致因果链条（Token）频繁重置。
+*
+
+##### Example
+
+```ts
+// 外部定时器高频新增，不希望闪烁或卡顿
+engine.data.StageValue(path, 'isDead', false);
+```
+
 ***
 
 ### dependency
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:663](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L663)
+Defined in: [types/types.ts:682](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L682)
 
 拓扑图与依赖分析
 
@@ -411,7 +463,7 @@ Defined in: [types/types.ts:663](https://github.com/Nzy19940403/meshflow/blob/47
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:675](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/types/types.ts#L675)
+Defined in: [types/types.ts:694](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/types/types.ts#L694)
 
 引擎生命周期钩子
 

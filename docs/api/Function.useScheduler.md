@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/blob/470a2bbb58423517969e91b3e3fb125bc168017c/utils/core/engine/useScheduler.ts#L12)
+Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/blob/d471fe40db8a2746b027e015c9931162dbbe48dd/utils/core/engine/useScheduler.ts#L12)
 
 ## Type Parameters
 
@@ -223,6 +223,28 @@ Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/
 #### Returns
 
 `number`
+
+### stageValueFn
+
+> **stageValueFn**: (`uid`, `key`, `value`) => `void`
+
+#### Parameters
+
+##### uid
+
+`number`
+
+##### key
+
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+
+##### value
+
+`any`
+
+#### Returns
+
+`void`
 
 ### UidToNodeMap
 
