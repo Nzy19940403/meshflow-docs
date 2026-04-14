@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:533](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L533)
+Defined in: [types/types.ts:533](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/types/types.ts#L533)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L538)
+Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/types/types.ts#L538)
 
 引擎配置与规则管理
 
@@ -291,7 +291,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L641)
+Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/types/types.ts#L641)
 
 数据大盘读写接口
 
@@ -375,11 +375,59 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/6b
 
 `void`
 
+#### SilentSet
+
+> **SilentSet**: (`path`, `key`, `value`) => `boolean`
+
+静默更新 (Silent Update)
+*
+
+##### Parameters
+
+###### path
+
+`P`
+
+节点的唯一路径
+
+###### key
+
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+
+需要修改的状态键名
+
+###### value
+
+`any`
+
+目标值
+
+##### Returns
+
+`boolean`
+
+是否成功修改了内存值（若值相等或路径无效则返回 false）
+
+##### Description
+
+强制篡改节点状态而不触发任何纠缠任务（Task）。
+该操作是“非响应式”的，引擎不会感知到此次变化，也不会产生拓扑波动。
+*
+
+##### Example
+
+```ts
+// 场景：系统重置（降噪）
+// 先将所有背景节点的干扰项“强行降噪”为 0，再通过 SetValue 触发一次“纯净”的任务流。
+list.forEach(node => engine.data.SilentSet(node.path, 'count', 0));
+engine.data.SetValue('N5', 'count', 500); // 此时只有 N5 是唯一的能量源
+*
+```
+
 #### StageValue
 
 > **StageValue**: (`path`, `key`, `value`) => `void`
 
-🌟 静默属性注入 (熵减缓冲区)
 *
 
 ##### Parameters
@@ -423,7 +471,6 @@ Defined in: [types/types.ts:641](https://github.com/Nzy19940403/meshflow/blob/6b
 ##### Example
 
 ```ts
-// 外部定时器高频新增，不希望闪烁或卡顿
 engine.data.StageValue(path, 'isDead', false);
 ```
 
@@ -433,7 +480,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:682](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L682)
+Defined in: [types/types.ts:696](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/types/types.ts#L696)
 
 拓扑图与依赖分析
 
@@ -463,7 +510,7 @@ Defined in: [types/types.ts:682](https://github.com/Nzy19940403/meshflow/blob/6b
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:694](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/types/types.ts#L694)
+Defined in: [types/types.ts:708](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/types/types.ts#L708)
 
 引擎生命周期钩子
 

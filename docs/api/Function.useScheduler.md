@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/blob/6b6b5938a4dddcf4c7073a0dce5550e34d07d609/utils/core/engine/useScheduler.ts#L12)
+Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/blob/5771cc96ca6c8269a057370921103e9338d2b5ec/utils/core/engine/useScheduler.ts#L12)
 
 ## Type Parameters
 
@@ -181,6 +181,20 @@ Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/
 #### Returns
 
 `Promise`\<`void`\>
+
+### refresTarget
+
+> **refresTarget**: (`uid`) => `void`
+
+#### Parameters
+
+##### uid
+
+`number`
+
+#### Returns
+
+`void`
 
 ### registerGroupNode
 
