@@ -65,9 +65,11 @@ import {
   deleteEngine,
 } from "@meshflow/core";
 
-const props = defineProps<{
-  name: string;
-}>();
+const props = withDefaults(defineProps<{
+  name?: string; // 变成可选
+}>(), {
+  name: 'zh' // 默认为中文
+});
 const name = props.name;
 const isEn = computed(() => props.name === "en");
 
@@ -75,23 +77,24 @@ const isEn = computed(() => props.name === "en");
  * 1. 业务 Schema 定义 (动态国际化)
  * 使用 computed 确保当 props.name 改变时，schema 能够同步更新
  */
-const schema = {
+ const schema = {
   type: "group",
 
   name: "billing",
-
+  path: "billing",
   label: "计费与汇总",
 
   children: [
-    { type: "number", name: "count", label: "购买数量", value: 1 },
+    { type: "number", name: "count",path: "count", label: "购买数量", value: 1 },
 
-    { type: "number", name: "price", label: "单价", value: 1000 },
+    { type: "number", name: "price",path: "price", label: "单价", value: 1000 },
 
-    { type: "number", name: "totalPrice", label: "预估月度总价", value: 0 },
+    { type: "number", name: "totalPrice",path: "totalPrice", label: "预估月度总价", value: 0 },
 
     {
       type: "input",
       name: "priceDetail",
+      path: "priceDetail",
       label: "计费项说明",
       value: "基础配置费用",
     },
@@ -102,17 +105,18 @@ const enSchema = {
   type: "group",
 
   name: "billing",
-
+  path: "billing",
   label: "Billing & Summary",
 
   children: [
-    { type: "number", name: "count", label: "Quantity", value: 1 },
+    { type: "number", name: "count", path: "count", label: "Quantity", value: 1 },
 
-    { type: "number", name: "price", label: "Unit Price", value: 1000 },
+    { type: "number", name: "price", path: "price", label: "Unit Price", value: 1000 },
 
     {
       type: "number",
       name: "totalPrice",
+      path: "totalPrice",
       label: "Estimated Monthly Total",
       value: 0,
     },
@@ -120,6 +124,7 @@ const enSchema = {
     {
       type: "input",
       name: "priceDetail",
+      path: "priceDetail",
       label: "Billing Description",
       value: "Base Configuration Fee",
     },

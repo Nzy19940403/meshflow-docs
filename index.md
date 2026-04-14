@@ -29,7 +29,7 @@ features:
     details: 引入“桶计算”记忆化机制，自动识别无效变更并截断传播路径，实现真正的计算最小化与高性能响应。
     icon: ⚡
   - title:  框架无关 & 极轻量
-    details: 零外部依赖，体积仅 ~10kB(zipped)。提供统一的触发信号接口，完美适配 Vue、React 或原生 JavaScript 项目。
+    details: 零外部依赖，体积仅 ~12kB(zipped)。提供统一的触发信号接口，完美适配 Vue、React 或原生 JavaScript 项目。
     icon: 📦
  
 ---

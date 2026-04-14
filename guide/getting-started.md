@@ -85,15 +85,15 @@ import { useMeshFlow } from "@meshflow/core";
 
 const schema = {
   type: "group",
-  name: "billing",
+  path: "billing",
   label: "计费与汇总",
   children: [
-    { type: "number", name: "count", label: "购买数量", value: 1 },
-    { type: "number", name: "price", label: "单价", value: 1000 },
-    { type: "number", name: "totalPrice", label: "预估月度总价", value: 0 },
+    { type: "number", path: "count", label: "购买数量", value: 1 },
+    { type: "number", path: "price", label: "单价", value: 1000 },
+    { type: "number", path: "totalPrice", label: "预估月度总价", value: 0 },
     {
       type: "input",
-      name: "priceDetail",
+      path: "priceDetail",
       label: "计费项说明",
       value: "基础配置费用",
     },
@@ -119,15 +119,15 @@ import { useMeshFlow } from "@meshflow/core";
 
 const schema = {
   type: "group",
-  name: "billing",
+  path: "billing",
   label: "计费与汇总",
   children: [
-    { type: "number", name: "count", label: "购买数量", value: 1 },
-    { type: "number", name: "price", label: "单价", value: 1000 },
-    { type: "number", name: "totalPrice", label: "预估月度总价", value: 0 },
+    { type: "number", path: "count", label: "购买数量", value: 1 },
+    { type: "number", path: "price", label: "单价", value: 1000 },
+    { type: "number", path: "totalPrice", label: "预估月度总价", value: 0 },
     {
       type: "input",
-      name: "priceDetail",
+      path: "priceDetail",
       label: "计费项说明",
       value: "基础配置费用",
     },

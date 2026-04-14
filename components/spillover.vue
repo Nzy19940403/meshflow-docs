@@ -272,12 +272,15 @@ const simulationLoop = (timestamp: number) => {
           const currentWL = headBox.workLoad ?? headBox.maxAmount;
           
           if (currentWL <= 0) {
-            engine.data.SetValues([
-              { path: headBox.path, key: 'parent', value: 'graveyard' },
-              { path: headBox.path, key: 'isDead', value: true }
-            ]);
+          // engine.data.SetValues([
+            //   { path: headBox.path, key: 'parent', value: 'graveyard' },
+            //   { path: headBox.path, key: 'isDead', value: true }
+            // ]);
+            engine.data.StageValue(headBox.path, 'parent', 'graveyard');
+            engine.data.StageValue(headBox.path, 'isDead', true);
           } else {
-            engine.data.SetValue(headBox.path, 'workLoad', currentWL - 1);
+             // engine.data.SetValue(headBox.path, 'workLoad', currentWL - 1);
+             engine.data.StageValue(headBox.path, 'workLoad', currentWL - 1);
           }
         }
       });
@@ -547,11 +550,14 @@ const initBoxEntangle = (path:any)=>{
       return isCrowded || isThreatened;
     },
     emit:  async  (causeState, impactState, propose) => {
-      await new Promise<void>((resolve)=>{
-      setTimeout(() => {
-        resolve()
-      }, 100);
-    })
+      if(!(isSimulating.value || isAutoSpawning.value)){
+        await new Promise<void>((resolve)=>{
+          setTimeout(() => {
+            resolve()
+          }, 100);
+        })
+      }
+    
       const observer = causeState.state;
       const target = impactState.state;
       const targetPath = impactState.path as string;
@@ -965,14 +971,18 @@ const handleAddNew = ()=>{
   version.value++;
   initBoxEntangle(nodeProxy.path);
   // 新格子一开始落在公海（为空字符串）并且满血复活
-  engine.data.SetValues([
-    { path: nodeProxy.path, key: 'parent', value: '' },
-    { path: nodeProxy.path, key: 'isDead', value: false },
-    { path: nodeProxy.path, key: 'workLoad', value: nodeProxy.maxAmount }
-  ]);
-  setTimeout(() => {
-    engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
-  }, 50);
+  // engine.data.SetValues([
+  //   { path: nodeProxy.path, key: 'parent', value: '' },
+  //   { path: nodeProxy.path, key: 'isDead', value: false },
+  //   { path: nodeProxy.path, key: 'workLoad', value: nodeProxy.maxAmount }
+  // ]);
+  // setTimeout(() => {
+  //   engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
+  // }, 50);
+  engine.data.StageValue(nodeProxy.path, 'parent', '');
+  engine.data.StageValue(nodeProxy.path, 'isDead', false);
+  engine.data.StageValue(nodeProxy.path, 'workLoad', nodeProxy.maxAmount);
+  engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
 }
 
 const reset = async () => {
@@ -993,7 +1003,10 @@ const reset = async () => {
 
   await new Promise(resolve => setTimeout(resolve, 800));
   isResetting = false;
-  engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
+  if(layoutMode.value==='judge'){
+    engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
+  }
+ 
 }
   
 const changeCapacity = (path: string, delta: number) => {

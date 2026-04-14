@@ -133,7 +133,7 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
             const diff = tarIdx - myIdx;
             const isTarBigger = tarVal > myVal || (tarVal === myVal && tarId > myId);
   
-            await sleep(15); 
+            // await sleep(15); 
   
             // 处理重叠
             if (diff === 0) {
@@ -150,7 +150,12 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
   
       // 坐标渲染映射 (未改动)
       engine.config.SetRule(vView.path, vView.meta.entityPath, "posIndex", {
-        logic: ({slot}) => slot.triggerTargets[0].posIndex,
+        logic: async({slot}) => {
+
+          await sleep(300)
+
+          return  slot.triggerTargets[0].posIndex
+        },
         triggerKeys: ["posIndex"],
         effect: (args) => ({
           x: args.posIndex * (BAR_WIDTH + GAP),
@@ -177,7 +182,7 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
         });
         return { ...newWorld };
       },
-      triggerKeys: ['posIndex', 'value', 'uid', 'path']
+      // triggerKeys: ['posIndex', 'value', 'uid', 'path']
     });
   
     // 在 setupSortingPhysics 内部
@@ -214,7 +219,7 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
           // 如果当前位置和理想位置不一致（说明有空洞或重叠）
           if (myData.pos !== idealPos) {
             // 给一点点微小的延迟，让审计过程在视觉上有一个“咔哒”入位的捕捉感
-            await sleep(10); 
+            // await sleep(10); 
             
             // 这里的 weight 设置为 1 即可，因为此时局部规则已经静止
             propose.set("posIndex", idealPos, 1);
@@ -237,12 +242,12 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
       obj.push({ path: v.path, key: "value", value: num });
       obj.push({ path: v.entityPath, key: "value", value: num });
 
-      engine.data.SetValue(v.entityPath, 'value', num);
-      engine.data.SetValue(v.path, 'value', num);
+      // engine.data.SetValue(v.entityPath, 'value', num);
+      // engine.data.SetValue(v.path, 'value', num);
     });
   
     // 🌟 强烈建议这里用批量更新 SetValues 替代循环 SetValue！
-    // engine.data.SetValues(obj);
+    engine.data.SetValues(obj);
  
   };
   
