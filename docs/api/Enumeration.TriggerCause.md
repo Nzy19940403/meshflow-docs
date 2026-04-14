@@ -6,7 +6,7 @@
 
 # Enumeration: TriggerCause
 
-Defined in: [types/types.ts:431](https://github.com/Nzy19940403/meshflow/blob/ac81cfc36c9dbfdea817ebd33ad5fc2213d541b9/utils/core/types/types.ts#L431)
+Defined in: [types/types.ts:431](https://github.com/Nzy19940403/meshflow/blob/834adce4bb5ef4a77772b2c15cce691a44193fea/utils/core/types/types.ts#L431)
 
 引擎点火溯源标识 (Trigger Cause)
 *
@@ -23,7 +23,7 @@ Defined in: [types/types.ts:431](https://github.com/Nzy19940403/meshflow/blob/ac
 
 > **CAUSALITY**: `0`
 
-Defined in: [types/types.ts:437](https://github.com/Nzy19940403/meshflow/blob/ac81cfc36c9dbfdea817ebd33ad5fc2213d541b9/utils/core/types/types.ts#L437)
+Defined in: [types/types.ts:437](https://github.com/Nzy19940403/meshflow/blob/834adce4bb5ef4a77772b2c15cce691a44193fea/utils/core/types/types.ts#L437)
 
 **正向因果推导 (CAUSALITY)**
 
@@ -41,7 +41,7 @@ Defined in: [types/types.ts:437](https://github.com/Nzy19940403/meshflow/blob/ac
 
 > **INVERSION**: `1`
 
-Defined in: [types/types.ts:443](https://github.com/Nzy19940403/meshflow/blob/ac81cfc36c9dbfdea817ebd33ad5fc2213d541b9/utils/core/types/types.ts#L443)
+Defined in: [types/types.ts:443](https://github.com/Nzy19940403/meshflow/blob/834adce4bb5ef4a77772b2c15cce691a44193fea/utils/core/types/types.ts#L443)
 
 **纠缠源头 (INVERSION)**
 
@@ -56,7 +56,7 @@ Defined in: [types/types.ts:443](https://github.com/Nzy19940403/meshflow/blob/ac
 
 > **REPERCUSSION**: `2`
 
-Defined in: [types/types.ts:449](https://github.com/Nzy19940403/meshflow/blob/ac81cfc36c9dbfdea817ebd33ad5fc2213d541b9/utils/core/types/types.ts#L449)
+Defined in: [types/types.ts:449](https://github.com/Nzy19940403/meshflow/blob/834adce4bb5ef4a77772b2c15cce691a44193fea/utils/core/types/types.ts#L449)
 
 **纠缠连锁余波 (REPERCUSSION)**
 
