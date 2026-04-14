@@ -7,29 +7,40 @@
             <h1>Meshflow Matrix <span>9-Node Projection</span></h1>
             <p class="subtitle">通过底层纯净的分布式运算，实时推导拓扑收敛态。</p>
           </div>
+          
           <div class="header-actions">
-            <div class="ignition-group">
-              <span class="ignition-label">真空点火初始能量:</span>
-              <input 
-                type="number" 
-                v-model="ignitionValue" 
-                class="ignition-input"
-              />
+            <div class="action-group">
+              <div class="control-group">
+                <span class="control-label">异步演进:</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" v-model="isAsyncMode">
+                  <span class="slider"></span>
+                </label>
+              </div>
+  
+              <div class="ignition-group">
+                <span class="ignition-label">点火能量:</span>
+                <input 
+                  type="number" 
+                  v-model="ignitionValue" 
+                  class="ignition-input"
+                />
+              </div>
             </div>
-
-            <button class="btn btn-primary" @click="resetSystem">
-              🚀 真空点火 (N5)
-            </button>
-            <button class="btn btn-danger" @click="randomPerturb">
-              🎲 随机全盘扰动
-            </button>
+  
+            <div class="action-group">
+              <button class="btn btn-primary" @click="resetSystem">
+                🚀 真空点火 (N5)
+              </button>
+              <button class="btn btn-danger" @click="randomPerturb">
+                🎲 随机扰动
+              </button>
+            </div>
           </div>
         </header>
- 
   
         <div class="matrix-grid">
           <div v-for="node in list" :key="node.path" class="node-card">
-            
             <div class="node-header">
               <div class="node-identity">
                 <span class="node-path">{{ node.path }}</span>
@@ -39,7 +50,7 @@
             </div>
   
             <div class="node-formula">
-              <div class="formula-label">🧠 纠缠公式 (实时编译):</div>
+              <div class="formula-label">纠缠公式:</div>
               <input 
                 v-model="node.meta.formula" 
                 placeholder="输入依赖公式 (如: N1*0.5)"
@@ -59,7 +70,6 @@
                 底层动能: {{ typeof node.state.count === 'number' ? node.state.count.toFixed(4) : node.state.count }}
               </div>
             </div>
-  
           </div>
         </div>
   
@@ -70,30 +80,30 @@
   <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue';
   import { deleteEngine, useMeshFlow } from '@meshflow/core';
-  import { useMatrixData } from '../core/matrix'; // 替换为你的路径
+  import { useMatrixData } from '../core/matrix'; // 请确保路径正确
   import { useLogger } from "@meshflow/logger";
   
-  // 🌟 用户自定义点火值
+  // 🌟 控制参数
   const ignitionValue = ref(500);
-
+  const isAsyncMode = ref(true); // 异步演进开关
+  
   // 1. 初始化 Meshflow 引擎
   const engine = useMeshFlow('9-mesh-solver', [], {
     UITrigger: { 
       signalCreator: () => ref(0), 
       signalTrigger: (signal) => signal.value++ 
     },
-    config: { useGreedy: true, useEntangleStep: 100 },
+    config: { 
+      useGreedy: true, 
+      useEntangleStep: Infinity // 允许无限次收敛尝试直到稳态
+    },
     modules: { useMatrixData }
   });
   
-  // const logger = useLogger();
-  // engine.config.usePlugin(logger);
-  
   const { list } = engine.modules.matrixData;
   
-  // 2. 人工打破平衡 (直接修改 UI 投影，触发纯净注入)
+  // 2. 人工打破平衡
   const onUpdate = (node: any, val: number) => {
-    // 当用户手动输入时，我们应当将其视为一次纯粹的神谕注入
     engine.data.SetValue(node.path, "count", val || 0);
   };
   
@@ -101,10 +111,8 @@
   const resetSystem = () => {
     try {
       list.forEach(node => {
-          // 强行降噪，切断所有背景余波
           engine.data.SilentSet(node.path, "count", 0);
       });
-      // 🌟 使用用户输入的值引爆
       engine.data.SetValue("N5", "count", ignitionValue.value || 0);
     } catch (e) {
       console.error("引擎重置异常:", e);
@@ -135,10 +143,9 @@
           via: ["count"],
           emit: async (src, tgt, propose) => {
             const formula = tgt.meta.formula;
-            // 【虚拟解耦】如果公式中剥离了该节点，拦截引擎计算流
             if (!formula || !formula.includes(causeNode.path)) return;
-  
-            try {
+            
+             
               const context: any = {};
               list.forEach(n => context[n.path] = n.state.count ?? 0);
               
@@ -149,12 +156,19 @@
   
               const current = tgt.state.count ?? 0;
               
+              // 🌟 核心开关逻辑：如果开启异步模式，则让出主线程
+              if (isAsyncMode.value) {
+                await new Promise((resolve) => {
+                  // 使用 0ms 延迟来模拟微任务/宏任务切片，让 Vue 有机会渲染中间态
+                  setTimeout(resolve, 0); 
+                });
+              }
+  
+              // 阈值检查，防止无限微调导致的性能损耗
               if (Math.abs(raw - current) > threshold) {
                 propose.set("count", raw);
               }
-            } catch (e) {
-              // 静默处理表达式构建过程中的半成品语法错误
-            }
+           
           }
         });
       });
@@ -167,23 +181,31 @@
   
   onMounted(() => {
     setupDynamicSolver();
-    // 全面唤醒引擎，确立初始静态背景
     engine.config.notifyAll();
   });
-
-  onUnmounted(()=>{
-    deleteEngine('9-mesh-solver')
-  })
+  
+  onUnmounted(() => {
+    deleteEngine('9-mesh-solver');
+  });
   </script>
   
   <style scoped>
-  /* 全局暗黑科技风设定 */
+  /* 1. 变量与基础重置 */
   .meshflow-dashboard {
-    background: #0f172a;
+    --primary-blue: #38bdf8;
+    --accent-purple: #a78bfa;
+    --warning-amber: #f59e0b;
+    --danger-rose: #e11d48;
+    --bg-darker: #0f172a;
+    --bg-card: #1e293b;
+    --border-color: #334155;
+  
+    background: var(--bg-darker);
     min-height: 100vh;
     color: #f8fafc;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    padding: 40px 20px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    padding: 16px;
+    transition: all 0.3s ease;
   }
   
   .dashboard-container {
@@ -191,265 +213,238 @@
     margin: 0 auto;
   }
   
-  /* 头部样式 */
+  /* 2. 响应式 Header 布局 */
   .dashboard-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #1e293b;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 32px;
+  }
+  
+  @media (min-width: 1024px) {
+    .dashboard-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
   }
   
   .header-titles h1 {
     margin: 0;
-    color: #38bdf8;
-    font-size: 32px;
-    letter-spacing: -0.5px;
+    color: var(--primary-blue);
+    font-size: clamp(20px, 5vw, 28px); /* 字体自适应 */
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
   }
   
   .header-titles h1 span {
-    font-size: 16px;
+    font-size: 14px;
     color: #64748b;
-    font-weight: normal;
     margin-left: 12px;
-    border-left: 2px solid #334155;
+    border-left: 1px solid var(--border-color);
     padding-left: 12px;
+    font-weight: 400;
   }
   
   .subtitle {
     color: #94a3b8;
-    font-size: 15px;
-    margin: 8px 0 0 0;
+    font-size: 14px;
+    margin-top: 8px;
   }
   
-  /* 按钮样式 */
+  /* 3. 操作区：解决“挤”的核心逻辑 */
   .header-actions {
     display: flex;
-    align-items: center; /* 确保输入框和按钮对齐 */
+    flex-direction: column;
     gap: 12px;
+    width: 100%;
   }
-
-  /* 🌟 新增：点火输入框样式，不影响全局 */
-  .ignition-group {
+  
+  @media (min-width: 768px) {
+    .header-actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      width: auto;
+    }
+  }
+  
+  .action-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap; /* 空间不足自动换行，防止挤压 */
+    flex: 1;
+  }
+  
+  .control-group, .ignition-group, .btn {
+    flex: 1; 
+    min-width: 130px; /* 降低最小宽度，给换行留空间 */
+    height: 44px;
     display: flex;
     align-items: center;
-    background: #1e293b;
-    border: 1px solid #334155;
-    padding: 2px 12px;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    height: 38px; /* 匹配按钮高度感 */
+    padding: 0 12px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-
-  .ignition-label {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-right: 8px;
+  
+  /* 4. 按钮与交互件细节 */
+  .btn {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
     white-space: nowrap;
   }
-
+  
+  .btn-primary { background: #0ea5e9; color: white; }
+  .btn-danger { background: var(--danger-rose); color: white; }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+  .btn:active { transform: translateY(0); }
+  
+  .control-label, .ignition-label {
+    font-size: 11px;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+  
   .ignition-input {
     background: transparent;
     border: none;
-    color: #38bdf8;
-    font-family: 'Fira Code', monospace;
+    color: var(--primary-blue);
     font-size: 16px;
     font-weight: bold;
-    width: 60px;
+    width: 100%; /* 撑满容器 */
+    max-width: 60px;
     outline: none;
-    text-align: center;
+    text-align: right;
   }
   
-  .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.2s ease;
-  }
-  
-  .btn-primary {
-    background: #0ea5e9;
-    color: white;
-    box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
-  }
-  
-  .btn-primary:hover {
-    background: #0284c7;
-    transform: translateY(-1px);
-  }
-  
-  .btn-danger {
-    background: #e11d48;
-    color: white;
-    box-shadow: 0 4px 14px 0 rgba(225, 29, 72, 0.39);
-  }
-  
-  .btn-danger:hover {
-    background: #be123c;
-    transform: translateY(-1px);
-  }
-  
-  /* 架构说明卡片 */
-  .architecture-note {
-    background: rgba(30, 41, 59, 0.5);
-    border-left: 4px solid #8b5cf6;
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 30px;
-    font-size: 14px;
-    color: #cbd5e1;
-    line-height: 1.6;
-  }
-  
-  .note-title {
-    color: #c4b5fd;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-  
-  .architecture-note ul {
-    margin: 10px 0 0 0;
-    padding-left: 20px;
-  }
-  
-  .architecture-note li {
-    margin-bottom: 6px;
-  }
-  
-  .architecture-note strong {
-    color: #e2e8f0;
-  }
-  
-  /* 响应式网格 (核心适配逻辑) */
+  /* 5. 矩阵网格自适应 */
   .matrix-grid {
     display: grid;
-    /* 自动填充，卡片最小 300px，最大 1fr */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
   
-  /* 节点卡片样式 */
   .node-card {
-    background: #1e293b;
-    border: 1px solid #334155;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
   }
   
   .node-card:hover {
     border-color: #475569;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.3);
   }
   
   .node-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .node-identity {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    margin-bottom: 20px;
   }
   
   .node-path {
-    background: #38bdf8;
-    color: #0f172a;
-    padding: 4px 12px;
-    border-radius: 6px;
+    background: var(--primary-blue);
+    color: var(--bg-darker);
+    padding: 2px 8px;
+    border-radius: 4px;
     font-weight: 900;
-    font-size: 16px;
-    letter-spacing: 1px;
+    font-size: 14px;
   }
   
-  .node-label {
-    font-size: 13px;
-    color: #94a3b8;
-    font-weight: 600;
-  }
+  .node-label { margin-left: 8px; color: #94a3b8; font-size: 12px; }
   
   .node-signal {
-    font-size: 11px;
-    color: #f59e0b;
-    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--warning-amber);
     background: rgba(245, 158, 11, 0.1);
-    padding: 4px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     border: 1px solid rgba(245, 158, 11, 0.2);
   }
   
-  /* 公式输入框 */
-  .node-formula {
-    margin-bottom: 20px;
-  }
-  
-  .formula-label {
-    font-size: 12px;
-    color: #64748b;
-    margin-bottom: 8px;
-  }
-  
+  /* 6. 输入框细节优化 */
   .formula-input {
     width: 100%;
-    box-sizing: border-box;
-    background: #0f172a;
+    background: var(--bg-darker);
     border: 1px solid #475569;
-    color: #a78bfa;
+    color: var(--accent-purple);
     padding: 12px;
-    font-family: 'Fira Code', monospace;
-    font-size: 14px;
     border-radius: 8px;
+    font-size: 13px;
+    margin-top: 8px;
     outline: none;
-    transition: all 0.2s;
+    box-sizing: border-box;
   }
   
   .formula-input:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 1px var(--accent-purple);
   }
   
-  /* 投影数值区 */
   .node-projection {
-    background: #0f172a;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px inset #334155;
-    text-align: center;
-  }
-  
-  .projection-label {
-    font-size: 12px;
-    color: #64748b;
-    margin-bottom: 12px;
+    margin-top: 20px;
+    background: rgba(15, 23, 42, 0.4);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
   }
   
   .projection-input {
     width: 100%;
     background: transparent;
     border: none;
-    color: #f8fafc;
-    font-size: 42px;
-    font-weight: 900;
+    color: #fff;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
     text-align: center;
     outline: none;
-    font-family: system-ui;
-    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  
+  .projection-input:focus {
+    color: var(--primary-blue);
   }
   
   .raw-value {
-    font-size: 12px;
+    font-size: 11px;
     color: #10b981;
-    font-family: 'Fira Code', monospace;
-    border-top: 1px dashed #334155;
-    padding-top: 12px;
+    margin-top: 12px;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    opacity: 0.8;
+  }
+  
+  /* 7. 开关样式微调 */
+  .toggle-switch {
+    width: 36px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slider:before {
+    height: 12px;
+    width: 12px;
+    left: 3px;
+    bottom: 3px;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(18px);
   }
   </style>
