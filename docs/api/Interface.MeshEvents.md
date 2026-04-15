@@ -6,7 +6,7 @@
 
 # Interface: MeshEvents
 
-Defined in: [types/types.ts:66](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L66)
+Defined in: [types/types.ts:72](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L72)
 
 ## Description
 
@@ -18,7 +18,7 @@ Defined in: [types/types.ts:66](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **0**: `object`
 
-Defined in: [types/types.ts:41](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L41)
+Defined in: [types/types.ts:44](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L44)
 
 #### path
 
@@ -38,7 +38,7 @@ Defined in: [types/types.ts:41](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **1**: `object`
 
-Defined in: [types/types.ts:67](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L67)
+Defined in: [types/types.ts:73](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L73)
 
 #### duration
 
@@ -54,7 +54,7 @@ Defined in: [types/types.ts:67](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **10**: `object`
 
-Defined in: [types/types.ts:49](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L49)
+Defined in: [types/types.ts:52](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L52)
 
 #### path
 
@@ -70,7 +70,7 @@ Defined in: [types/types.ts:49](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **11**: `object`
 
-Defined in: [types/types.ts:72](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L72)
+Defined in: [types/types.ts:78](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L78)
 
 #### path
 
@@ -86,7 +86,7 @@ Defined in: [types/types.ts:72](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **12**: `object`
 
-Defined in: [types/types.ts:51](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L51)
+Defined in: [types/types.ts:54](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L54)
 
 #### detail?
 
@@ -110,7 +110,7 @@ Defined in: [types/types.ts:51](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **13**: `object`
 
-Defined in: [types/types.ts:52](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L52)
+Defined in: [types/types.ts:55](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L55)
 
 #### detail?
 
@@ -134,7 +134,7 @@ Defined in: [types/types.ts:52](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **14**: `object`
 
-Defined in: [types/types.ts:53](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L53)
+Defined in: [types/types.ts:56](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L56)
 
 #### path
 
@@ -154,7 +154,7 @@ Defined in: [types/types.ts:53](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **15**: `object`
 
-Defined in: [types/types.ts:55](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L55)
+Defined in: [types/types.ts:58](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L58)
 
 #### calledBy
 
@@ -182,7 +182,7 @@ Defined in: [types/types.ts:55](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **16**: `object`
 
-Defined in: [types/types.ts:57](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L57)
+Defined in: [types/types.ts:60](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L60)
 
 #### path
 
@@ -202,7 +202,7 @@ Defined in: [types/types.ts:57](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **17**: `object`
 
-Defined in: [types/types.ts:58](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L58)
+Defined in: [types/types.ts:61](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L61)
 
 #### count
 
@@ -222,11 +222,51 @@ Defined in: [types/types.ts:58](https://github.com/Nzy19940403/meshflow/blob/526
 
 ***
 
+### 18
+
+> **18**: `object`
+
+Defined in: [types/types.ts:63](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L63)
+
+#### timestamp
+
+> **timestamp**: `number`
+
+#### Inherited from
+
+`BaseMeshEvents.18`
+
+***
+
+### 19
+
+> **19**: `object`
+
+Defined in: [types/types.ts:64](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L64)
+
+#### observer
+
+> **observer**: `string`
+
+#### target
+
+> **target**: `string`
+
+#### via
+
+> **via**: `any`
+
+#### Inherited from
+
+`BaseMeshEvents.19`
+
+***
+
 ### 2
 
 > **2**: `object`
 
-Defined in: [types/types.ts:68](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L68)
+Defined in: [types/types.ts:74](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L74)
 
 #### type
 
@@ -238,7 +278,7 @@ Defined in: [types/types.ts:68](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **3**: `object`
 
-Defined in: [types/types.ts:69](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L69)
+Defined in: [types/types.ts:75](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L75)
 
 #### token
 
@@ -250,7 +290,7 @@ Defined in: [types/types.ts:69](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **4**: `object`
 
-Defined in: [types/types.ts:42](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L42)
+Defined in: [types/types.ts:45](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L45)
 
 #### detail?
 
@@ -270,7 +310,7 @@ Defined in: [types/types.ts:42](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **5**: `object`
 
-Defined in: [types/types.ts:43](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L43)
+Defined in: [types/types.ts:46](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L46)
 
 #### detail?
 
@@ -294,7 +334,7 @@ Defined in: [types/types.ts:43](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **6**: `object`
 
-Defined in: [types/types.ts:45](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L45)
+Defined in: [types/types.ts:48](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L48)
 
 #### calledBy
 
@@ -314,7 +354,7 @@ Defined in: [types/types.ts:45](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **7**: `object`
 
-Defined in: [types/types.ts:46](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L46)
+Defined in: [types/types.ts:49](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L49)
 
 #### calledBy
 
@@ -334,7 +374,7 @@ Defined in: [types/types.ts:46](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **8**: `object`
 
-Defined in: [types/types.ts:47](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L47)
+Defined in: [types/types.ts:50](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L50)
 
 #### calledBy
 
@@ -354,7 +394,7 @@ Defined in: [types/types.ts:47](https://github.com/Nzy19940403/meshflow/blob/526
 
 > **9**: `object`
 
-Defined in: [types/types.ts:48](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L48)
+Defined in: [types/types.ts:51](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L51)
 
 #### error
 

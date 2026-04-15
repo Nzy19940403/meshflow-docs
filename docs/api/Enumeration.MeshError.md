@@ -6,7 +6,7 @@
 
 # Enumeration: MeshError
 
-Defined in: [types/types.ts:474](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L474)
+Defined in: [types/types.ts:481](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L481)
 
 异常字典：汇总内核运行时的循环依赖、实例缺失等核心错误
 
@@ -21,7 +21,7 @@ Defined in: [types/types.ts:474](https://github.com/Nzy19940403/meshflow/blob/52
 
 > **cycle**: `"Circular dependency detected"`
 
-Defined in: [types/types.ts:475](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L475)
+Defined in: [types/types.ts:482](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L482)
 
 ***
 
@@ -29,7 +29,7 @@ Defined in: [types/types.ts:475](https://github.com/Nzy19940403/meshflow/blob/52
 
 > **EngineIdRepeated**: `"engineID repeated"`
 
-Defined in: [types/types.ts:477](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L477)
+Defined in: [types/types.ts:484](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L484)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [types/types.ts:477](https://github.com/Nzy19940403/meshflow/blob/52
 
 > **EngineNotFound**: `"Engine not found."`
 
-Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L476)
+Defined in: [types/types.ts:483](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L483)
 
 ***
 
@@ -45,4 +45,4 @@ Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/52
 
 > **WrongId**: `"Wrong id"`
 
-Defined in: [types/types.ts:478](https://github.com/Nzy19940403/meshflow/blob/5263f6bae3b2491c57c4a03bd66f2d745a7e58a7/utils/core/types/types.ts#L478)
+Defined in: [types/types.ts:485](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L485)
