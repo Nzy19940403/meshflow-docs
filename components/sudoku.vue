@@ -82,7 +82,7 @@
   import { onMounted, ref, onUnmounted, nextTick, computed } from "vue";
   import { useMeshFlow, deleteEngine } from "@meshflow/core";
   import { useSudokuLayout } from "../core/useSudokuLayout";
-  // import { useLogger } from "@/utils/plugins/logger/useLogger";
+  import { useMeshPulse } from "@meshflow/pulse";
   
   // ==========================================================
   // 🚀 终极维度控制器
@@ -162,7 +162,8 @@
   });
   
  
-
+  const pulse = useMeshPulse();
+  engine.config.usePlugin(pulse)
   // const logger = useLogger();
   // engine.config.usePlugin(logger);
   

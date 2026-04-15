@@ -82,7 +82,7 @@
   import { deleteEngine, useMeshFlow } from '@meshflow/core';
   import { useMatrixData } from '../core/matrix'; // 请确保路径正确
   import { useLogger } from "@meshflow/logger";
-  
+  import {useMeshPulse} from '@meshflow/pulse'
   // 🌟 控制参数
   const ignitionValue = ref(500);
   const isAsyncMode = ref(true); // 异步演进开关
@@ -100,6 +100,9 @@
     modules: { useMatrixData }
   });
   
+  const pulse = useMeshPulse();
+  engine.config.usePlugin(pulse)
+
   const { list } = engine.modules.matrixData;
   
   // 2. 人工打破平衡
@@ -176,7 +179,7 @@
   };
   
   engine.hooks.onSuccess(() => {
-    console.log("稳态达成:", list.map(item => item.state.count));
+    // console.log("稳态达成:", list.map(item => item.state.count));
   });
   
   onMounted(() => {

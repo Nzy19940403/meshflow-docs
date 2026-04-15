@@ -72,6 +72,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { deleteEngine, useMeshFlow } from '@meshflow/core'
 import { useSortAnimation } from "../core/useSortAnimation";
 import { useLogger } from "@meshflow/logger"; // 如果 VitePress 找不到请先注释
+import {useMeshPulse} from '@meshflow/pulse'
 
 const initialData = Array.from({ length: 30 }, (_, i) => ({
     type: "anim-item" as const,
@@ -94,9 +95,10 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
     modules: { useSortAnimation },
   });
   
-  const cancel = useLogger();
-  engine.config.usePlugin(cancel);
-  
+  // const cancel = useLogger();
+  // engine.config.usePlugin(cancel);
+  const pulse = useMeshPulse();
+  engine.config.usePlugin(pulse)
   const { vnodes, entities, coordinator } = engine.modules.sortAnimation;
   const isStable = ref(true);
  

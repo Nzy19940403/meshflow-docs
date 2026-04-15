@@ -174,6 +174,7 @@ import {
 } from "@meshflow/core";
 import { useFlowLayout } from "../core/useFlowLayout";
 import { useLogger } from "@meshflow/logger";
+import {useMeshPulse} from '@meshflow/pulse'
 
 const layoutMode = ref('judge');
 const sortStrategy = ref<'uid' | 'content'>('uid');
@@ -212,7 +213,8 @@ const engine = useMeshFlow("layout", data, {
 
 // const logger = useLogger();
 // engine.config.usePlugin(logger);
- 
+const pulse = useMeshPulse();
+  engine.config.usePlugin(pulse)
 const { ZoneArray, BoxArray, judgementNode, AddNewBox } = engine.modules.flowLayoutModule;
 
 let isInited = false;
@@ -221,9 +223,9 @@ let isResetting = false;
 const version = ref(BoxArray.length)
 
 const syncStrategy = ( ) => {
-  if (isInited) {
-    engine.data.SetValue(judgementNode.path, 'sortStrategy', sortStrategy.value);
-  }
+  // if (isInited) {
+    engine.data.StageValue(judgementNode.path, 'sortStrategy', sortStrategy.value);
+  // }
 };
 
 // 🌟 只识别活着的格子作为排头兵
@@ -367,7 +369,7 @@ const initBoxEntangle = (path:any)=>{
         return impactState.state.parent === causeState.path && !impactState.state.isDead 
         // && layoutMode.value === 'judge';
       },
-      emit:  async(causeState, impactState, propose) => {
+      emit:   (causeState, impactState, propose) => {
         // if(layoutMode.value !== 'judge'){
         //   await new Promise((resolve) => setTimeout(resolve, 100)); 
         // }
@@ -516,7 +518,7 @@ const initBoxEntangle = (path:any)=>{
     impact: path,
     via: ["zoneState", "trigger","publicSeaMinUid","zoneMaxUidMap"],
     filter: (causeState, impactState) => {
-      if(!isInited || isResetting) return false;
+      if(!isInited  ) return false;
       const obs = causeState.state;
       const tgt = impactState.state;
       
@@ -577,7 +579,7 @@ const initBoxEntangle = (path:any)=>{
 
         if (strongestInSea && strongestInSea.path !== targetPath) return;
 
-        if (isCourtBusy) return;
+        // if (isCourtBusy) return;
         isCourtBusy = true; 
       
         try {
@@ -657,7 +659,7 @@ const initBoxEntangle = (path:any)=>{
         // 只有当前格子真的是 Zone 里最弱的，才执行踢出
         if (targetToKick.path !== targetPath) return;
 
-        if (isCourtBusy) return;
+        // if (isCourtBusy) return;
         isCourtBusy = true;
 
         try {
@@ -713,7 +715,7 @@ const initBoxEntangle = (path:any)=>{
             }
           });
 
-          // await new Promise((resolve) => setTimeout(resolve, 10));
+       
 
           if (bestEmptyZone) {
             if (target.parent === bestEmptyZone) return;
@@ -1003,9 +1005,9 @@ const reset = async () => {
 
   await new Promise(resolve => setTimeout(resolve, 800));
   isResetting = false;
-  if(layoutMode.value==='judge'){
-    engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
-  }
+  // if(layoutMode.value==='judge'){
+    // engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
+  // }
  
 }
   
@@ -1048,7 +1050,10 @@ onMounted(async() => {
           scaleRatio.value = 1; logicalWidth.value = realWidth;
         }
         containerWidth.value = logicalWidth.value;
-        if (isInited) engine.data.SetValue(judgementNode.path, 'logicalWidth', logicalWidth.value);
+        if (isInited)  {
+          engine.data.SilentSet(judgementNode.path, 'logicalWidth', logicalWidth.value);
+          // engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
+        }
         
         let cols = Math.floor((logicalWidth.value - padding + gap) / (zoneW + gap));
         if (cols < 1) cols = 1;
@@ -1061,12 +1066,13 @@ onMounted(async() => {
     resizeObserver.observe(playgroundRef.value);
   }
 
-  engine.data.SetValue(judgementNode.path, 'logicalWidth', logicalWidth.value);
+  
 
   let zoneres:any = [];
   for (let zone of ZoneArray) {
     zoneres.push({ path:zone.path, key:'position', value:{ x: 20, y: 0 } })
   }
+  engine.data.StageValue(judgementNode.path, 'logicalWidth', logicalWidth.value);
   engine.data.SetValues(zoneres)
   
   await new Promise((resolve)=>setTimeout(resolve,500))

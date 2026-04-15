@@ -17,9 +17,10 @@
     "vue": "^3.5.28"
   },
   "dependencies": {
-    "@meshflow/core": "^0.5.5",
+    "@meshflow/core": "^0.5.6",
     "@meshflow/history": "^0.1.5",
     "@meshflow/logger": "^0.2.0",
+    "@meshflow/pulse": "^1.0.2",
     "consola": "^3.4.2"
   }
 }

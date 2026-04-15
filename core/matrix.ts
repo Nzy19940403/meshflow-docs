@@ -19,7 +19,7 @@ export const useMatrixData = (scheduler: ReturnType<typeof useScheduler<any, str
     list: nodes.map(n => scheduler.registerNode({
       path: n.id,
       type:'cell',
-      state: { count: -1 },
+      state: { count: 0 },
       meta: { label: n.label, formula: n.formula },
       notifyKeys: new Set(['count'])
     }).createView())

@@ -8,8 +8,10 @@ import MatrixComponent from '../components/matrix.vue'
  
  
 # 循环依赖收敛演示演示
+<ClientOnly>
+    <MatrixComponent />
+</ClientOnly>
 
-<MatrixComponent />
 
 
 ## 🛠 核心原理解析
