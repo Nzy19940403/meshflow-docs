@@ -5,8 +5,7 @@
         <header class="dashboard-header">
           <div class="header-titles">
             <h1>Meshflow Matrix <span>9-Node Projection</span></h1>
-            <p class="subtitle">通过底层纯净的分布式运算，实时推导拓扑收敛态。</p>
-          </div>
+            </div>
           
           <div class="header-actions">
             <div class="action-group">
@@ -73,6 +72,18 @@
           </div>
         </div>
   
+        <div class="charts-wrapper">
+          <div class="chart-box">
+            <div class="chart-title">因果拓扑矩阵 (Total Entanglement)</div>
+            <div id="heatmap-container" ref="heatmapRef"></div>
+          </div>
+          
+          <div class="chart-box">
+            <div class="chart-title">收敛脉冲轨迹 (Convergence Pulse)</div>
+            <div id="timeline-container" ref="timelineRef"></div>
+          </div>
+        </div>
+  
       </div>
     </div>
   </template>
@@ -82,10 +93,18 @@
   import { deleteEngine, useMeshFlow } from '@meshflow/core';
   import { useMatrixData } from '../core/matrix'; // 请确保路径正确
   import { useLogger } from "@meshflow/logger";
-  import {useMeshPulse} from '@meshflow/pulse'
+  import { useMeshPulse } from '@meshflow/pulse';
+  import VChart from '@visactor/vchart';
+  
   // 🌟 控制参数
   const ignitionValue = ref(500);
   const isAsyncMode = ref(true); // 异步演进开关
+  
+  // 🌟 双图表 Ref 和实例
+  const heatmapRef = ref<HTMLElement | null>(null);
+  const timelineRef = ref<HTMLElement | null>(null);
+  let heatmapInstance: VChart | null = null;
+  let timelineInstance: VChart | null = null;
   
   // 1. 初始化 Meshflow 引擎
   const engine = useMeshFlow('9-mesh-solver', [], {
@@ -95,14 +114,47 @@
     },
     config: { 
       useGreedy: true, 
-      useEntangleStep: Infinity // 允许无限次收敛尝试直到稳态
+      useEntangleStep: 1000 // 允许无限次收敛尝试直到稳态
     },
     modules: { useMatrixData }
   });
   
-  const pulse = useMeshPulse();
-  engine.config.usePlugin(pulse)
+  // 🌟 核心：双通道数据分发
+  const pulse = useMeshPulse({
+  onTrace(rawData: any) {
+    if (!heatmapInstance || !timelineInstance || !rawData) return;
 
+    const epochsArray = Array.isArray(rawData) ? rawData : [rawData];
+    if (epochsArray.length === 0) return;
+
+    const frequencyMap: Record<string, any> = {};
+    // 🌟 修改：初始化时先塞入一个原点，让曲线从 0 开始
+    const timelineData: any[] = [{ epoch: '', count: 0 }]; 
+
+    epochsArray.forEach((epochObj) => {
+      // 记录纪元脉冲
+      timelineData.push({
+        epoch: epochObj.epoch,
+        count: epochObj.emits?.length || 0
+      });
+
+      // 统计因果频次
+      epochObj.emits?.forEach((item: any) => {
+        if (!item.cause || !item.impact) return;
+        const key = `${item.cause}_${item.impact}`;
+        if (!frequencyMap[key]) {
+          frequencyMap[key] = { cause: item.cause, impact: item.impact, count: 0 };
+        }
+        frequencyMap[key].count += 1;
+      });
+    });
+
+    heatmapInstance.updateData('heatmapData', Object.values(frequencyMap));
+    timelineInstance.updateData('timelineData', timelineData);
+  }
+});
+  engine.config.usePlugin(pulse);
+  
   const { list } = engine.modules.matrixData;
   
   // 2. 人工打破平衡
@@ -148,7 +200,6 @@
             const formula = tgt.meta.formula;
             if (!formula || !formula.includes(causeNode.path)) return;
             
-             
               const context: any = {};
               list.forEach(n => context[n.path] = n.state.count ?? 0);
               
@@ -161,34 +212,78 @@
               
               // 🌟 核心开关逻辑：如果开启异步模式，则让出主线程
               if (isAsyncMode.value) {
-                await new Promise((resolve) => {
-                  // 使用 0ms 延迟来模拟微任务/宏任务切片，让 Vue 有机会渲染中间态
-                  setTimeout(resolve, 0); 
-                });
+                await new Promise((resolve) => setTimeout(resolve, 0));
               }
   
               // 阈值检查，防止无限微调导致的性能损耗
               if (Math.abs(raw - current) > threshold) {
                 propose.set("count", raw);
               }
-           
           }
         });
       });
     });
   };
   
-  engine.hooks.onSuccess(() => {
-    // console.log("稳态达成:", list.map(item => item.state.count));
-  });
-  
   onMounted(() => {
     setupDynamicSolver();
+    
+    // ==========================================
+    // 图表 1: 初始化热力图 (Heatmap)
+    // ==========================================
+    if (heatmapRef.value) {
+      heatmapInstance = new VChart({
+        type: 'common',
+        data: [{ id: 'heatmapData', values: [] }],
+        series: [{
+            // @ts-ignore
+          type: 'heatmap',
+          xField: 'cause', yField: 'impact', valueField: 'count',
+          cell: { style: { fill: { field: 'count', type: 'linear', range: ['#1e293b', '#38bdf8', '#f59e0b', '#e11d48'] } } },
+          label: { visible: true, style: { fill: '#ffffff', fontSize: 11 } }
+        }],
+        axes: [
+          { orient: 'bottom', type: 'band', title: { visible: true, text: '触发源 (Cause)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+          { orient: 'left', type: 'band', title: { visible: true, text: '受影响 (Impact)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } }
+        ],
+        tooltip: { mark: { title: { value: '纠缠次数' } } }
+      }, { dom: heatmapRef.value });
+      heatmapInstance.renderSync();
+    }
+  
+    // ==========================================
+    // 图表 2: 初始化收敛脉冲图 (Area Chart)
+    // ==========================================
+    if (timelineRef.value) {
+      timelineInstance = new VChart({
+        type: 'common',
+        data: [{ id: 'timelineData', values: [] }],
+        series: [{
+          
+          type: 'area',
+          xField: 'epoch', yField: 'count',
+      
+          area: { style: { fill: 'linear-gradient(to top, rgba(56,189,248,0.6), rgba(56,189,248,0))' } },
+          line: { style: { stroke: '#38bdf8', lineWidth: 2 } },
+          point: { visible: true, style: { fill: '#0f172a', stroke: '#38bdf8', lineWidth: 2 } }
+        }],
+        axes: [
+          { orient: 'bottom', type: 'band', title: { visible: true, text: '纪元 (Epoch)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+          { orient: 'left', type: 'linear', title: { visible: true, text: '瞬时负载量', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } }, grid: { style: { stroke: '#334155', lineDash: [4, 4] } } }
+        ],
+        tooltip: { mark: { title: { value: '瞬时负载' } } }
+      }, { dom: timelineRef.value });
+      timelineInstance.renderSync();
+    }
+  
+    // 唤醒所有系统
     engine.config.notifyAll();
   });
   
   onUnmounted(() => {
     deleteEngine('9-mesh-solver');
+    if (heatmapInstance) heatmapInstance.release();
+    if (timelineInstance) timelineInstance.release();
   });
   </script>
   
@@ -237,7 +332,7 @@
   .header-titles h1 {
     margin: 0;
     color: var(--primary-blue);
-    font-size: clamp(20px, 5vw, 28px); /* 字体自适应 */
+    font-size: clamp(20px, 5vw, 28px);
     font-weight: 800;
     text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
   }
@@ -257,7 +352,7 @@
     margin-top: 8px;
   }
   
-  /* 3. 操作区：解决“挤”的核心逻辑 */
+  /* 3. 操作区 */
   .header-actions {
     display: flex;
     flex-direction: column;
@@ -277,13 +372,13 @@
   .action-group {
     display: flex;
     gap: 12px;
-    flex-wrap: wrap; /* 空间不足自动换行，防止挤压 */
+    flex-wrap: wrap;
     flex: 1;
   }
   
   .control-group, .ignition-group, .btn {
     flex: 1; 
-    min-width: 130px; /* 降低最小宽度，给换行留空间 */
+    min-width: 130px;
     height: 44px;
     display: flex;
     align-items: center;
@@ -296,7 +391,6 @@
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   
-  /* 4. 按钮与交互件细节 */
   .btn {
     border: none;
     cursor: pointer;
@@ -321,13 +415,13 @@
     color: var(--primary-blue);
     font-size: 16px;
     font-weight: bold;
-    width: 100%; /* 撑满容器 */
+    width: 100%;
     max-width: 60px;
     outline: none;
     text-align: right;
   }
   
-  /* 5. 矩阵网格自适应 */
+  /* 4. 矩阵网格自适应 */
   .matrix-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -377,7 +471,6 @@
     border: 1px solid rgba(245, 158, 11, 0.2);
   }
   
-  /* 6. 输入框细节优化 */
   .formula-input {
     width: 100%;
     background: var(--bg-darker);
@@ -416,9 +509,7 @@
     transition: color 0.3s;
   }
   
-  .projection-input:focus {
-    color: var(--primary-blue);
-  }
+  .projection-input:focus { color: var(--primary-blue); }
   
   .raw-value {
     font-size: 11px;
@@ -430,7 +521,6 @@
     opacity: 0.8;
   }
   
-  /* 7. 开关样式微调 */
   .toggle-switch {
     width: 36px;
     height: 18px;
@@ -449,5 +539,41 @@
   
   input:checked + .slider:before {
     transform: translateX(18px);
+  }
+  
+  /* ========================================== */
+  /* 🌟 全新双图表容器样式 */
+  /* ========================================== */
+  .charts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  
+ 
+  
+  .chart-box {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chart-title {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-blue);
+    padding-left: 10px;
+    font-weight: 600;
+  }
+  
+  #heatmap-container, #timeline-container {
+    width: 100%;
+    height: 400px; /* 明确高度，再也不会缩起来了 */
   }
   </style>
