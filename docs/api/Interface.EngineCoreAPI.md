@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:543](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L543)
+Defined in: [types/types.ts:543](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L543)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:548](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L548)
+Defined in: [types/types.ts:548](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L548)
 
 引擎配置与规则管理
 
@@ -279,7 +279,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L648)
+Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L648)
 
 数据大盘读写接口
 
@@ -318,6 +318,22 @@ Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/49
 ##### Returns
 
 `any`
+
+#### SettleTasks
+
+> **SettleTasks**: (`array`) => `void`
+
+事务性任务列表，支持传入回调，回调的入参是resolve和reject，在回调里面调用resolve就会启动task，这个task执行完就会执行下一个回调
+
+##### Parameters
+
+###### array
+
+[`TransactionArray`](TypeAlias.TransactionArray.md)
+
+##### Returns
+
+`void`
 
 #### SetValue
 
@@ -468,7 +484,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:703](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L703)
+Defined in: [types/types.ts:707](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L707)
 
 拓扑图与依赖分析
 
@@ -498,7 +514,7 @@ Defined in: [types/types.ts:703](https://github.com/Nzy19940403/meshflow/blob/49
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:715](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L715)
+Defined in: [types/types.ts:719](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L719)
 
 引擎生命周期钩子
 
