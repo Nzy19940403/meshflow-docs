@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:540](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L540)
+Defined in: [types/types.ts:543](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L543)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:545](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L545)
+Defined in: [types/types.ts:548](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L548)
 
 引擎配置与规则管理
 
@@ -235,29 +235,17 @@ engine.config.SetStrategy(DefaultStrategy.PRIORITY);
 engine.config.SetStrategy(DefaultStrategy.MERGE);
 ```
 
-#### SetTrace
-
-> **SetTrace**: (`path`, `callback`) => `void`
-
-##### Parameters
-
-###### path
-
-`P`
-
-###### callback
-
-(`status`) => `void`
-
-##### Returns
-
-`void`
-
 #### useEntangle
 
-> **useEntangle**: (`entangleFn`) => `void`
+> **useEntangle**: \<`State`\>(`entangleFn`) => `void`
 
 挂载量子纠缠 (Entanglement) 机制
+
+##### Type Parameters
+
+###### State
+
+`State` = `any`
 
 ##### Parameters
 
@@ -291,7 +279,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L648)
+Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L648)
 
 数据大盘读写接口
 
@@ -480,7 +468,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:703](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L703)
+Defined in: [types/types.ts:703](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L703)
 
 拓扑图与依赖分析
 
@@ -510,7 +498,7 @@ Defined in: [types/types.ts:703](https://github.com/Nzy19940403/meshflow/blob/1c
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:715](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/types/types.ts#L715)
+Defined in: [types/types.ts:715](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/types/types.ts#L715)
 
 引擎生命周期钩子
 

@@ -8,7 +8,7 @@
 
 > **deleteEngine**(`id`): `void`
 
-Defined in: [engine/useEngineManager.ts:409](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/engine/useEngineManager.ts#L409)
+Defined in: [engine/useEngineManager.ts:412](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/engine/useEngineManager.ts#L412)
 
 🗑️ 实例销毁：从全局池中注销并释放引擎资源。
 *

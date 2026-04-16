@@ -28,6 +28,7 @@
 ## Type Aliases
 
 - [SuggestKey](TypeAlias.SuggestKey.md)
+- [TransactionArray](TypeAlias.TransactionArray.md)
 
 ## 参数类型
 

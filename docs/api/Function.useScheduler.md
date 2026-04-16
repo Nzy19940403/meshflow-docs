@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/blob/1cc7168177780e856bb93c303087b09e2f8eb72d/utils/core/engine/useScheduler.ts#L12)
+Defined in: [engine/useScheduler.ts:14](https://github.com/Nzy19940403/meshflow/blob/49802844b3c450207b5d771b49a9213c2977fd70/utils/core/engine/useScheduler.ts#L14)
 
 ## Type Parameters
 
@@ -237,6 +237,20 @@ Defined in: [engine/useScheduler.ts:12](https://github.com/Nzy19940403/meshflow/
 #### Returns
 
 `number`
+
+### SettleTasks
+
+> **SettleTasks**: (`array`) => `void` = `taskSchduler.settleTasks`
+
+#### Parameters
+
+##### array
+
+[`TransactionArray`](TypeAlias.TransactionArray.md)
+
+#### Returns
+
+`void`
 
 ### stageValueFn
 
