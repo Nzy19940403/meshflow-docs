@@ -161,8 +161,20 @@
         
 
       </div>
+      
     </div>
   </div>
+  <div class="charts-wrapper">
+          <div class="chart-box">
+            <div class="chart-title">因果拓扑矩阵 (Total Entanglement)</div>
+            <div id="heatmap-container" ref="heatmapRef"></div>
+          </div>
+          
+          <div class="chart-box">
+            <div class="chart-title">收敛脉冲轨迹 (Convergence Pulse)</div>
+            <div id="timeline-container" ref="timelineRef"></div>
+          </div>
+        </div>
 </template>
 
 <script setup lang="ts">
@@ -173,8 +185,9 @@ import {
   deleteEngine
 } from "@meshflow/core";
 import { useFlowLayout } from "../core/useFlowLayout";
-import { useLogger } from "@meshflow/logger";
-import {useMeshPulse} from '@meshflow/pulse'
+import { useMeshPulse } from "@meshflow/pulse";
+import {useLogger} from '@meshflow/logger'
+import VChart from '@visactor/vchart';
 
 const layoutMode = ref('judge');
 const sortStrategy = ref<'uid' | 'content'>('uid');
@@ -187,6 +200,11 @@ const scaleRatio = ref(1);
 const containerHeight = ref(820); 
 
 let resizeObserver: ResizeObserver | null = null;
+
+const heatmapRef = ref<HTMLElement | null>(null);
+const timelineRef = ref<HTMLElement | null>(null);
+let heatmapInstance: VChart | null = null;
+let timelineInstance: VChart | null = null;
 
 const { data, useFlowLayoutModule } = useFlowLayout();
 const engine = useMeshFlow("layout", data, {
@@ -210,21 +228,57 @@ const engine = useMeshFlow("layout", data, {
     value:0
   }
 });
-
+ 
 // const logger = useLogger();
 // engine.config.usePlugin(logger);
-const pulse = useMeshPulse();
+
+const pulse = useMeshPulse({
+  onTrace(rawData: any) {
+    if (!heatmapInstance || !timelineInstance || !rawData) return;
+
+    if(isSimulating.value || isAutoSpawning.value) return;
+
+    const epochsArray = Array.isArray(rawData) ? rawData : [rawData];
+    if (epochsArray.length === 0) return;
+
+    const frequencyMap: Record<string, any> = {};
+    // 🌟 修改：初始化时先塞入一个原点，让曲线从 0 开始
+    const timelineData: any[] = [{ epoch: '', count: 0 }]; 
+
+    epochsArray.forEach((epochObj) => {
+      // 记录纪元脉冲
+      timelineData.push({
+        epoch: epochObj.epoch,
+        count: epochObj.emits?.length || 0
+      });
+
+      // 统计因果频次
+      epochObj.emits?.forEach((item: any) => {
+        if (!item.cause || !item.impact) return;
+        const key = `${item.cause}_${item.impact}`;
+        if (!frequencyMap[key]) {
+          frequencyMap[key] = { cause: item.cause, impact: item.impact, count: 0 };
+        }
+        frequencyMap[key].count += 1;
+      });
+    });
+
+    heatmapInstance.updateData('heatmapData', Object.values(frequencyMap));
+    timelineInstance.updateData('timelineData', timelineData);
+  }
+});
   engine.config.usePlugin(pulse)
+
 const { ZoneArray, BoxArray, judgementNode, AddNewBox } = engine.modules.flowLayoutModule;
 
 let isInited = false;
-let isResetting = false; 
+// let isResetting = false; 
 
 const version = ref(BoxArray.length)
 
 const syncStrategy = ( ) => {
   // if (isInited) {
-    engine.data.StageValue(judgementNode.path, 'sortStrategy', sortStrategy.value);
+    engine.data.SetValue(judgementNode.path, 'sortStrategy', sortStrategy.value);
   // }
 };
 
@@ -254,7 +308,7 @@ const simulationLoop = (timestamp: number) => {
   if (timestamp - lastTickTime >= TICK_INTERVAL) {
     lastTickTime = timestamp;
 
-    if (isInited && !isResetting) {
+    if (isInited ) {
       
       // 🌟 自动补货逻辑 (每 1.5 秒丢一个新格子)
       if (isAutoSpawning.value) {
@@ -274,15 +328,15 @@ const simulationLoop = (timestamp: number) => {
           const currentWL = headBox.workLoad ?? headBox.maxAmount;
           
           if (currentWL <= 0) {
-          // engine.data.SetValues([
+            // engine.data.SetValues([
             //   { path: headBox.path, key: 'parent', value: 'graveyard' },
             //   { path: headBox.path, key: 'isDead', value: true }
             // ]);
             engine.data.StageValue(headBox.path, 'parent', 'graveyard');
             engine.data.StageValue(headBox.path, 'isDead', true);
           } else {
-             // engine.data.SetValue(headBox.path, 'workLoad', currentWL - 1);
-             engine.data.StageValue(headBox.path, 'workLoad', currentWL - 1);
+            // engine.data.SetValue(headBox.path, 'workLoad', currentWL - 1);
+            engine.data.StageValue(headBox.path, 'workLoad', currentWL - 1);
           }
         }
       });
@@ -328,6 +382,7 @@ const initBoxEntangle = (path:any)=>{
             newChildren[node.path] = 0;
           }
         }
+       
         return newChildren;
       },
       triggerKeys: ["parent", "path", "isDead", "maxAmount"], 
@@ -369,11 +424,8 @@ const initBoxEntangle = (path:any)=>{
         return impactState.state.parent === causeState.path && !impactState.state.isDead 
         // && layoutMode.value === 'judge';
       },
-      emit:   (causeState, impactState, propose) => {
-        // if(layoutMode.value !== 'judge'){
-        //   await new Promise((resolve) => setTimeout(resolve, 100)); 
-        // }
-        
+      emit:  async(causeState, impactState, propose) => {
+         
         const obsPath = impactState.path as string;
         const parent = impactState.state.parent;
         const siblings = BoxArray.filter((b) => b.parent === parent && !b.isDead).sort((a, b) => a.uid - b.uid);
@@ -415,13 +467,14 @@ const initBoxEntangle = (path:any)=>{
       impact: path, // 🌟 这里的 impact 就是传进来的单个 box 的 path
       via: [ 'currentLoad', 'value', 'children' ],
       filter: (causeState, impactState) => {
+      
         if (layoutMode.value !== 'oscillation') return false;
         
         const myBox = impactState.state;
         const zoneData = causeState.state;
-
+        console.log('dd111d',layoutMode.value)
         // 不属于当前 Zone 的不管
-        if (myBox.parent !== zone.path) return false;
+        if (myBox.parent !== causeState.path) return false;
         
         // 没超载的不管
         if ((zoneData.currentLoad || 0) <= (zoneData.value || 0)) return false;
@@ -433,6 +486,8 @@ const initBoxEntangle = (path:any)=>{
         await  new Promise<void>(resolve=>setTimeout(() => {
           resolve()
         },150))
+
+       
          
         // 2. 双重检查：复核容量和最弱者
         const siblings = BoxArray.filter((b) => b.parent === zone.path && !b.isDead);
@@ -462,6 +517,8 @@ const initBoxEntangle = (path:any)=>{
         const targetZoneX = targetZone?.state?.position?.x ?? 0;
         const targetZoneY = (targetZone?.state?.position?.y || 0) + 240;
 
+  
+
         propose.set('parent', nextZonePath);
         propose.set('parentPos', { x: targetZoneX, y: targetZoneY });
         
@@ -476,7 +533,7 @@ const initBoxEntangle = (path:any)=>{
   engine.config.SetRule(path, judgementNode.path, "cellAmounts", {
     logic: ({ slot }) => {
       const [trigger] = slot.triggerTargets;
-      console.log(path,trigger.maxAmount)
+     
       return { [trigger.path]: trigger.maxAmount || 0 };
     },
     triggerKeys: ["maxAmount", "path"],
@@ -512,13 +569,55 @@ const initBoxEntangle = (path:any)=>{
   // 策略：先合并格子，再在内部算出每个 Zone 的最大值
   engine.config.SetStrategy(judgementNode.path, "zoneMaxUidMap", DefaultStrategy.MERGE);
 
+  engine.config.useEntangle({
+    cause:judgementNode.path,
+    impact:path,
+    via:['publicSeaMinUid'],
+    filter: (causeState, impactState) => {
+     
+      if(!isInited  ) return false;
+      const obs = causeState.state;
+      const tgt = impactState.state;
+      
+      if (tgt.isDead) return false; 
+ 
+      const currentZone = tgt.parent;
+      
+      // 1. 公海格子：直接放行，让它们去 emit 里竞争坑位
+      if (currentZone !== "") return false;
+
+      const seaMap = obs.publicSeaMinUid || {};
+      const seaVals = Object.values(seaMap) as number[];
+      const minUidInSea = seaVals.length > 0 ? Math.min(...seaVals) : Infinity;
+
+      if(minUidInSea=== impactState.uid) return true;
+
+      return false;
+    },
+    emit:(causeState, impactState,propose)=>{
+  
+      
+      
+      const nextX = 20;
+      const nextY = 0;
+      const curX = impactState.state.pos.x;
+      const curY = impactState.state.pos.y;
+      
+      if(nextX!==curX || nextY !==curY){
+        propose.set('pos',{x:20,y:0})
+      }
+  
+       
+    }
+  })
+
   // 👨‍⚖️ 法官逻辑（招新与剔除）
   engine.config.useEntangle({
     cause: judgementNode.path,
     impact: path,
-    via: ["zoneState", "trigger","publicSeaMinUid","zoneMaxUidMap"],
+    via: ["zoneState", "trigger",],
     filter: (causeState, impactState) => {
-      if(!isInited  ) return false;
+      if(!isInited ) return false;
       const obs = causeState.state;
       const tgt = impactState.state;
       
@@ -548,7 +647,7 @@ const initBoxEntangle = (path:any)=>{
       // B. 威胁报警：外面有比我优先级高的，并且【我是这个 Zone 里的最弱者】
       // 加上 tgt.uid === maxUidInZone，可以防止 Zone 里的所有人都被唤醒，只精确唤醒该走的那一个
       const isThreatened = minUidInSea < maxUidInZone ; 
-
+     
       return isCrowded || isThreatened;
     },
     emit:  async  (causeState, impactState, propose) => {
@@ -559,7 +658,6 @@ const initBoxEntangle = (path:any)=>{
           }, 100);
         })
       }
-    
       const observer = causeState.state;
       const target = impactState.state;
       const targetPath = impactState.path as string;
@@ -569,7 +667,7 @@ const initBoxEntangle = (path:any)=>{
       const cellAmounts = observer.cellAmounts || {};
       const currentZone = target.parent;
       const myAmount = cellAmounts[targetPath] || 0;
-
+    
       // ==========================================
       // 1. 公海格子的处理逻辑
       // ==========================================
@@ -579,7 +677,7 @@ const initBoxEntangle = (path:any)=>{
 
         if (strongestInSea && strongestInSea.path !== targetPath) return;
 
-        // if (isCourtBusy) return;
+        if (isCourtBusy) return;
         isCourtBusy = true; 
       
         try {
@@ -659,7 +757,7 @@ const initBoxEntangle = (path:any)=>{
         // 只有当前格子真的是 Zone 里最弱的，才执行踢出
         if (targetToKick.path !== targetPath) return;
 
-        // if (isCourtBusy) return;
+        if (isCourtBusy) return;
         isCourtBusy = true;
 
         try {
@@ -715,7 +813,7 @@ const initBoxEntangle = (path:any)=>{
             }
           });
 
-       
+          // await new Promise((resolve) => setTimeout(resolve, 10));
 
           if (bestEmptyZone) {
             if (target.parent === bestEmptyZone) return;
@@ -946,6 +1044,7 @@ const setupSortingEntangle = () => {
     engine.config.SetRule(zone.path, judgementNode.path, "zoneState", {
       logic:({ slot }) => {
         const [trigger] = slot.triggerTargets;
+   
         return { [trigger.path]: { capacity: trigger.capacity, value: trigger.value } };
        
       },
@@ -978,17 +1077,15 @@ const handleAddNew = ()=>{
   //   { path: nodeProxy.path, key: 'isDead', value: false },
   //   { path: nodeProxy.path, key: 'workLoad', value: nodeProxy.maxAmount }
   // ]);
-  // setTimeout(() => {
-  //   engine.data.SetValue(judgementNode.path, 'trigger', Math.random());
-  // }, 50);
+ 
   engine.data.StageValue(nodeProxy.path, 'parent', '');
   engine.data.StageValue(nodeProxy.path, 'isDead', false);
   engine.data.StageValue(nodeProxy.path, 'workLoad', nodeProxy.maxAmount);
-  engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
+  // engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
 }
 
 const reset = async () => {
-  isResetting = true;
+  // isResetting = true;
   if (isSimulating.value) toggleSimulation(); 
   if (isAutoSpawning.value) toggleAutoSpawn();
 
@@ -1003,12 +1100,13 @@ const reset = async () => {
 
   engine.data.SetValues(res);
 
-  await new Promise(resolve => setTimeout(resolve, 800));
-  isResetting = false;
-  // if(layoutMode.value==='judge'){
-    // engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
-  // }
- 
+  // await new Promise(resolve => setTimeout(resolve, 800));
+  // isResetting = false;
+
+  if(layoutMode.value==='judge'){
+    engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
+  }
+  
 }
   
 const changeCapacity = (path: string, delta: number) => {
@@ -1050,10 +1148,9 @@ onMounted(async() => {
           scaleRatio.value = 1; logicalWidth.value = realWidth;
         }
         containerWidth.value = logicalWidth.value;
-        if (isInited)  {
-          engine.data.SilentSet(judgementNode.path, 'logicalWidth', logicalWidth.value);
-          // engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
-        }
+        if (isInited) {
+          engine.data.StageValue(judgementNode.path, 'logicalWidth', logicalWidth.value)
+        };
         
         let cols = Math.floor((logicalWidth.value - padding + gap) / (zoneW + gap));
         if (cols < 1) cols = 1;
@@ -1066,17 +1163,59 @@ onMounted(async() => {
     resizeObserver.observe(playgroundRef.value);
   }
 
+  if (heatmapRef.value) {
+      heatmapInstance = new VChart({
+        type: 'common',
+        data: [{ id: 'heatmapData', values: [] }],
+        series: [{
+            // @ts-ignore
+          type: 'heatmap',
+          xField: 'cause', yField: 'impact', valueField: 'count',
+          cell: { style: { fill: { field: 'count', type: 'linear', range: ['#1e293b', '#38bdf8', '#f59e0b', '#e11d48'] } } },
+          label: { visible: true, style: { fill: '#ffffff', fontSize: 11 } }
+        }],
+        axes: [
+          { orient: 'bottom', type: 'band', title: { visible: true, text: '触发源 (Cause)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+          { orient: 'left', type: 'band', title: { visible: true, text: '受影响 (Impact)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } }
+        ],
+        tooltip: { mark: { title: { value: '纠缠次数' } } }
+      }, { dom: heatmapRef.value });
+      heatmapInstance.renderSync();
+    }
   
+    // ==========================================
+    // 图表 2: 初始化收敛脉冲图 (Area Chart)
+    // ==========================================
+    if (timelineRef.value) {
+      timelineInstance = new VChart({
+        type: 'common',
+        data: [{ id: 'timelineData', values: [] }],
+        series: [{
+          
+          type: 'area',
+          xField: 'epoch', yField: 'count',
+      
+          area: { style: { fill: 'linear-gradient(to top, rgba(56,189,248,0.6), rgba(56,189,248,0))' } },
+          line: { style: { stroke: '#38bdf8', lineWidth: 2 } },
+          point: { visible: true, style: { fill: '#0f172a', stroke: '#38bdf8', lineWidth: 2 } }
+        }],
+        axes: [
+          { orient: 'bottom', type: 'band', title: { visible: true, text: '纪元 (Epoch)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+          { orient: 'left', type: 'linear', title: { visible: true, text: '瞬时负载量', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } }, grid: { style: { stroke: '#334155', lineDash: [4, 4] } } }
+        ],
+        tooltip: { mark: { title: { value: '瞬时负载' } } }
+      }, { dom: timelineRef.value });
+      timelineInstance.renderSync();
+    }
+
+  // engine.data.SetValue(judgementNode.path, 'logicalWidth', logicalWidth.value);
 
   let zoneres:any = [];
   for (let zone of ZoneArray) {
     zoneres.push({ path:zone.path, key:'position', value:{ x: 20, y: 0 } })
   }
-  engine.data.StageValue(judgementNode.path, 'logicalWidth', logicalWidth.value);
-  engine.data.SetValues(zoneres)
+
   
-  await new Promise((resolve)=>setTimeout(resolve,500))
-  isInited = true;
 
   let res:any = [];
   for (let box of BoxArray) {
@@ -1087,7 +1226,32 @@ onMounted(async() => {
     )
   };
 
-  engine.data.SetValues(res)
+  // engine.data.SetValues([...zoneres,...res])
+  // await new Promise((resolve)=>setTimeout(resolve,500))
+  // isInited = true;
+  // engine.data.SetValues(res)
+  
+  engine.data.SettleTasks([
+    
+    (resolve)=>{
+      resolve([{
+        path:judgementNode.path,
+        key:'logicalWidth',
+        value:logicalWidth.value
+      }])
+    },
+    // (resolve,reject)=>{
+    //   setTimeout(() => {
+    //     resolve(zoneres)
+    //   }, 3000);
+      
+    // },
+    (resolve,reject)=>{
+      isInited = true;
+      resolve(res)
+    }
+  ])
+
 });
   
 onUnmounted(() => {
@@ -1226,4 +1390,38 @@ onUnmounted(() => {
   .flex-spacer, .v-divider { display: none; }
   .action-btn { flex: 1; min-width: 45%; justify-content: center; }
 }
+
+
+.charts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  
+ 
+  
+  .chart-box {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chart-title {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-blue);
+    padding-left: 10px;
+    font-weight: 600;
+  }
+  
+  #heatmap-container, #timeline-container {
+    width: 100%;
+    height: 400px; /* 明确高度，再也不会缩起来了 */
+  }
 </style>
