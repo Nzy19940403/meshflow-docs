@@ -8,7 +8,7 @@
 
 > **TransactionArray** = (`resolve`, `reject`) => `any`[]
 
-Defined in: [types/types.ts:788](https://github.com/Nzy19940403/meshflow/blob/453bcb9656105acc4f4149353e67000eb902cd26/utils/core/types/types.ts#L788)
+Defined in: [types/types.ts:788](https://github.com/Nzy19940403/meshflow/blob/4e81a1c919ec9388669463b8bb6e6b915846d959/utils/core/types/types.ts#L788)
 
 ## Parameters
 
