@@ -10,8 +10,8 @@ const checkIsMobile = () => {
 const isMobile = checkIsMobile();
 
 // 🌟 2. 动态分配规模：手机端约 3W，电脑端约 16W+
-export const ROWS = isMobile ? 300 : 1500; 
-export const COLS = isMobile ? 100 : 300;
+export const ROWS = isMobile ? 300 : 1200; 
+export const COLS = isMobile ? 150 : 400;
 
 export const useLogicGates = <T, P extends MeshPath>(scheduler:ReturnType<typeof useScheduler<T, P>>,) => {
   const vnodeViews: any[] = [];
