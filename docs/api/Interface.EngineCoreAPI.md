@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:543](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/types/types.ts#L543)
+Defined in: [types/types.ts:543](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/types/types.ts#L543)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:548](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/types/types.ts#L548)
+Defined in: [types/types.ts:548](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/types/types.ts#L548)
 
 引擎配置与规则管理
 
@@ -279,7 +279,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/types/types.ts#L648)
+Defined in: [types/types.ts:648](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/types/types.ts#L648)
 
 数据大盘读写接口
 
@@ -484,7 +484,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:707](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/types/types.ts#L707)
+Defined in: [types/types.ts:707](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/types/types.ts#L707)
 
 拓扑图与依赖分析
 
@@ -514,7 +514,7 @@ Defined in: [types/types.ts:707](https://github.com/Nzy19940403/meshflow/blob/a1
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:719](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/types/types.ts#L719)
+Defined in: [types/types.ts:719](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/types/types.ts#L719)
 
 引擎生命周期钩子
 

@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:14](https://github.com/Nzy19940403/meshflow/blob/a19432738970824077614d3e200d71817d20b169/utils/core/engine/useScheduler.ts#L14)
+Defined in: [engine/useScheduler.ts:14](https://github.com/Nzy19940403/meshflow/blob/f6d044f0cbb5c9f2586bf43067cad3728e2f8639/utils/core/engine/useScheduler.ts#L14)
 
 ## Type Parameters
 
@@ -31,6 +31,10 @@ Defined in: [engine/useScheduler.ts:14](https://github.com/Nzy19940403/meshflow/
 ## Parameters
 
 ### config
+
+#### NODE_QUOTA_PER_FRAME
+
+`number`
 
 #### useEntangleStep
 
