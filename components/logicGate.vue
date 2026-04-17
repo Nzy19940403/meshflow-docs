@@ -55,7 +55,8 @@
       height: ROWS * SCALE,
       backgroundColor: 0x050505,
       antialias: false,
-      resolution: window.devicePixelRatio || 1,
+      resolution: window.devicePixelRatio || 2, // 🌟 关键：利用手机的 2倍或3倍屏
+      autoDensity: true,
     });
     
     if (pixiContainer.value) {

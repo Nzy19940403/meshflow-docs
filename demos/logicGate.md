@@ -7,7 +7,7 @@ import LogicGateComponent from '../components/logicGate.vue'
 </script>
  
  
-# 循环依赖收敛演示演示
- 
-<LogicGateComponent />
- 
+# 逻辑门演示
+<ClientOnly>
+    <LogicGateComponent />
+</ClientOnly>

@@ -1,8 +1,17 @@
 // useLogicGate.ts
 import {   MeshPath,useScheduler } from "@meshflow/core";
 
-export const ROWS = 300  ; 
-export const COLS = 300  ; 
+const checkIsMobile = () => {
+  if (typeof window === 'undefined') return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+         || window.innerWidth < 768;
+};
+
+const isMobile = checkIsMobile();
+
+// 🌟 2. 动态分配规模：手机端约 3W，电脑端约 16W+
+export const ROWS = isMobile ? 300 : 1500; 
+export const COLS = isMobile ? 100 : 300;
 
 export const useLogicGates = <T, P extends MeshPath>(scheduler:ReturnType<typeof useScheduler<T, P>>,) => {
   const vnodeViews: any[] = [];
