@@ -35,6 +35,7 @@ export default defineConfig({
             items: [
               { text: '工厂级复杂表单', link: '/demos/factory' },
               { text: '云计算资源调度', link: '/demos/cloud' },
+              { text: '逻辑门演示', link: '/demos/logicGate' },
               { text: '纠缠震荡排序', link: '/demos/sort' },
               { text: '循环依赖收敛演示', link: '/demos/matrix' },
               { text:'优先级溢流调度',link:'/demos/spillover'},
