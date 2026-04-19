@@ -145,7 +145,7 @@
     const force = vnodes.filter((v: any) => v.meta.row === 0).map((v: any) => ({
       path: v.path, key: 'val', value: Math.random() > 0.5 ? 1 : 0
     }));
-    console.log(force)
+    // console.log(force)
     engine.data.SetValues(force);
   
    
@@ -168,7 +168,7 @@
   
     if (firePoints.length > 0) {
       // 2. 注入初始力
-      console.log(firePoints)
+      // console.log(firePoints)
       engine.data.SetValues(firePoints);
     }
     ;
