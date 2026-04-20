@@ -6,12 +6,9 @@
 
 # Function: useScheduler()
 
-> **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `B`, `NM`\>
+> **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `object`
 
-Defined in: [engine/useScheduler.ts:774](https://github.com/Nzy19940403/meshflow/blob/7078ddee25482d18e0f3594460b24216a3ddb962/utils/core/engine/useScheduler.ts#L774)
-
-🌟 暴露给外部的兼容 API 层
-保证外部业务代码完全不需要修改，无缝切换到 Class 引擎！
+Defined in: [engine/useScheduler.ts:14](https://github.com/Nzy19940403/meshflow/blob/75f4b1d4cf2a9eb3f1a3128b809f2d48465439ba/utils/core/engine/useScheduler.ts#L14)
 
 ## Type Parameters
 
@@ -49,7 +46,29 @@ Defined in: [engine/useScheduler.ts:774](https://github.com/Nzy19940403/meshflow
 
 ### dependency
 
-`any`
+#### GetAllNextDependency
+
+(`targetUid`) => `number`[]
+
+#### GetAllPrevDependency
+
+(`targetUid`) => `number`[]
+
+#### GetDependencyOrder
+
+() => `number`[][]
+
+#### GetNextDependency
+
+(`targetUid`) => `number`[]
+
+#### GetPrevDependency
+
+(`targetUid`) => `number`[]
+
+#### GetUidToLevelMap
+
+() => `Map`\<`number`, `number`\>
 
 ### history
 
@@ -79,4 +98,226 @@ Defined in: [engine/useScheduler.ts:774](https://github.com/Nzy19940403/meshflow
 
 ## Returns
 
-[`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `B`, `NM`\>
+`object`
+
+### batchNotify
+
+> **batchNotify**: (`updates`) => `void`
+
+#### Parameters
+
+##### updates
+
+`object`[]
+
+#### Returns
+
+`void`
+
+### CancelTask
+
+> **CancelTask**: () => `void`
+
+#### Returns
+
+`void`
+
+### GetBucket
+
+> **GetBucket**: (`bucketId`) => [`SchemaBucket`](Interface.SchemaBucket.md)\<`P`\>
+
+#### Parameters
+
+##### bucketId
+
+`number`
+
+#### Returns
+
+[`SchemaBucket`](Interface.SchemaBucket.md)\<`P`\>
+
+### GetGroupByPath
+
+> **GetGroupByPath**: (`path`) => [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>
+
+#### Parameters
+
+##### path
+
+[`MeshPath`](TypeAlias.MeshPath.md)
+
+#### Returns
+
+[`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>
+
+### GetNodeByPath
+
+> **GetNodeByPath**: (`path`) => [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+#### Parameters
+
+##### path
+
+`P`
+
+#### Returns
+
+[`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+### GetNodeByUid
+
+> **GetNodeByUid**: (`uid`) => [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+#### Parameters
+
+##### uid
+
+`number`
+
+#### Returns
+
+[`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+### notify
+
+> **notify**: (`path`) => `void`
+
+#### Parameters
+
+##### path
+
+`P`
+
+#### Returns
+
+`void`
+
+### notifyAll
+
+> **notifyAll**: () => `Promise`\<`void`\>
+
+#### Returns
+
+`Promise`\<`void`\>
+
+### refresTarget
+
+> **refresTarget**: (`uid`) => `void`
+
+#### Parameters
+
+##### uid
+
+`number`
+
+#### Returns
+
+`void`
+
+### registerGroupNode
+
+> **registerGroupNode**: (`groupMeta`) => [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<`P`\>
+
+#### Parameters
+
+##### groupMeta
+
+`Omit`\<[`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<`P`\>, `"createView"` \| `"calledBy"` \| `"uid"` \| `"dirtySignal"`\>
+
+#### Returns
+
+[`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<`P`\>
+
+### registerNode
+
+> **registerNode**: (`nodeMeta`) => [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+#### Parameters
+
+##### nodeMeta
+
+`Omit`\<[`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`\>, `"createView"` \| `"proxy"` \| `"dependOn"` \| `"calledBy"` \| `"uid"` \| `"dirtySignal"` \| `"nodeBucket"`\>
+
+#### Returns
+
+[`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
+
+### SetBucket
+
+> **SetBucket**: (`newBucket`) => `number`
+
+#### Parameters
+
+##### newBucket
+
+[`SchemaBucket`](Interface.SchemaBucket.md)\<`P`\>
+
+#### Returns
+
+`number`
+
+### SettleTasks
+
+> **SettleTasks**: (`array`) => `void` = `taskSchduler.settleTasks`
+
+#### Parameters
+
+##### array
+
+[`TransactionArray`](TypeAlias.TransactionArray.md)
+
+#### Returns
+
+`void`
+
+### stageValueFn
+
+> **stageValueFn**: (`uid`, `key`, `value`) => `void`
+
+#### Parameters
+
+##### uid
+
+`number`
+
+##### key
+
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+
+##### value
+
+`any`
+
+#### Returns
+
+`void`
+
+### UidToNodeMap
+
+> **UidToNodeMap**: [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>[]
+
+### UITrigger
+
+> **UITrigger**: `B`
+
+### updateEntangleLevel
+
+> **updateEntangleLevel**: () => `void`
+
+#### Returns
+
+`void`
+
+### useEntangle
+
+> **useEntangle**: (`config`) => `void`
+
+#### Parameters
+
+##### config
+
+[`EntangleArgType`](TypeAlias.EntangleArgType.md)\<`P`\>
+
+#### Returns
+
+`void`

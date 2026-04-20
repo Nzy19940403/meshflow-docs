@@ -23,15 +23,11 @@
 ### 内部实现
 
 - [SchemaBucket](Interface.SchemaBucket.md)
-
-## Classes
-
-- [MeshScheduler](Class.MeshScheduler.md)
+- [useScheduler](Function.useScheduler.md)
 
 ## Functions
 
 - [ExecuteMeshRule](Function.ExecuteMeshRule.md)
-- [useScheduler](Function.useScheduler.md)
 
 ## Type Aliases
 
