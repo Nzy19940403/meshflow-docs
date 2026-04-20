@@ -8,6 +8,12 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/logo.svg' }] 
  
   ],
+  vite:{
+    ssr: {
+      // 告诉 Vite 不要尝试对 pixi.js 进行服务端处理
+      noExternal: ['pixi.js']
+    },
+  },
   // 核心：多语言配置
   locales: {
     // 默认语言（简体中文）- 对应根目录 docs/*.md
