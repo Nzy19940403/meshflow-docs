@@ -91,14 +91,14 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/your-repo/meshflow' }
     ]
   },
-  async buildEnd() {
-    console.log('🏗️  VitePress 渲染完成，准备强制退出进程...');
+  // async buildEnd() {
+  //   console.log('🏗️  VitePress 渲染完成，准备强制退出进程...');
     
-    // 给 100ms 缓冲让控制台日志打印完
-    setTimeout(() => {
-      console.log('🛑 Force exiting process...');
-      // @ts-ignore
-      process.exit(0);
-    }, 100);
-  },
+  //   // 给 100ms 缓冲让控制台日志打印完
+  //   setTimeout(() => {
+  //     console.log('🛑 Force exiting process...');
+  //     // @ts-ignore
+  //     process.exit(0);
+  //   }, 100);
+  // },
 })
