@@ -8,7 +8,7 @@
 
 > **InternalKeys** = `"path"` \| `"uid"` \| `"type"` \| `"meta"` \| `"state"`
 
-Defined in: [types/types.ts:238](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L238)
+Defined in: [types/types.ts:238](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L238)
 
 ## Description
 

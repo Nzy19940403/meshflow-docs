@@ -8,7 +8,7 @@
 
 > **MeshFlowHistory** = `object`
 
-Defined in: [types/types.ts:109](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L109)
+Defined in: [types/types.ts:109](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L109)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/types.ts:109](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **CreateHistoryAction**: (`metadata`, `cb`) => `object`
 
-Defined in: [types/types.ts:115](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L115)
+Defined in: [types/types.ts:115](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L115)
 
 #### Parameters
 
@@ -54,7 +54,7 @@ Defined in: [types/types.ts:115](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **PushIntoHistory**: (`action`, `cleanRedo?`) => `void`
 
-Defined in: [types/types.ts:114](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L114)
+Defined in: [types/types.ts:114](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L114)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: [types/types.ts:114](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **Redo**: () => `void`
 
-Defined in: [types/types.ts:111](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L111)
+Defined in: [types/types.ts:111](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L111)
 
 #### Returns
 
@@ -88,7 +88,7 @@ Defined in: [types/types.ts:111](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **Undo**: () => `void`
 
-Defined in: [types/types.ts:110](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L110)
+Defined in: [types/types.ts:110](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L110)
 
 #### Returns
 
@@ -100,7 +100,7 @@ Defined in: [types/types.ts:110](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **updateRedoSize**: `any`
 
-Defined in: [types/types.ts:113](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L113)
+Defined in: [types/types.ts:113](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L113)
 
 ***
 
@@ -108,4 +108,4 @@ Defined in: [types/types.ts:113](https://github.com/Nzy19940403/meshflow/blob/41
 
 > **updateUndoSize**: `any`
 
-Defined in: [types/types.ts:112](https://github.com/Nzy19940403/meshflow/blob/412a98ee125d862bb86944f9da6f4bbab235efd0/utils/core/types/types.ts#L112)
+Defined in: [types/types.ts:112](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/types/types.ts#L112)
