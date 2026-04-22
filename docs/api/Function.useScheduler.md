@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `B`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:777](https://github.com/Nzy19940403/meshflow/blob/e65302d39f2f86648a3cd07ecfe2394d19279992/utils/core/engine/useScheduler.ts#L777)
+Defined in: [engine/useScheduler.ts:801](https://github.com/Nzy19940403/meshflow/blob/0d8a3cfda71e0b1c099ba56b518220a15189261e/utils/core/engine/useScheduler.ts#L801)
 
 🌟 暴露给外部的兼容 API 层
 保证外部业务代码完全不需要修改，无缝切换到 Class 引擎！
