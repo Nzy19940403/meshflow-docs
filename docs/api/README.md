@@ -38,6 +38,10 @@
 - [SuggestKey](TypeAlias.SuggestKey.md)
 - [TransactionArray](TypeAlias.TransactionArray.md)
 
+## Variables
+
+- [globalWrapperPool](Variable.globalWrapperPool.md)
+
 ## 参数类型
 
 ### 入口函数

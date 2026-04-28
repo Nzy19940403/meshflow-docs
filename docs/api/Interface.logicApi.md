@@ -4,9 +4,9 @@
 
 [MeshFlow Core API](README.md) / logicApi
 
-# Interface: logicApi\<TKeys\>
+# Interface: logicApi\<NM, TKeys\>
 
-Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/4f22e67d20008cf640ed98ce72606669d06f3c53/utils/core/types/types.ts#L226)
+Defined in: [types/types.ts:229](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L229)
 
 ## Description
 
@@ -14,9 +14,13 @@ Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/4f
 
 ## Type Parameters
 
+### NM
+
+`NM`
+
 ### TKeys
 
-`TKeys` *extends* [`MeshPath`](TypeAlias.MeshPath.md)
+`TKeys` *extends* [`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
 ## Properties
 
@@ -24,12 +28,16 @@ Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/4f
 
 > **slot**: `object`
 
-Defined in: [types/types.ts:227](https://github.com/Nzy19940403/meshflow/blob/4f22e67d20008cf640ed98ce72606669d06f3c53/utils/core/types/types.ts#L227)
+Defined in: [types/types.ts:230](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L230)
 
 #### affectedTatget
 
 > **affectedTatget**: `any`
 
+#### targetMeta
+
+> **targetMeta**: `any`
+
 #### triggerTargets
 
-> **triggerTargets**: `Record`\<`TKeys` \| [`InternalKeys`](TypeAlias.InternalKeys.md), `any`\>[]
+> **triggerTargets**: `Record`\<`IsNever`\<`TKeys`\> *extends* `true` ? [`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\> \| [`InternalKeys`](TypeAlias.InternalKeys.md) : `TKeys`, `any`\> & `object`[]
