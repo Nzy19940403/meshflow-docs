@@ -8,7 +8,7 @@
 
 > **ExecuteMeshRule**(`rule`, `api`): `any`
 
-Defined in: [dependency/useSetRule.ts:352](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/dependency/useSetRule.ts#L352)
+Defined in: [dependency/useSetRule.ts:352](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/dependency/useSetRule.ts#L352)
 
 ## Parameters
 

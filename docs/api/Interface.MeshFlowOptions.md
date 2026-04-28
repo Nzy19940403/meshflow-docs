@@ -6,7 +6,7 @@
 
 # Interface: MeshFlowOptions\<NM, M, T\>
 
-Defined in: [types/types.ts:748](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L748)
+Defined in: [types/types.ts:748](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/types/types.ts#L748)
 
 MeshFlow 引擎初始化配置项
 
@@ -36,7 +36,7 @@ UI 触发器的信号类型
 
 > `optional` **config?**: `object`
 
-Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L758)
+Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/types/types.ts#L758)
 
 引擎运行参数配置
 
@@ -72,7 +72,7 @@ false
 
 > `optional` **metaType?**: `NM`
 
-Defined in: [types/types.ts:753](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L753)
+Defined in: [types/types.ts:753](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/types/types.ts#L753)
 
 元数据类型声明
 
@@ -86,7 +86,7 @@ Defined in: [types/types.ts:753](https://github.com/Nzy19940403/meshflow/blob/17
 
 > `optional` **modules?**: `M`
 
-Defined in: [types/types.ts:775](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L775)
+Defined in: [types/types.ts:775](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/types/types.ts#L775)
 
 扩展模块挂载
 
@@ -106,7 +106,7 @@ Defined in: [types/types.ts:775](https://github.com/Nzy19940403/meshflow/blob/17
 
 > `optional` **UITrigger?**: `object`
 
-Defined in: [types/types.ts:781](https://github.com/Nzy19940403/meshflow/blob/173877798807b1be581b02c053d441e636e24e27/utils/core/types/types.ts#L781)
+Defined in: [types/types.ts:781](https://github.com/Nzy19940403/meshflow/blob/4759c57363bfccb11176b66927a1929c0359f45b/utils/core/types/types.ts#L781)
 
 UI 框架桥接触发器
 
