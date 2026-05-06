@@ -8,7 +8,7 @@
 
 > **MeshFlowHistory** = `object`
 
-Defined in: [types/types.ts:123](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/types/types.ts#L123)
+Defined in: [types/types.ts:123](https://github.com/Nzy19940403/meshflow/blob/9710ce55ac378cd4e18eec085c0af91826f85afe/utils/core/types/types.ts#L123)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/types.ts:123](https://github.com/Nzy19940403/meshflow/blob/62
 
 > **Redo**: () => `void`
 
-Defined in: [types/types.ts:125](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/types/types.ts#L125)
+Defined in: [types/types.ts:125](https://github.com/Nzy19940403/meshflow/blob/9710ce55ac378cd4e18eec085c0af91826f85afe/utils/core/types/types.ts#L125)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [types/types.ts:125](https://github.com/Nzy19940403/meshflow/blob/62
 
 > **Undo**: () => `void`
 
-Defined in: [types/types.ts:124](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/types/types.ts#L124)
+Defined in: [types/types.ts:124](https://github.com/Nzy19940403/meshflow/blob/9710ce55ac378cd4e18eec085c0af91826f85afe/utils/core/types/types.ts#L124)
 
 #### Returns
 
@@ -40,7 +40,7 @@ Defined in: [types/types.ts:124](https://github.com/Nzy19940403/meshflow/blob/62
 
 > **updateRedoSize**: `any`
 
-Defined in: [types/types.ts:127](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/types/types.ts#L127)
+Defined in: [types/types.ts:127](https://github.com/Nzy19940403/meshflow/blob/9710ce55ac378cd4e18eec085c0af91826f85afe/utils/core/types/types.ts#L127)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [types/types.ts:127](https://github.com/Nzy19940403/meshflow/blob/62
 
 > **updateUndoSize**: `any`
 
-Defined in: [types/types.ts:126](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/types/types.ts#L126)
+Defined in: [types/types.ts:126](https://github.com/Nzy19940403/meshflow/blob/9710ce55ac378cd4e18eec085c0af91826f85afe/utils/core/types/types.ts#L126)
