@@ -6,7 +6,7 @@
 
 # Class: MeshScheduler\<T, P, B, NM\>
 
-Defined in: [engine/useScheduler.ts:461](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L461)
+Defined in: [engine/useScheduler.ts:461](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L461)
 
 🌟 核心重构：MeshScheduler 类
 将所有局部变量提升为类属性，所有局部函数提升为原型方法 (Prototype Methods)
@@ -36,7 +36,7 @@ Defined in: [engine/useScheduler.ts:461](https://github.com/Nzy19940403/meshflow
 
 > **new MeshScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): `MeshScheduler`\<`T`, `P`, `B`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:489](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L489)
+Defined in: [engine/useScheduler.ts:489](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L489)
 
 #### Parameters
 
@@ -60,7 +60,7 @@ Defined in: [engine/useScheduler.ts:489](https://github.com/Nzy19940403/meshflow
 
 ##### history
 
-`Partial`\<\{ `createHistoryAction`: `any`; `pushIntoHistory`: `any`; \}\>
+[`InternalMeshFlowHistory`](TypeAlias.InternalMeshFlowHistory.md)
 
 ##### hooks
 
@@ -94,7 +94,7 @@ Defined in: [engine/useScheduler.ts:489](https://github.com/Nzy19940403/meshflow
 
 > **batchNotify**(`updates`): `void`
 
-Defined in: [engine/useScheduler.ts:751](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L751)
+Defined in: [engine/useScheduler.ts:767](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L767)
 
 #### Parameters
 
@@ -112,7 +112,7 @@ Defined in: [engine/useScheduler.ts:751](https://github.com/Nzy19940403/meshflow
 
 > **flushUpdate**(): `Promise`\<`void`\>
 
-Defined in: [engine/useScheduler.ts:569](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L569)
+Defined in: [engine/useScheduler.ts:571](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L571)
 
 #### Returns
 
@@ -124,7 +124,7 @@ Defined in: [engine/useScheduler.ts:569](https://github.com/Nzy19940403/meshflow
 
 > **GetBucket**(`bucketId`): [`SchemaBucket`](Interface.SchemaBucket.md)\<`P`\>
 
-Defined in: [engine/useScheduler.ts:714](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L714)
+Defined in: [engine/useScheduler.ts:729](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L729)
 
 #### Parameters
 
@@ -142,7 +142,7 @@ Defined in: [engine/useScheduler.ts:714](https://github.com/Nzy19940403/meshflow
 
 > **GetGroupByPath**(`path`): [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>
 
-Defined in: [engine/useScheduler.ts:705](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L705)
+Defined in: [engine/useScheduler.ts:720](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L720)
 
 #### Parameters
 
@@ -160,7 +160,7 @@ Defined in: [engine/useScheduler.ts:705](https://github.com/Nzy19940403/meshflow
 
 > **GetMaxUid**(): `number`
 
-Defined in: [engine/useScheduler.ts:720](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L720)
+Defined in: [engine/useScheduler.ts:735](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L735)
 
 #### Returns
 
@@ -172,7 +172,7 @@ Defined in: [engine/useScheduler.ts:720](https://github.com/Nzy19940403/meshflow
 
 > **GetNodeByPath**(`path`): [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:683](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L683)
+Defined in: [engine/useScheduler.ts:698](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L698)
 
 #### Parameters
 
@@ -190,7 +190,7 @@ Defined in: [engine/useScheduler.ts:683](https://github.com/Nzy19940403/meshflow
 
 > **GetNodeByUid**(`uid`): [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:695](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L695)
+Defined in: [engine/useScheduler.ts:710](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L710)
 
 #### Parameters
 
@@ -208,7 +208,7 @@ Defined in: [engine/useScheduler.ts:695](https://github.com/Nzy19940403/meshflow
 
 > **GetPathByUid**(`uid`): `P`
 
-Defined in: [engine/useScheduler.ts:701](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L701)
+Defined in: [engine/useScheduler.ts:716](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L716)
 
 #### Parameters
 
@@ -226,7 +226,7 @@ Defined in: [engine/useScheduler.ts:701](https://github.com/Nzy19940403/meshflow
 
 > **notify**(`path`): `void`
 
-Defined in: [engine/useScheduler.ts:724](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L724)
+Defined in: [engine/useScheduler.ts:739](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L739)
 
 #### Parameters
 
@@ -244,7 +244,7 @@ Defined in: [engine/useScheduler.ts:724](https://github.com/Nzy19940403/meshflow
 
 > **notifyAll**(): `Promise`\<`void`\>
 
-Defined in: [engine/useScheduler.ts:735](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L735)
+Defined in: [engine/useScheduler.ts:751](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L751)
 
 #### Returns
 
@@ -252,29 +252,11 @@ Defined in: [engine/useScheduler.ts:735](https://github.com/Nzy19940403/meshflow
 
 ***
 
-### refreshTarget()
-
-> **refreshTarget**(`uid`): `void`
-
-Defined in: [engine/useScheduler.ts:792](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L792)
-
-#### Parameters
-
-##### uid
-
-`number`
-
-#### Returns
-
-`void`
-
-***
-
 ### registerGroupNode()
 
 > **registerGroupNode**(`groupMeta`): [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<`P`\>
 
-Defined in: [engine/useScheduler.ts:661](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L661)
+Defined in: [engine/useScheduler.ts:676](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L676)
 
 #### Parameters
 
@@ -292,7 +274,7 @@ Defined in: [engine/useScheduler.ts:661](https://github.com/Nzy19940403/meshflow
 
 > **registerNode**(`nodeMeta`): [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:631](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L631)
+Defined in: [engine/useScheduler.ts:646](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L646)
 
 #### Parameters
 
@@ -310,7 +292,7 @@ Defined in: [engine/useScheduler.ts:631](https://github.com/Nzy19940403/meshflow
 
 > **requestUpdate**(): `void`
 
-Defined in: [engine/useScheduler.ts:584](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L584)
+Defined in: [engine/useScheduler.ts:586](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L586)
 
 #### Returns
 
@@ -322,7 +304,7 @@ Defined in: [engine/useScheduler.ts:584](https://github.com/Nzy19940403/meshflow
 
 > **SetBucket**(`newBucket`): `number`
 
-Defined in: [engine/useScheduler.ts:710](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L710)
+Defined in: [engine/useScheduler.ts:725](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L725)
 
 #### Parameters
 
@@ -334,13 +316,39 @@ Defined in: [engine/useScheduler.ts:710](https://github.com/Nzy19940403/meshflow
 
 `number`
 
+***
+
+### SilentSet()
+
+> **SilentSet**(`path`, `key`, `value`): `boolean`
+
+Defined in: [engine/useScheduler.ts:800](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L800)
+
+#### Parameters
+
+##### path
+
+`P`
+
+##### key
+
+[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+
+##### value
+
+`any`
+
+#### Returns
+
+`boolean`
+
 ## Properties
 
 ### AllBuckets
 
 > **AllBuckets**: [`SchemaBucket`](Interface.SchemaBucket.md)\<`P`\>[] = `[]`
 
-Defined in: [engine/useScheduler.ts:472](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L472)
+Defined in: [engine/useScheduler.ts:472](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L472)
 
 ***
 
@@ -348,7 +356,7 @@ Defined in: [engine/useScheduler.ts:472](https://github.com/Nzy19940403/meshflow
 
 > **config**: `object`
 
-Defined in: [engine/useScheduler.ts:490](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L490)
+Defined in: [engine/useScheduler.ts:490](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L490)
 
 #### NODE\_QUOTA\_PER\_FRAME
 
@@ -368,7 +376,7 @@ Defined in: [engine/useScheduler.ts:490](https://github.com/Nzy19940403/meshflow
 
 > **dependency**: `any`
 
-Defined in: [engine/useScheduler.ts:491](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L491)
+Defined in: [engine/useScheduler.ts:491](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L491)
 
 ***
 
@@ -376,7 +384,7 @@ Defined in: [engine/useScheduler.ts:491](https://github.com/Nzy19940403/meshflow
 
 > **dispose**: () => `void`
 
-Defined in: [engine/useScheduler.ts:479](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L479)
+Defined in: [engine/useScheduler.ts:479](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L479)
 
 #### Returns
 
@@ -388,7 +396,7 @@ Defined in: [engine/useScheduler.ts:479](https://github.com/Nzy19940403/meshflow
 
 > **entangleSystem**: `any`
 
-Defined in: [engine/useScheduler.ts:486](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L486)
+Defined in: [engine/useScheduler.ts:486](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L486)
 
 ***
 
@@ -396,15 +404,15 @@ Defined in: [engine/useScheduler.ts:486](https://github.com/Nzy19940403/meshflow
 
 > **flushPathSet**: `Set`\<`number`\>
 
-Defined in: [engine/useScheduler.ts:475](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L475)
+Defined in: [engine/useScheduler.ts:475](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L475)
 
 ***
 
 ### history
 
-> **history**: `Partial`\<\{ `createHistoryAction`: `any`; `pushIntoHistory`: `any`; \}\>
+> **history**: [`InternalMeshFlowHistory`](TypeAlias.InternalMeshFlowHistory.md)
 
-Defined in: [engine/useScheduler.ts:492](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L492)
+Defined in: [engine/useScheduler.ts:492](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L492)
 
 ***
 
@@ -412,7 +420,7 @@ Defined in: [engine/useScheduler.ts:492](https://github.com/Nzy19940403/meshflow
 
 > **hooks**: `object`
 
-Defined in: [engine/useScheduler.ts:493](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L493)
+Defined in: [engine/useScheduler.ts:493](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L493)
 
 #### callOnError
 
@@ -436,7 +444,7 @@ Defined in: [engine/useScheduler.ts:493](https://github.com/Nzy19940403/meshflow
 
 > **isPending**: `boolean` = `false`
 
-Defined in: [engine/useScheduler.ts:474](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L474)
+Defined in: [engine/useScheduler.ts:474](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L474)
 
 ***
 
@@ -444,7 +452,7 @@ Defined in: [engine/useScheduler.ts:474](https://github.com/Nzy19940403/meshflow
 
 > **meshTaskSystem**: `MeshTask`\<`NM`\>
 
-Defined in: [engine/useScheduler.ts:487](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L487)
+Defined in: [engine/useScheduler.ts:487](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L487)
 
 ***
 
@@ -452,7 +460,7 @@ Defined in: [engine/useScheduler.ts:487](https://github.com/Nzy19940403/meshflow
 
 > **PathToUidMap**: `Map`\<[`MeshPath`](TypeAlias.MeshPath.md), `number`\>
 
-Defined in: [engine/useScheduler.ts:468](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L468)
+Defined in: [engine/useScheduler.ts:468](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L468)
 
 ***
 
@@ -460,7 +468,7 @@ Defined in: [engine/useScheduler.ts:468](https://github.com/Nzy19940403/meshflow
 
 > **SettleTasks**: (`array`) => `void`
 
-Defined in: [engine/useScheduler.ts:481](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L481)
+Defined in: [engine/useScheduler.ts:481](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L481)
 
 #### Parameters
 
@@ -478,7 +486,7 @@ Defined in: [engine/useScheduler.ts:481](https://github.com/Nzy19940403/meshflow
 
 > **stageValueFn**: (`uid`, `key`, `value`) => `void`
 
-Defined in: [engine/useScheduler.ts:480](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L480)
+Defined in: [engine/useScheduler.ts:480](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L480)
 
 #### Parameters
 
@@ -504,7 +512,7 @@ Defined in: [engine/useScheduler.ts:480](https://github.com/Nzy19940403/meshflow
 
 > **taskSchduler**: `object`
 
-Defined in: [engine/useScheduler.ts:485](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L485)
+Defined in: [engine/useScheduler.ts:485](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L485)
 
 #### apply
 
@@ -570,7 +578,7 @@ Defined in: [engine/useScheduler.ts:485](https://github.com/Nzy19940403/meshflow
 
 > **timeScheduler**: `object`
 
-Defined in: [engine/useScheduler.ts:484](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L484)
+Defined in: [engine/useScheduler.ts:484](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L484)
 
 #### getIsFirstFrame
 
@@ -610,7 +618,7 @@ Defined in: [engine/useScheduler.ts:484](https://github.com/Nzy19940403/meshflow
 
 > **uid**: `number` = `0`
 
-Defined in: [engine/useScheduler.ts:467](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L467)
+Defined in: [engine/useScheduler.ts:467](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L467)
 
 ***
 
@@ -618,7 +626,7 @@ Defined in: [engine/useScheduler.ts:467](https://github.com/Nzy19940403/meshflow
 
 > **UidToGroupMap**: [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>[] = `[]`
 
-Defined in: [engine/useScheduler.ts:470](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L470)
+Defined in: [engine/useScheduler.ts:470](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L470)
 
 ***
 
@@ -626,7 +634,7 @@ Defined in: [engine/useScheduler.ts:470](https://github.com/Nzy19940403/meshflow
 
 > **UidToNodeMap**: [`MeshFlowTaskNode`](Interface.MeshFlowTaskNode.md)\<`P`, `any`, `NM`\>[] = `[]`
 
-Defined in: [engine/useScheduler.ts:469](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L469)
+Defined in: [engine/useScheduler.ts:469](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L469)
 
 ***
 
@@ -634,7 +642,7 @@ Defined in: [engine/useScheduler.ts:469](https://github.com/Nzy19940403/meshflow
 
 > **UidToPathMap**: `P`[] = `[]`
 
-Defined in: [engine/useScheduler.ts:471](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L471)
+Defined in: [engine/useScheduler.ts:471](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L471)
 
 ***
 
@@ -642,7 +650,7 @@ Defined in: [engine/useScheduler.ts:471](https://github.com/Nzy19940403/meshflow
 
 > **UITrigger**: `B`
 
-Defined in: [engine/useScheduler.ts:494](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L494)
+Defined in: [engine/useScheduler.ts:494](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L494)
 
 ***
 
@@ -650,7 +658,7 @@ Defined in: [engine/useScheduler.ts:494](https://github.com/Nzy19940403/meshflow
 
 > **updateEntangleLevel**: `any`
 
-Defined in: [engine/useScheduler.ts:478](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L478)
+Defined in: [engine/useScheduler.ts:478](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L478)
 
 ***
 
@@ -658,4 +666,4 @@ Defined in: [engine/useScheduler.ts:478](https://github.com/Nzy19940403/meshflow
 
 > **useEntangle**: `any`
 
-Defined in: [engine/useScheduler.ts:477](https://github.com/Nzy19940403/meshflow/blob/0e4b3fc2d75935e79eaacfe75a0a8d0bc23b82cd/utils/core/engine/useScheduler.ts#L477)
+Defined in: [engine/useScheduler.ts:477](https://github.com/Nzy19940403/meshflow/blob/62a6c503185589091dc940cfb810a9dc353606b5/utils/core/engine/useScheduler.ts#L477)

@@ -35,6 +35,7 @@
 
 ## Type Aliases
 
+- [InternalMeshFlowHistory](TypeAlias.InternalMeshFlowHistory.md)
 - [SuggestKey](TypeAlias.SuggestKey.md)
 - [TransactionArray](TypeAlias.TransactionArray.md)
 
