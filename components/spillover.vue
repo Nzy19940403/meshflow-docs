@@ -145,7 +145,7 @@
               zIndex: box.isDead ? 0 : 20
             }"
           >
-            {{ box.parent }}
+          
             <div class="cell-uid" title="优先级 (Priority)">UID: {{ box.uid }}</div>
             <div class="cell-path">{{ box.path }}</div>
             <div class="cell-load" title="消耗容量 (Weight)">W: {{ box.maxAmount }}</div>
