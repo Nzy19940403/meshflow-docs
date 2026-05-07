@@ -145,7 +145,7 @@
               zIndex: box.isDead ? 0 : 20
             }"
           >
-          
+            {{ box.parent }}
             <div class="cell-uid" title="优先级 (Priority)">UID: {{ box.uid }}</div>
             <div class="cell-path">{{ box.path }}</div>
             <div class="cell-load" title="消耗容量 (Weight)">W: {{ box.maxAmount }}</div>
@@ -161,20 +161,19 @@
         
 
       </div>
-      
     </div>
   </div>
   <div class="charts-wrapper">
-          <div class="chart-box">
-            <div class="chart-title">因果拓扑矩阵 (Total Entanglement)</div>
-            <div id="heatmap-container" ref="heatmapRef"></div>
-          </div>
-          
-          <div class="chart-box">
-            <div class="chart-title">收敛脉冲轨迹 (Convergence Pulse)</div>
-            <div id="timeline-container" ref="timelineRef"></div>
-          </div>
-        </div>
+    <div class="chart-box">
+      <div class="chart-title">因果拓扑矩阵 (Total Entanglement)</div>
+      <div id="heatmap-container" ref="heatmapRef"></div>
+    </div>
+    
+    <div class="chart-box">
+      <div class="chart-title">收敛脉冲轨迹 (Convergence Pulse)</div>
+      <div id="timeline-container" ref="timelineRef"></div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -472,7 +471,7 @@ const initBoxEntangle = (path:any)=>{
         
         const myBox = impactState.state;
         const zoneData = causeState.state;
-        console.log('dd111d',layoutMode.value)
+     
         // 不属于当前 Zone 的不管
         if (myBox.parent !== causeState.path) return false;
         
@@ -1104,7 +1103,8 @@ const reset = async () => {
   // isResetting = false;
 
   if(layoutMode.value==='judge'){
-    engine.data.StageValue(judgementNode.path, 'trigger', Math.random());
+    const oldtrigger = engine.data.GetValue(judgementNode.path,'trigger');
+    engine.data.StageValue(judgementNode.path, 'trigger',oldtrigger+1);
   }
   
 }
@@ -1392,36 +1392,4 @@ onUnmounted(() => {
 }
 
 
-.charts-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 40px;
-  }
-  
- 
-  
-  .chart-box {
-    flex: 1;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chart-title {
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 20px;
-    border-left: 4px solid var(--primary-blue);
-    padding-left: 10px;
-    font-weight: 600;
-  }
-  
-  #heatmap-container, #timeline-container {
-    width: 100%;
-    height: 400px; /* 明确高度，再也不会缩起来了 */
-  }
 </style>
