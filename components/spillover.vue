@@ -185,7 +185,7 @@ import {
 } from "@meshflow/core";
 import { useFlowLayout } from "../core/useFlowLayout";
 import { useMeshPulse } from "@meshflow/pulse";
-import {useLogger} from '@meshflow/logger'
+ 
 import VChart from '@visactor/vchart';
 
 const layoutMode = ref('judge');
@@ -273,7 +273,9 @@ const { ZoneArray, BoxArray, judgementNode, AddNewBox } = engine.modules.flowLay
 let isInited = false;
 // let isResetting = false; 
 
-const version = ref(BoxArray.length)
+const version = ref(BoxArray.length);
+
+const zoneW = 400;
 
 const syncStrategy = ( ) => {
   // if (isInited) {
@@ -439,7 +441,7 @@ const initBoxEntangle = (path:any)=>{
         } else {
           const predecessor = siblings[myIndex - 1];
           const predPos = predecessor.state?.pos || predecessor.pos || { x: 0, y: 0 };
-          const gap = 10; const padding = 20; const containerW = 400; const rowHeight = 120;
+          const gap = 10; const padding = 20; const containerW = zoneW; const rowHeight = 120;
           const pPosX = impactState.state.parentPos?.x || 0;
           const predWidth = predecessor.width || 0;
 
@@ -888,7 +890,7 @@ engine.config.useEntangle({
       const predPos = predecessor.state?.pos || predecessor.pos || { x: 0, y: 0 };
       
       const gap = 10; const padding = 20;
-      const containerW = isPublicSea ? 99999 : 400;
+      const containerW = isPublicSea ? 99999 : zoneW;
       const rowHeight = 120;
       const predWidth = predecessor.width || 0;
       const myWidth = obs.width || 0;
@@ -938,7 +940,7 @@ BoxArray.forEach((nodeA) => {
       const isPublicSea = !obs.parent || obs.parent === "";
       const gap = 10;
       const padding = 20;
-      const containerW = isPublicSea ? 99999 : 400;
+      const containerW = isPublicSea ? 99999 : zoneW;
       const rowHeight = 120;
 
       // 拿前驱的坐标和宽度
@@ -1003,7 +1005,7 @@ const setupSortingEntangle = () => {
         if (myIndex === -1) return;
         propose.set("index", myIndex); 
 
-        const zoneW = 400, zoneH = 580, gap = 20, padding = 20;
+        const zoneH = 580, gap = 20, padding = 20;
         let nextX = padding, nextY = 0;
 
         for (let i = 0; i < myIndex; i++) {
@@ -1138,7 +1140,7 @@ onMounted(async() => {
     resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         const realWidth = entry.contentRect.width;
-        const zoneW = 400; const zoneH = 580; const gap = 20; const padding = 20;
+        const zoneH = 580; const gap = 20; const padding = 20;
         const minLogicalWidth = zoneW + padding * 2; 
 
         if (realWidth < minLogicalWidth) {

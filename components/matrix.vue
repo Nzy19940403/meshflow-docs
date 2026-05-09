@@ -120,7 +120,10 @@ const engine = useMeshFlow('9-mesh-solver', [], {
     useGreedy: true, 
     useEntangleStep: 1000 // 允许无限次收敛尝试直到稳态
   },
-  modules: { useMatrixData,useHistory }
+  modules: { 
+    useMatrixData,
+    useHistory 
+  }
 });
 
 const undo = ()=>{

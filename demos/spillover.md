@@ -1,6 +1,7 @@
 ---
 outline: deep
 aside: false
+ 
 ---
  
 <script setup>

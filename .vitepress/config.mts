@@ -45,7 +45,8 @@ export default defineConfig({
               { text: '纠缠震荡排序', link: '/demos/sort' },
               { text: '循环依赖收敛演示', link: '/demos/matrix' },
               { text:'优先级溢流调度',link:'/demos/spillover'},
-              {text:'数独震荡',link:'/demos/sudoku'}
+              {text:'数独震荡',link:'/demos/sudoku'},
+              {text:'蜘蛛纸牌',link:'/demos/cardgame.md'}
             ]
           }
         ]
