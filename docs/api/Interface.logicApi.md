@@ -6,7 +6,7 @@
 
 # Interface: logicApi\<NM, TKeys\>
 
-Defined in: [types/types.ts:247](https://github.com/Nzy19940403/meshflow/blob/0353dfa02467f8f1fc093cd007216804aeff6295/utils/core/types/types.ts#L247)
+Defined in: [types/types.ts:247](https://github.com/Nzy19940403/meshflow/blob/3b94d0626da6b4d7249a571463b554ac3ea8bf17/utils/core/types/types.ts#L247)
 
 ## Description
 
@@ -28,7 +28,7 @@ Defined in: [types/types.ts:247](https://github.com/Nzy19940403/meshflow/blob/03
 
 > **slot**: `object`
 
-Defined in: [types/types.ts:248](https://github.com/Nzy19940403/meshflow/blob/0353dfa02467f8f1fc093cd007216804aeff6295/utils/core/types/types.ts#L248)
+Defined in: [types/types.ts:248](https://github.com/Nzy19940403/meshflow/blob/3b94d0626da6b4d7249a571463b554ac3ea8bf17/utils/core/types/types.ts#L248)
 
 #### affectedTatget
 
