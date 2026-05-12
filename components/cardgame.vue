@@ -3,10 +3,10 @@
       <div class="control-panel">
         <div class="glass-buttons">
           <button class="action-btn" @click="undo" title="撤销 (Undo)">
-             撤销
+             撤销 {{ undoSize }}
           </button>
           <button class="action-btn" @click="redo" title="重做 (Redo)">
-            重做 
+            重做 {{ redoSize }}
           </button>
           <div class="divider"></div>
           <button class="action-btn restart" @click="restartGame">重新开始</button>
@@ -115,6 +115,16 @@
   
   const undo = () => { engine.modules.history.Undo(); };
   const redo = () => { engine.modules.history.Redo(); };
+
+  const undoSize = ref(0)
+  engine.modules.history.updateUndoSize((newval)=>{
+    undoSize.value = newval
+  });
+
+  const redoSize = ref(0)
+  engine.modules.history.updateRedoSize((newval)=>{
+    redoSize.value = newval
+  })
   
   // ==========================================
   // 1. 声明式物理力场 (Topology Logic)

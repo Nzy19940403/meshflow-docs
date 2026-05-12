@@ -46,7 +46,8 @@ export default defineConfig({
               { text: '循环依赖收敛演示', link: '/demos/matrix' },
               { text:'优先级溢流调度',link:'/demos/spillover'},
               {text:'数独震荡',link:'/demos/sudoku'},
-              {text:'蜘蛛纸牌',link:'/demos/cardgame.md'}
+              {text:'蜘蛛纸牌',link:'/demos/cardgame.md'},
+              {text:'数值模拟',link:'/demos/hero.md'}
             ]
           }
         ]
