@@ -577,4 +577,65 @@ const onScrub = (e: any) => {
 .buff-badge { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: bold; }
 .buff-badge.haste { background: #89dceb; color: #11111b; box-shadow: 0 0 8px rgba(137, 220, 235, 0.5);}
 .buff-badge.rage { background: #f38ba8; color: #11111b; box-shadow: 0 0 8px rgba(243, 139, 168, 0.5);}
+
+/* ==========================================
+   📱 移动端专项优化 (响应式设计)
+   ========================================== */
+   @media (max-width: 600px) {
+    .battle-arena {
+        padding: 15px; /* 减小外边距 */
+    }
+
+    .scoreboard h2 {
+        font-size: 1.2rem; /* 标题缩小，防止换行太乱 */
+    }
+
+    /* 🌟 核心：将横向排列改为纵向排列 */
+    .fighters-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .vs-badge {
+        margin: 5px 0;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        order: 2; /* 确保它排在英雄和Boss中间 */
+    }
+
+    .hero { order: 1; }
+    .boss { order: 3; }
+
+    .fighter-card {
+        padding: 15px;
+    }
+
+    .avatar {
+        font-size: 45px; /* 缩小头像 */
+    }
+
+    /* 优化技能按钮，让它们在窄屏下自动换行 */
+    .skills-panel {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .skill-btn {
+        flex: 1 1 40%; /* 按钮两两排列 */
+        padding: 10px 5px; /* 增加点击区域 */
+        font-size: 11px;
+    }
+
+    /* 进度条文字微调 */
+    .hp-text {
+        font-size: 12px;
+    }
+}
+
+/* 额外的平滑过渡，增强质感 */
+.fighter-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
