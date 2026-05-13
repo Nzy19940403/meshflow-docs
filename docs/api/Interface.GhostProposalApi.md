@@ -6,7 +6,7 @@
 
 # Interface: GhostProposalApi\<State, NM\>
 
-Defined in: [types/types.ts:365](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L365)
+Defined in: [types/types.ts:365](https://github.com/Nzy19940403/meshflow/blob/02c48e27af789d6bc65707cc13100a17a3bc2317/utils/core/types/types.ts#L365)
 
 幽灵提案 API (Ghost Proposal API)
 * ### 架构思想：延迟决议 (Deferred Resolution)
@@ -48,7 +48,7 @@ propose.update('totalPrice', src.price, 'add');
 
 > **patch**: \<`K`, `V`\>(`key`, `patchFn`) => `void`
 
-Defined in: [types/types.ts:392](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L392)
+Defined in: [types/types.ts:392](https://github.com/Nzy19940403/meshflow/blob/02c48e27af789d6bc65707cc13100a17a3bc2317/utils/core/types/types.ts#L392)
 
 提交【函数式补丁】提案
 
@@ -98,7 +98,7 @@ Defined in: [types/types.ts:392](https://github.com/Nzy19940403/meshflow/blob/e5
 
 > **set**: (`key`, `value`, `weight?`) => `void`
 
-Defined in: [types/types.ts:373](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L373)
+Defined in: [types/types.ts:373](https://github.com/Nzy19940403/meshflow/blob/02c48e27af789d6bc65707cc13100a17a3bc2317/utils/core/types/types.ts#L373)
 
 提交【绝对值覆盖】提案
 
@@ -136,7 +136,7 @@ Defined in: [types/types.ts:373](https://github.com/Nzy19940403/meshflow/blob/e5
 
 > **update**: (`key`, `delta`, `op?`) => `void`
 
-Defined in: [types/types.ts:381](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L381)
+Defined in: [types/types.ts:381](https://github.com/Nzy19940403/meshflow/blob/02c48e27af789d6bc65707cc13100a17a3bc2317/utils/core/types/types.ts#L381)
 
 提交【增量运算】提案
 
