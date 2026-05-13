@@ -8,7 +8,7 @@
 
 > **InternalMeshFlowHistory** = `object`
 
-Defined in: [types/types.ts:131](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L131)
+Defined in: [types/types.ts:131](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L131)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/types.ts:131](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **CommitTransaction**: (`version`) => `void`
 
-Defined in: [types/types.ts:133](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L133)
+Defined in: [types/types.ts:133](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L133)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [types/types.ts:133](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **GetCurrentVersion**: () => `number`
 
-Defined in: [types/types.ts:136](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L136)
+Defined in: [types/types.ts:136](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L136)
 
 #### Returns
 
@@ -46,7 +46,7 @@ Defined in: [types/types.ts:136](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **RecordMutation**: (`path`, `key`, `oldVal`, `newVal`) => `void`
 
-Defined in: [types/types.ts:134](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L134)
+Defined in: [types/types.ts:134](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L134)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: [types/types.ts:134](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **RecordSilentMutation**: (`path`, `key`, `oldVal`, `newVal`) => `void`
 
-Defined in: [types/types.ts:135](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L135)
+Defined in: [types/types.ts:135](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L135)
 
 #### Parameters
 
@@ -106,7 +106,7 @@ Defined in: [types/types.ts:135](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **StartTransaction**: () => `void`
 
-Defined in: [types/types.ts:132](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L132)
+Defined in: [types/types.ts:132](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L132)
 
 #### Returns
 

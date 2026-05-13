@@ -6,7 +6,7 @@
 
 # Interface: MeshFlowTaskNode\<P, V, NM\>
 
-Defined in: [types/types.ts:180](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L180)
+Defined in: [types/types.ts:180](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L180)
 
 ## Description
 
@@ -32,7 +32,7 @@ task节点类型
 
 > **calledBy**: [`TriggerCause`](Enumeration.TriggerCause.md)
 
-Defined in: [types/types.ts:200](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L200)
+Defined in: [types/types.ts:200](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L200)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [types/types.ts:200](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **createView**: \<`E`\>(`extraProps?`) => `MeshNodeProxy`\<`MeshFlowTaskNode`\<`P`, `V`, `NM`\>, `V`, `NM`, `E`\>
 
-Defined in: [types/types.ts:204](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L204)
+Defined in: [types/types.ts:204](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L204)
 
 #### Type Parameters
 
@@ -64,7 +64,7 @@ Defined in: [types/types.ts:204](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **dependOn**: (`cb`, `key?`) => `void`
 
-Defined in: [types/types.ts:203](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L203)
+Defined in: [types/types.ts:203](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L203)
 
 #### Parameters
 
@@ -86,7 +86,7 @@ Defined in: [types/types.ts:203](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **dirtySignal**: `any`
 
-Defined in: [types/types.ts:196](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L196)
+Defined in: [types/types.ts:196](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L196)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: [types/types.ts:196](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **meta**: `NM`
 
-Defined in: [types/types.ts:202](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L202)
+Defined in: [types/types.ts:202](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L202)
 
 ***
 
@@ -102,7 +102,7 @@ Defined in: [types/types.ts:202](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **nodeBucket**: `Record`\<[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>, `number`\>
 
-Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L192)
+Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L192)
 
 ***
 
@@ -110,7 +110,7 @@ Defined in: [types/types.ts:192](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **notifyKeys**: `Set`\<[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>\>
 
-Defined in: [types/types.ts:193](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L193)
+Defined in: [types/types.ts:193](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L193)
 
 ***
 
@@ -118,7 +118,7 @@ Defined in: [types/types.ts:193](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **path**: `P`
 
-Defined in: [types/types.ts:185](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L185)
+Defined in: [types/types.ts:185](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L185)
 
 ***
 
@@ -126,7 +126,7 @@ Defined in: [types/types.ts:185](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **proxy**: `MeshNodeProxy`\<`MeshFlowTaskNode`\<`P`, `V`, `NM`\>, `V`, `NM`\>
 
-Defined in: [types/types.ts:198](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L198)
+Defined in: [types/types.ts:198](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L198)
 
 ***
 
@@ -134,7 +134,7 @@ Defined in: [types/types.ts:198](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **state**: `V`
 
-Defined in: [types/types.ts:189](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L189)
+Defined in: [types/types.ts:189](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L189)
 
 ***
 
@@ -142,7 +142,7 @@ Defined in: [types/types.ts:189](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **type**: `string`
 
-Defined in: [types/types.ts:187](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L187)
+Defined in: [types/types.ts:187](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L187)
 
 ***
 
@@ -150,4 +150,4 @@ Defined in: [types/types.ts:187](https://github.com/Nzy19940403/meshflow/blob/b1
 
 > **uid**: `number`
 
-Defined in: [types/types.ts:186](https://github.com/Nzy19940403/meshflow/blob/b14c04694109dc080c72e63a6780d0f4de2f3894/utils/core/types/types.ts#L186)
+Defined in: [types/types.ts:186](https://github.com/Nzy19940403/meshflow/blob/e51ccf7a7adb4f228cd37b5e3258184c5e5f210f/utils/core/types/types.ts#L186)
