@@ -139,7 +139,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMeshFlow } from '@meshflow/core';
+import { useMeshFlow,deleteEngine } from '@meshflow/core';
 import { useHero } from '../core/hero';
 import { ref, onMounted, onUnmounted,nextTick,watch } from 'vue';
 import mermaid from 'mermaid';
@@ -562,7 +562,10 @@ onMounted(()=>{
     startBattle();
     renderGraphs();
 });
-onUnmounted(() => { if (timer) clearInterval(timer); });
+onUnmounted(() => { 
+    if (timer) clearInterval(timer); 
+    deleteEngine('hero')
+});
 watch(activeTab, () => {
     setTimeout(() => {
         renderGraphs();
