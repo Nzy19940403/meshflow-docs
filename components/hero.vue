@@ -1147,5 +1147,6 @@ const onScrub = (e: any) => {
 }
 .graph-viewer .mermaid{
     width: 100%;
+    text-align: center;
 }
 </style>
