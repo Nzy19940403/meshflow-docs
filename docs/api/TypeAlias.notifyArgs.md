@@ -8,7 +8,7 @@
 
 > **notifyArgs**\<`P`, `NM`\> = `object`
 
-Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91cd3596ef5e0c5dd0f2ea0297df1188c1919be6/utils/core/types/types.ts#L818)
+Defined in: [types/types.ts:820](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L820)
 
 ## Type Parameters
 
@@ -26,7 +26,7 @@ Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91
 
 > **key**: [`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
 
-Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91cd3596ef5e0c5dd0f2ea0297df1188c1919be6/utils/core/types/types.ts#L818)
+Defined in: [types/types.ts:820](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L820)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91
 
 > **path**: `P`
 
-Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91cd3596ef5e0c5dd0f2ea0297df1188c1919be6/utils/core/types/types.ts#L818)
+Defined in: [types/types.ts:820](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L820)
 
 ***
 
@@ -42,4 +42,4 @@ Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91
 
 > **value**: `any`
 
-Defined in: [types/types.ts:818](https://github.com/Nzy19940403/meshflow/blob/91cd3596ef5e0c5dd0f2ea0297df1188c1919be6/utils/core/types/types.ts#L818)
+Defined in: [types/types.ts:820](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L820)
