@@ -6,7 +6,7 @@
 
 # Interface: SetRuleOptions\<NM, TKeys\>
 
-Defined in: [types/types.ts:276](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L276)
+Defined in: [types/types.ts:276](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L276)
 
 节点规则配置接口
 
@@ -34,7 +34,7 @@ logic - 桶计算的逻辑块，一个桶里面可以装多个逻辑块，根据
 
 > `optional` **cacheStrategy?**: `"none"` \| `"shallow"`
 
-Defined in: [types/types.ts:326](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L326)
+Defined in: [types/types.ts:326](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L326)
 
 桶的缓存策略
 *
@@ -51,7 +51,7 @@ Defined in: [types/types.ts:326](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **effect?**: (`args`) => `any`
 
-Defined in: [types/types.ts:311](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L311)
+Defined in: [types/types.ts:311](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L311)
 
 后置副作用 (Post-Settlement Effect)
 *
@@ -80,7 +80,7 @@ Defined in: [types/types.ts:311](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **effectArgs?**: `KeysOfUnion`\<`NM`\>[]
 
-Defined in: [types/types.ts:318](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L318)
+Defined in: [types/types.ts:318](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L318)
 
 📥 副作用参数声明
 *
@@ -96,7 +96,7 @@ Defined in: [types/types.ts:318](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **forceNotify?**: `boolean`
 
-Defined in: [types/types.ts:292](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L292)
+Defined in: [types/types.ts:292](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L292)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [types/types.ts:292](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > **logic**: (`api`) => `any`
 
-Defined in: [types/types.ts:303](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L303)
+Defined in: [types/types.ts:303](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L303)
 
 核心逻辑片段 (Logic Fragment)
 *
@@ -136,7 +136,7 @@ Defined in: [types/types.ts:303](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **priority?**: `number`
 
-Defined in: [types/types.ts:291](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L291)
+Defined in: [types/types.ts:291](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L291)
 
 逻辑优先级 (仅在 PRIORITY 策略下生效)
 
@@ -146,7 +146,7 @@ Defined in: [types/types.ts:291](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **triggerKeys?**: `TKeys`[]
 
-Defined in: [types/types.ts:335](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L335)
+Defined in: [types/types.ts:335](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L335)
 
 触发键定义 (精准点火开关)
 *
@@ -164,7 +164,7 @@ Defined in: [types/types.ts:335](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > `optional` **value?**: `any`
 
-Defined in: [types/types.ts:287](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L287)
+Defined in: [types/types.ts:287](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L287)
 
 结果覆盖值 (静态产出)
 *

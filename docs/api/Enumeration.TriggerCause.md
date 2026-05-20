@@ -6,7 +6,7 @@
 
 # Enumeration: TriggerCause
 
-Defined in: [types/types.ts:470](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L470)
+Defined in: [types/types.ts:470](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L470)
 
 引擎点火溯源标识 (Trigger Cause)
 *
@@ -23,7 +23,7 @@ Defined in: [types/types.ts:470](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > **CAUSALITY**: `0`
 
-Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L476)
+Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L476)
 
 **正向因果推导 (CAUSALITY)**
 
@@ -41,7 +41,7 @@ Defined in: [types/types.ts:476](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > **INVERSION**: `1`
 
-Defined in: [types/types.ts:482](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L482)
+Defined in: [types/types.ts:482](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L482)
 
 **纠缠源头 (INVERSION)**
 
@@ -56,7 +56,7 @@ Defined in: [types/types.ts:482](https://github.com/Nzy19940403/meshflow/blob/6c
 
 > **REPERCUSSION**: `2`
 
-Defined in: [types/types.ts:488](https://github.com/Nzy19940403/meshflow/blob/6c928b6edc37af1dabc2a475e987f4f488897479/utils/core/types/types.ts#L488)
+Defined in: [types/types.ts:488](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L488)
 
 **纠缠连锁余波 (REPERCUSSION)**
 
@@ -64,3 +64,21 @@ Defined in: [types/types.ts:488](https://github.com/Nzy19940403/meshflow/blob/6c
 
 由 `INVERSION` 节点引发的下游连带更新。
 即：当前节点本身并没有被纠缠直接修改，但因为它的上游节点是被纠缠修改的，它顺着 DAG 拓扑被“余波”唤醒。
+
+***
+
+### VOLITION
+
+> **VOLITION**: `3`
+
+Defined in: [types/types.ts:495](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L495)
+
+**外部自由意志 (VOLITION)**
+
+#### Description
+
+外部运行时对引擎数据大盘的显式批量写值干预。
+
+#### Note
+
+属于非拓扑内生的突变，微任务聚合器 (applyStageValue) 发头发车工牌时的专属因果印记。
