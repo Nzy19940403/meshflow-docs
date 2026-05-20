@@ -6,7 +6,7 @@
 
 # Enumeration: DefaultStrategy
 
-Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L534)
+Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/4f3e87071c19a7fafbb4c69a7797322513a58d49/utils/core/types/types.ts#L534)
 
 引擎预设的桶计算策略
 
@@ -21,7 +21,7 @@ Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/14
 
 > **MERGE**: `"MERGE"`
 
-Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L570)
+Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/4f3e87071c19a7fafbb4c69a7797322513a58d49/utils/core/types/types.ts#L570)
 
 **聚合策略 (MERGE)**
 *
@@ -52,7 +52,7 @@ Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/14
 
 > **OR**: `"OR"`
 
-Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L544)
+Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/4f3e87071c19a7fafbb4c69a7797322513a58d49/utils/core/types/types.ts#L544)
 
 **逻辑或 / 短路回退策略 (OR)**
 *
@@ -71,7 +71,7 @@ Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/14
 
 > **PRIORITY**: `"PRIORITY"`
 
-Defined in: [types/types.ts:553](https://github.com/Nzy19940403/meshflow/blob/147eb47b137334b28f467d2a28612c7db8cfee59/utils/core/types/types.ts#L553)
+Defined in: [types/types.ts:553](https://github.com/Nzy19940403/meshflow/blob/4f3e87071c19a7fafbb4c69a7797322513a58d49/utils/core/types/types.ts#L553)
 
 **绝对优先级策略 (PRIORITY)**
 *
