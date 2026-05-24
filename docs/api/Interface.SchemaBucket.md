@@ -6,7 +6,7 @@
 
 # Interface: SchemaBucket\<P\>
 
-Defined in: [engine/bucket.ts:273](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L273)
+Defined in: [engine/bucket.ts:273](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L273)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [engine/bucket.ts:273](https://github.com/Nzy19940403/meshflow/blob/
 
 > **\_evaluate**(`api`): `any`
 
-Defined in: [engine/bucket.ts:527](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L527)
+Defined in: [engine/bucket.ts:527](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L527)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [engine/bucket.ts:527](https://github.com/Nzy19940403/meshflow/blob/
 
 > **\_getSideEffect**(): `object`[]
 
-Defined in: [engine/bucket.ts:469](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L469)
+Defined in: [engine/bucket.ts:469](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L469)
 
 #### Returns
 
@@ -50,7 +50,7 @@ Defined in: [engine/bucket.ts:469](https://github.com/Nzy19940403/meshflow/blob/
 
 > **\_setStrategy**(`type`): `void`
 
-Defined in: [engine/bucket.ts:346](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L346)
+Defined in: [engine/bucket.ts:346](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L346)
 
 #### Parameters
 
@@ -68,7 +68,7 @@ Defined in: [engine/bucket.ts:346](https://github.com/Nzy19940403/meshflow/blob/
 
 > **\_syncCache**(`val`): `void`
 
-Defined in: [engine/bucket.ts:342](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L342)
+Defined in: [engine/bucket.ts:342](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L342)
 
 #### Parameters
 
@@ -86,4 +86,4 @@ Defined in: [engine/bucket.ts:342](https://github.com/Nzy19940403/meshflow/blob/
 
 > **\_contract**: `ContractType`
 
-Defined in: [engine/bucket.ts:277](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/bucket.ts#L277)
+Defined in: [engine/bucket.ts:277](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/engine/bucket.ts#L277)
