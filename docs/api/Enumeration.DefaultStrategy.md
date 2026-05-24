@@ -6,7 +6,7 @@
 
 # Enumeration: DefaultStrategy
 
-Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L534)
+Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L534)
 
 引擎预设的桶计算策略
 
@@ -19,9 +19,9 @@ Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/37
 
 ### MERGE
 
-> **MERGE**: `"MERGE"`
+> **MERGE**: `2`
 
-Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L570)
+Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L570)
 
 **聚合策略 (MERGE)**
 *
@@ -34,7 +34,7 @@ Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/37
 - **对象**：执行浅层合并 `{ ...old, ...new }`，同名键值由后者覆盖。
 - **数组**：执行末尾追加 `[...old, ...new]`。
 2. **异步原子性**：原生支持异步规则。即使存在 Promise，引擎也会通过异步链条严格保证合并顺序与规则声明顺序一致。
-3. **底色机制 (__base__)**：支持 `entityId` 为 `__base__` 的特殊规则。其产出作为节点的“底色数据”，会被普通规则的非空产出所覆盖。
+3. **底色机制 (__base__)**：支持 `_entityId` 为 `__base__` 的特殊规则。其产出作为节点的“底色数据”，会被普通规则的非空产出所覆盖。
 *
 
 #### Example
@@ -50,9 +50,9 @@ Defined in: [types/types.ts:570](https://github.com/Nzy19940403/meshflow/blob/37
 
 ### OR
 
-> **OR**: `"OR"`
+> **OR**: `0`
 
-Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L544)
+Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L544)
 
 **逻辑或 / 短路回退策略 (OR)**
 *
@@ -69,9 +69,9 @@ Defined in: [types/types.ts:544](https://github.com/Nzy19940403/meshflow/blob/37
 
 ### PRIORITY
 
-> **PRIORITY**: `"PRIORITY"`
+> **PRIORITY**: `1`
 
-Defined in: [types/types.ts:553](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L553)
+Defined in: [types/types.ts:553](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L553)
 
 **绝对优先级策略 (PRIORITY)**
 *

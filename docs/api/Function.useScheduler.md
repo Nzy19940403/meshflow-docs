@@ -8,7 +8,7 @@
 
 > **useScheduler**\<`T`, `P`, `B`, `NM`\>(`config`, `dependency`, `history`, `hooks`, `UITrigger`): [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `B`, `NM`\>
 
-Defined in: [engine/useScheduler.ts:425](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/engine/useScheduler.ts#L425)
+Defined in: [engine/useScheduler.ts:448](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/engine/useScheduler.ts#L448)
 
 🌟 暴露给外部的兼容 API 层
 保证外部业务代码完全不需要修改，无缝切换到 Class 引擎！
@@ -49,7 +49,29 @@ Defined in: [engine/useScheduler.ts:425](https://github.com/Nzy19940403/meshflow
 
 ### dependency
 
-`any`
+#### _GetAllNextDependency
+
+(`targetUid`) => `number`[]
+
+#### _GetAllPrevDependency
+
+(`targetUid`) => `number`[]
+
+#### _GetNextDependency
+
+(`targetUid`) => `number`[]
+
+#### _GetPrevDependency
+
+(`targetUid`) => `number`[]
+
+#### _GetUidToLevelMap
+
+() => `Map`\<`number`, `number`\>
+
+#### GetDependencyOrder
+
+() => `number`[][]
 
 ### history
 

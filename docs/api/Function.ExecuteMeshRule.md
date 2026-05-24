@@ -6,15 +6,55 @@
 
 # Function: ExecuteMeshRule()
 
-> **ExecuteMeshRule**(`rule`, `api`): `any`
+> **ExecuteMeshRule**\<`T`\>(`rule`, `api`): `any`
 
-Defined in: [dependency/useSetRule.ts:49](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/dependency/useSetRule.ts#L49)
+Defined in: [dependency/useSetRule.ts:53](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/dependency/useSetRule.ts#L53)
+
+## Type Parameters
+
+### T
+
+`T`
 
 ## Parameters
 
 ### rule
 
-`any`
+#### _hasRun
+
+`boolean` = `false`
+
+#### _preAllocatedDeps
+
+`any`[] = `preAllocatedDeps`
+
+#### logic
+
+(`api`) => `any` = `options.logic`
+
+#### priority
+
+`number` = `...`
+
+#### targetKey
+
+`unknown` = `targetKey`
+
+#### targetUid
+
+`number` = `targetUid`
+
+#### triggerKeys
+
+(`string` & `object` \| [`InternalKeys`](TypeAlias.InternalKeys.md))[] = `...`
+
+#### triggerUids
+
+`number`[] = `options.triggerUids`
+
+#### value
+
+`any` = `options.value`
 
 ### api
 

@@ -26,6 +26,7 @@
 
 ## Functions
 
+- [CreateRule](Function.CreateRule.md)
 - [ExecuteMeshRule](Function.ExecuteMeshRule.md)
 - [useScheduler](Function.useScheduler.md)
 
@@ -74,7 +75,6 @@
 
 ### 历史类型
 
-- [HistoryActionItem](TypeAlias.HistoryActionItem.md)
 - [MeshFlowHistory](TypeAlias.MeshFlowHistory.md)
 
 ### 桶计算策略类型

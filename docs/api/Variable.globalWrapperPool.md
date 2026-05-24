@@ -8,4 +8,4 @@
 
 > `const` **globalWrapperPool**: `ApiWrapperPool`
 
-Defined in: [dependency/useSetRule.ts:46](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/dependency/useSetRule.ts#L46)
+Defined in: [dependency/useSetRule.ts:50](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/dependency/useSetRule.ts#L50)

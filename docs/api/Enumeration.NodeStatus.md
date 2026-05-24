@@ -6,7 +6,7 @@
 
 # Enumeration: NodeStatus
 
-Defined in: [types/types.ts:503](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L503)
+Defined in: [types/types.ts:503](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L503)
 
 ## Description
 
@@ -18,7 +18,7 @@ Defined in: [types/types.ts:503](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **DIRTY**: `8`
 
-Defined in: [types/types.ts:508](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L508)
+Defined in: [types/types.ts:508](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L508)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [types/types.ts:508](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **NONE**: `0`
 
-Defined in: [types/types.ts:504](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L504)
+Defined in: [types/types.ts:504](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L504)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [types/types.ts:504](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **PROCESSED**: `16`
 
-Defined in: [types/types.ts:509](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L509)
+Defined in: [types/types.ts:509](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L509)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [types/types.ts:509](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **PROCESSING**: `32`
 
-Defined in: [types/types.ts:510](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L510)
+Defined in: [types/types.ts:510](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L510)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: [types/types.ts:510](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **READY**: `1`
 
-Defined in: [types/types.ts:505](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L505)
+Defined in: [types/types.ts:505](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L505)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [types/types.ts:505](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **RESURE**: `4`
 
-Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L507)
+Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L507)
 
 ***
 
@@ -66,4 +66,4 @@ Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/37
 
 > **STAGING**: `2`
 
-Defined in: [types/types.ts:506](https://github.com/Nzy19940403/meshflow/blob/370b128ce2a13d22c13707773b2b84f6343b4fd5/utils/core/types/types.ts#L506)
+Defined in: [types/types.ts:506](https://github.com/Nzy19940403/meshflow/blob/5de7910444268e75421dd6837e9f280446469cde/utils/core/types/types.ts#L506)
