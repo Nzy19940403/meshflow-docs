@@ -8,7 +8,7 @@
 
 > **CreateRule**\<`K`, `NM`, `TKeys`\>(`targetUid`, `targetKey`, `options`): `object`
 
-Defined in: [dependency/useSetRule.ts:99](https://github.com/Nzy19940403/meshflow/blob/bb8ac06d2d7a4dc18987a7772c49930013ca25b2/utils/core/dependency/useSetRule.ts#L99)
+Defined in: [dependency/useSetRule.ts:99](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/dependency/useSetRule.ts#L99)
 
 ## Type Parameters
 
