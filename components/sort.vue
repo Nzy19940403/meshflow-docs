@@ -278,11 +278,11 @@ const initialData = Array.from({ length: 30 }, (_, i) => ({
   }
     
   });
-  
-  onMounted(() => {
-    isStable.value = false;
-    setupSortingPhysics();
-    engine.config.notifyAll();
+  setupSortingPhysics();
+  engine.config.notifyAll();
+  onMounted(() => { 
+ 
+
   });
 onUnmounted(()=>{
   deleteEngine('sorting-lab')

@@ -30,7 +30,7 @@
                     </span>
                 </div>
 
-                <h3>白羊勇者 (Hero) </h3>
+                <h3 style="margin-top: 15px;">白羊勇者 (Hero) </h3>
 
                 <div class="stats">
                     <div class="hp-bar-bg">
@@ -68,7 +68,7 @@
                 <div class="avatar" :class="{ 'attack-dash-left': bossPanel.showAttack && tick.running }">🦀</div>
 
                 <div class="buff-bar"><span style="opacity: 0;">-</span></div>
-                <h3>巨蟹魔王 (Boss)</h3>
+                <h3 style="margin-top: 15px;">巨蟹魔王 (Boss)</h3>
 
                 <div class="stats">
                     <div class="hp-bar-bg">
@@ -918,6 +918,7 @@ const onScrub = (e: any) => {
     justify-content: center;
     gap: 5px;
     margin-bottom: 5px;
+    margin-top: 20px;
 }
 .buff-badge {
     font-size: 11px;
