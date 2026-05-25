@@ -196,7 +196,7 @@ const topologyCode = `flowchart LR
 
     damageCourt -.->|2. 推演回写 HP/Buff| heroPanel
     damageCourt -.->|2. 推演回写 HP| bossPanel
-    damageCourt -.->|2. 推演回写 武器残影| weaponPanel
+    damageCourt -.->|2. 推演回写 武器使用记录| weaponPanel
 `;
 
 const sequenceCode = `sequenceDiagram

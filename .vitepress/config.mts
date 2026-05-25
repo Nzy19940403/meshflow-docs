@@ -47,7 +47,7 @@ export default defineConfig({
               { text:'优先级溢流调度',link:'/demos/spillover'},
               {text:'数独震荡',link:'/demos/sudoku'},
               {text:'蜘蛛纸牌',link:'/demos/cardgame.md'},
-              {text:'数值模拟',link:'/demos/hero.md'}
+              {text:'战斗数值模拟',link:'/demos/hero.md'}
             ]
           }
         ]

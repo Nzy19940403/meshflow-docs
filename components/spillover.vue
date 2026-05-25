@@ -185,7 +185,7 @@ import {
 } from "@meshflow/core";
 import { useFlowLayout } from "../core/useFlowLayout";
 import { useMeshPulse } from "@meshflow/pulse";
- 
+import { useLogger } from "@meshflow/logger";
 import VChart from '@visactor/vchart';
 
 const layoutMode = ref('judge');
@@ -228,7 +228,7 @@ const engine = useMeshFlow("layout", data, {
   }
 });
  
-// const logger = useLogger();
+const logger = useLogger();
 // engine.config.usePlugin(logger);
 
 const pulse = useMeshPulse({
