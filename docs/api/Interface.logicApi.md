@@ -6,7 +6,7 @@
 
 # Interface: logicApi\<NM, TKeys\>
 
-Defined in: [types/types.ts:250](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L250)
+Defined in: [types/types.ts:252](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L252)
 
 ## Description
 
@@ -20,7 +20,7 @@ Defined in: [types/types.ts:250](https://github.com/Nzy19940403/meshflow/blob/67
 
 ### TKeys
 
-`TKeys` *extends* [`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`TKeys` *extends* `SuggestKey`\<`NM`\>
 
 ## Properties
 
@@ -28,7 +28,7 @@ Defined in: [types/types.ts:250](https://github.com/Nzy19940403/meshflow/blob/67
 
 > **slot**: `object`
 
-Defined in: [types/types.ts:251](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L251)
+Defined in: [types/types.ts:253](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L253)
 
 #### affectedTatget
 
@@ -40,4 +40,4 @@ Defined in: [types/types.ts:251](https://github.com/Nzy19940403/meshflow/blob/67
 
 #### triggerTargets
 
-> **triggerTargets**: `Record`\<`IsNever`\<`TKeys`\> *extends* `true` ? [`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\> \| [`InternalKeys`](TypeAlias.InternalKeys.md) : `TKeys`, `any`\> & `object`[]
+> **triggerTargets**: `Record`\<`IsNever`\<`TKeys`\> *extends* `true` ? `SuggestKey`\<`NM`\> \| [`InternalKeys`](TypeAlias.InternalKeys.md) : `TKeys`, `any`\> & `object`[]

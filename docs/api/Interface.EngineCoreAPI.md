@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:580](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L580)
+Defined in: [types/types.ts:582](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L582)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:585](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L585)
+Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L587)
 
 引擎配置与规则管理
 
@@ -279,7 +279,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:685](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L685)
+Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L687)
 
 数据大盘读写接口
 
@@ -313,7 +313,7 @@ Defined in: [types/types.ts:685](https://github.com/Nzy19940403/meshflow/blob/67
 
 ###### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 ##### Returns
 
@@ -351,7 +351,7 @@ Defined in: [types/types.ts:685](https://github.com/Nzy19940403/meshflow/blob/67
 
 ###### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 ###### value
 
@@ -396,7 +396,7 @@ Defined in: [types/types.ts:685](https://github.com/Nzy19940403/meshflow/blob/67
 
 ###### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 需要修改的状态键名
 
@@ -444,7 +444,7 @@ engine.data.SetValue('N5', 'count', 500); // 此时只有 N5 是唯一的能量�
 
 ###### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 需要修改的属性键名 (必须是模型定义的 SuggestKey)
 
@@ -484,7 +484,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:744](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L744)
+Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L746)
 
 拓扑图与依赖分析
 
@@ -514,7 +514,7 @@ Defined in: [types/types.ts:744](https://github.com/Nzy19940403/meshflow/blob/67
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:756](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L756)
+Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L758)
 
 引擎生命周期钩子
 

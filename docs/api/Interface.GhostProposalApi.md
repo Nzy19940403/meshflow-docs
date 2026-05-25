@@ -6,7 +6,7 @@
 
 # Interface: GhostProposalApi\<State, NM\>
 
-Defined in: [types/types.ts:368](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L368)
+Defined in: [types/types.ts:370](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L370)
 
 幽灵提案 API (Ghost Proposal API)
 * ### 架构思想：延迟决议 (Deferred Resolution)
@@ -48,7 +48,7 @@ propose.update('totalPrice', src.price, 'add');
 
 > **patch**: \<`K`, `V`\>(`key`, `patchFn`) => `void`
 
-Defined in: [types/types.ts:395](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L395)
+Defined in: [types/types.ts:397](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L397)
 
 提交【函数式补丁】提案
 
@@ -98,7 +98,7 @@ Defined in: [types/types.ts:395](https://github.com/Nzy19940403/meshflow/blob/67
 
 > **set**: (`key`, `value`, `weight?`) => `void`
 
-Defined in: [types/types.ts:376](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L376)
+Defined in: [types/types.ts:378](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L378)
 
 提交【绝对值覆盖】提案
 
@@ -106,7 +106,7 @@ Defined in: [types/types.ts:376](https://github.com/Nzy19940403/meshflow/blob/67
 
 ##### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 目标节点的状态属性名
 
@@ -136,7 +136,7 @@ Defined in: [types/types.ts:376](https://github.com/Nzy19940403/meshflow/blob/67
 
 > **update**: (`key`, `delta`, `op?`) => `void`
 
-Defined in: [types/types.ts:384](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L384)
+Defined in: [types/types.ts:386](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L386)
 
 提交【增量运算】提案
 
@@ -144,7 +144,7 @@ Defined in: [types/types.ts:384](https://github.com/Nzy19940403/meshflow/blob/67
 
 ##### key
 
-[`SuggestKey`](TypeAlias.SuggestKey.md)\<`NM`\>
+`SuggestKey`\<`NM`\>
 
 目标节点的状态属性名
 

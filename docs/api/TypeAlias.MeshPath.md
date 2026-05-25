@@ -8,7 +8,7 @@
 
 > **MeshPath** = `string` \| `number` \| `symbol`
 
-Defined in: [types/types.ts:164](https://github.com/Nzy19940403/meshflow/blob/67414c60f40940a74095c97ebed6aa4ead6c0079/utils/core/types/types.ts#L164)
+Defined in: [types/types.ts:166](https://github.com/Nzy19940403/meshflow/blob/61df854e65a3fdef4d2a3bab7038e0276bc8e459/utils/core/types/types.ts#L166)
 
 MeshPath：多模态路径标识符
 
