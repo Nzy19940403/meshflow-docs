@@ -16,7 +16,10 @@ import SpilloverComponent from '../components/spillover.vue'
 本示例展示了引擎如何处理 **确定性抢占 (Deterministic Preemption)** 逻辑：每一个 **Cell** 的物理位移，本质上是拓扑图中纠缠关系的 **状态收敛 (State Convergence)**。当资源（Zone Capacity）受限时，引擎通过高优抢占与自动溢流，确保逻辑拓扑始终处于全局最优解。
 
 <div class="demo-container">
-  <SpilloverComponent />
+<ClientOnly>
+<SpilloverComponent />
+</ClientOnly>
+  
 </div>
 
 <style>
