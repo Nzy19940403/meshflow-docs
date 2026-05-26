@@ -4,13 +4,18 @@
       
       <header class="dashboard-header">
         <div class="header-titles">
-          <h1>Meshflow Matrix <span>9-Node Projection</span></h1>
-          </div>
+          <h1>Meshflow Matrix <span>9-Node Entanglement</span></h1>
+          <p class="subtitle description">
+            <strong>The "Iterative Relaxation" Showcase:</strong> This matrix features intentionally injected cyclic dependencies. 
+            Corner nodes (e.g., N1) depend on cross nodes (e.g., N2), and cross nodes reverse-depend on corners. 
+            Click <strong>"🚀 Ignite Core"</strong> to inject 1000 energy into N5. Watch MeshFlow gracefully handle the cyclic oscillation (preventing Stack Overflow) and collapse the system into a perfect <strong>1000-500-250</strong> equilibrium.
+          </p>
+        </div>
         
         <div class="header-actions">
           <div class="action-group">
             <div class="control-group">
-              <span class="control-label">异步演进:</span>
+              <span class="control-label">Async Evolution:</span>
               <label class="toggle-switch">
                 <input type="checkbox" v-model="isAsyncMode">
                 <span class="slider"></span>
@@ -18,7 +23,7 @@
             </div>
 
             <div class="ignition-group">
-              <span class="ignition-label">点火能量:</span>
+              <span class="ignition-label">Ignition Energy:</span>
               <input 
                 type="number" 
                 v-model="ignitionValue" 
@@ -29,14 +34,14 @@
 
           <div class="action-group">
             <button class="btn btn-primary" @click="resetSystem">
-              🚀 真空点火 (N5)
+              🚀 Ignite Core (N5)
             </button>
             <button class="btn btn-danger" @click="randomPerturb">
-              🎲 随机扰动
+              🎲 Chaos Perturbation
             </button>
-            <!-- <button class="btn" @click="undo">
+            <button class="btn" @click="undo">
               undo
-            </button> -->
+            </button>
           </div>
         </div>
       </header>
@@ -46,22 +51,22 @@
           <div class="node-header">
             <div class="node-identity">
               <span class="node-path">{{ node.path }}</span>
-              <span class="node-label">{{ node.meta.label }}</span>
+              <span class="node-label">{{ node.meta.label || 'Node' }}</span>
             </div>
             <span class="node-signal">⚡ PUSH: {{ node.dirtySignal.value }}</span>
           </div>
 
           <div class="node-formula">
-            <div class="formula-label">纠缠公式:</div>
+            <div class="formula-label">Entanglement Formula:</div>
             <input 
               v-model="node.meta.formula" 
-              placeholder="输入依赖公式 (如: N1*0.5)"
+              placeholder=""
               class="formula-input"
             />
           </div>
 
           <div class="node-projection">
-            <div class="projection-label">UI 整数投影 (投影态)</div>
+            <div class="projection-label">UI Integer Projection (Collapsed State)</div>
             <input 
               type="number"
               :value="Math.round(node.state.count)"
@@ -69,7 +74,7 @@
               class="projection-input"
             />
             <div class="raw-value">
-              底层动能: {{ typeof node.state.count === 'number' ? node.state.count.toFixed(4) : node.state.count }}
+              Raw Kinetic Energy: {{ typeof node.state.count === 'number' ? node.state.count.toFixed(4) : node.state.count }}
             </div>
           </div>
         </div>
@@ -77,12 +82,12 @@
 
       <div class="charts-wrapper">
         <div class="chart-box">
-          <div class="chart-title">因果拓扑矩阵 (Total Entanglement)</div>
+          <div class="chart-title">Causal Topology Matrix (Entanglement Heatmap)</div>
           <div id="heatmap-container" ref="heatmapRef"></div>
         </div>
         
         <div class="chart-box">
-          <div class="chart-title">收敛脉冲轨迹 (Convergence Pulse)</div>
+          <div class="chart-title">Convergence Pulse Trajectory (Iterative Relaxation)</div>
           <div id="timeline-container" ref="timelineRef"></div>
         </div>
       </div>
@@ -93,24 +98,25 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { deleteEngine, useMeshFlow } from '@meshflow/core';
-import { useMatrixData } from '../core/matrix'; // 请确保路径正确
+// import { deleteEngine, useMeshFlow } from '@/utils/core/engine/useEngineManager';
+import { useMatrixData } from '../core/matrix'; // 保持你本地的路径
 import { useLogger } from "@meshflow/logger";
-import { useMeshPulse } from '@meshflow/pulse';
+// import { useMeshPulse } from '@/utils/plugins/meshPulse/useMeshPulse'; // 保持你本地的路径
 import VChart from '@visactor/vchart';
-import {useHistory} from '@meshflow/history';
+// import { useHistory } from '@/utils/plugins/history/useHistory';
+import { useHistory } from '@meshflow/history';
+import { deleteEngine, useMeshFlow } from '@meshflow/core';
 
-// 🌟 控制参数
-const ignitionValue = ref(500);
-const isAsyncMode = ref(true); // 异步演进开关
+// 🌟 Default ignition to 1000 for the perfect 1000-500-250 visual
+const ignitionValue = ref(1000);
+const isAsyncMode = ref(true); 
 
-// 🌟 双图表 Ref 和实例
 const heatmapRef = ref<HTMLElement | null>(null);
 const timelineRef = ref<HTMLElement | null>(null);
 let heatmapInstance: VChart | null = null;
 let timelineInstance: VChart | null = null;
 
-// 1. 初始化 Meshflow 引擎
+// 1. Initialize Engine
 const engine = useMeshFlow('9-mesh-solver', [], {
   UITrigger: { 
     signalCreator: () => ref(0), 
@@ -118,62 +124,86 @@ const engine = useMeshFlow('9-mesh-solver', [], {
   },
   config: { 
     useGreedy: true, 
-    useEntangleStep: 1000 // 允许无限次收敛尝试直到稳态
+    useEntangleStep: 1000 
   },
-  modules: { 
-    useMatrixData,
-    useHistory 
-  }
+  modules: { useMatrixData, useHistory }
 });
 
-const undo = ()=>{
-  engine.modules.history.Undo()
-}
+const undo = () => {
+  engine.modules.history.Undo();
+};
 
-// 🌟 核心：双通道数据分发
-const pulse = useMeshPulse({
-onTrace(rawData: any) {
-  if (!heatmapInstance || !timelineInstance || !rawData) return;
+// 🌟 Dual Channel Data Distribution for Charts
+// const pulse = useMeshPulse({
+//   onTrace(rawData: any) {
+//     if (!heatmapInstance || !timelineInstance || !rawData) return;
 
-  const epochsArray = Array.isArray(rawData) ? rawData : [rawData];
-  if (epochsArray.length === 0) return;
+//     const epochsArray = Array.isArray(rawData) ? rawData : [rawData];
+//     if (epochsArray.length === 0) return;
 
-  const frequencyMap: Record<string, any> = {};
-  // 🌟 修改：初始化时先塞入一个原点，让曲线从 0 开始
-  const timelineData: any[] = [{ epoch: '', count: 0 }]; 
+//     const frequencyMap: Record<string, any> = {};
+//     const timelineData: any[] = [{ epoch: '', count: 0 }]; 
 
-  epochsArray.forEach((epochObj) => {
-    // 记录纪元脉冲
-    timelineData.push({
-      epoch: epochObj.epoch,
-      count: epochObj.emits?.length || 0
-    });
+//     epochsArray.forEach((epochObj) => {
+//       timelineData.push({
+//         epoch: epochObj.epoch,
+//         count: epochObj.emits?.length || 0
+//       });
 
-    // 统计因果频次
-    epochObj.emits?.forEach((item: any) => {
-      if (!item.cause || !item.impact) return;
-      const key = `${item.cause}_${item.impact}`;
-      if (!frequencyMap[key]) {
-        frequencyMap[key] = { cause: item.cause, impact: item.impact, count: 0 };
-      }
-      frequencyMap[key].count += 1;
-    });
-  });
+//       epochObj.emits?.forEach((item: any) => {
+//         if (!item.cause || !item.impact) return;
+//         const key = `${item.cause}_${item.impact}`;
+//         if (!frequencyMap[key]) {
+//           frequencyMap[key] = { cause: item.cause, impact: item.impact, count: 0 };
+//         }
+//         frequencyMap[key].count += 1;
+//       });
+//     });
 
-  heatmapInstance.updateData('heatmapData', Object.values(frequencyMap));
-  timelineInstance.updateData('timelineData', timelineData);
-}
-});
-engine.config.usePlugin(pulse);
+//     heatmapInstance.updateData('heatmapData', Object.values(frequencyMap));
+//     timelineInstance.updateData('timelineData', timelineData);
+//   }
+// });
+// engine.config.usePlugin(pulse);
+const logger = useLogger({
+  focusPaths:'N7',
+  
+})
+let cancel = engine.config.usePlugin(logger)
 
 const { list } = engine.modules.matrixData;
 
-// 2. 人工打破平衡
+// 🌟 The 1000-500-250 Cyclic Equilibrium Formulas
+const applyDefaultFormulas = () => {
+  const formulaMap: Record<string, string> = {
+    // Corners: strictly 50% of the average of adjacent cross nodes. Target = 250.
+    'N1': '(N2 + N4) * 0.25',
+    'N3': '(N2 + N6) * 0.25',
+    'N7': '(N4 + N8) * 0.25',
+    'N9': '(N6 + N8) * 0.25',
+
+    // Crosses: Cyclic Dependency injected here!
+    // Depends 80% on N5, and 20% back on the corners. Target = 500.
+    'N2': '(N5 * 0.4) + (N1 + N3) * 0.2',
+    'N4': '(N5 * 0.4) + (N1 + N7) * 0.2',
+    'N6': '(N5 * 0.4) + (N3 + N9) * 0.2',
+    'N8': '(N5 * 0.4) + (N7 + N9) * 0.2',
+
+    'N5': '' // Core Ignition
+  };
+
+  list.forEach(node => {
+    if (formulaMap[node.path] !== undefined) {
+      node.meta.formula = formulaMap[node.path];
+    }
+  });
+};
+
 const onUpdate = (node: any, val: number) => {
   engine.data.SetValue(node.path, "count", val || 0);
 };
 
-// 3. 注入中心能量：纯净降噪重置
+// 3. Clean Reset & Ignite
 const resetSystem = () => {
   try {
     list.forEach(node => {
@@ -181,11 +211,11 @@ const resetSystem = () => {
     });
     engine.data.SetValue("N5", "count", ignitionValue.value || 0);
   } catch (e) {
-    console.error("引擎重置异常:", e);
+    console.error("Engine reset exception:", e);
   }
 };
 
-// 4. 混沌测试
+// 4. Chaos Test
 const randomPerturb = () => {
   list.forEach(node => {
     const randomVal = 100 + Math.random() * 800; 
@@ -193,9 +223,7 @@ const randomPerturb = () => {
   });
 };
 
-/**
- * 5. 核心：动态全连接拓扑矩阵
- */
+// 5. Dynamic Solver Setup
 const setupDynamicSolver = () => {
   const threshold = 0.001; 
 
@@ -207,6 +235,11 @@ const setupDynamicSolver = () => {
         cause: causeNode.path,
         impact: targetNode.path,
         via: ["count"],
+        filter: (src, tgt) => {
+          const formula = tgt.meta.formula;
+          // 只有公式存在且包含当前触发源，才允许进入 emit
+          return !!(formula && formula.includes(src.path));
+        },
         emit:  async (src, tgt, propose) => {
           const formula = tgt.meta.formula;
           if (!formula || !formula.includes(causeNode.path)) return;
@@ -221,27 +254,27 @@ const setupDynamicSolver = () => {
 
             const current = tgt.state.count ?? 0;
             
-            // 🌟 核心开关逻辑：如果开启异步模式，则让出主线程
             if (isAsyncMode.value) {
-              await new Promise((resolve) => setTimeout(resolve, 0));
+              await new Promise((resolve) => setTimeout(resolve, 15)); // 10ms visually pleasing delay
             }
 
-            // 阈值检查，防止无限微调导致的性能损耗
             if (Math.abs(raw - current) > threshold) {
+       
               propose.set("count", raw);
+              
             }
         }
       });
     });
   });
- 
 };
 
 onMounted(() => {
+  applyDefaultFormulas(); 
   setupDynamicSolver();
   
   // ==========================================
-  // 图表 1: 初始化热力图 (Heatmap)
+  // Chart 1: Heatmap
   // ==========================================
   if (heatmapRef.value) {
     heatmapInstance = new VChart({
@@ -255,52 +288,43 @@ onMounted(() => {
         label: { visible: true, style: { fill: '#ffffff', fontSize: 11 } }
       }],
       axes: [
-        { orient: 'bottom', type: 'band', title: { visible: true, text: '触发源 (Cause)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
-        { orient: 'left', type: 'band', title: { visible: true, text: '受影响 (Impact)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } }
+        { orient: 'bottom', type: 'band', title: { visible: true, text: 'Source Node (Cause)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+        { orient: 'left', type: 'band', title: { visible: true, text: 'Target Node (Impact)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } }
       ],
-      tooltip: { mark: { title: { value: '纠缠次数' } } }
+      tooltip: { mark: { title: { value: 'Entanglements' } } }
     }, { dom: heatmapRef.value });
     heatmapInstance.renderSync();
   }
 
   // ==========================================
-  // 图表 2: 初始化收敛脉冲图 (Area Chart)
+  // Chart 2: Convergence Pulse (Area Chart)
   // ==========================================
   if (timelineRef.value) {
     timelineInstance = new VChart({
       type: 'common',
       data: [{ id: 'timelineData', values: [] }],
       series: [{
-        
         type: 'area',
         xField: 'epoch', yField: 'count',
-    
         area: { style: { fill: 'linear-gradient(to top, rgba(56,189,248,0.6), rgba(56,189,248,0))' } },
         line: { style: { stroke: '#38bdf8', lineWidth: 2 } },
         point: { visible: true, style: { fill: '#0f172a', stroke: '#38bdf8', lineWidth: 2 } }
       }],
       axes: [
-        { orient: 'bottom', type: 'band', title: { visible: true, text: '纪元 (Epoch)', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
-        { orient: 'left', type: 'linear', title: { visible: true, text: '瞬时负载量', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } }, grid: { style: { stroke: '#334155', lineDash: [4, 4] } } }
+        { orient: 'bottom', type: 'band', title: { visible: true, text: 'Epoch', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } } },
+        { orient: 'left', type: 'linear', title: { visible: true, text: 'Instantaneous Load', style: { fill: '#94a3b8' } }, label: { style: { fill: '#94a3b8' } }, grid: { style: { stroke: '#334155', lineDash: [4, 4] } } }
       ],
-      tooltip: { mark: { title: { value: '瞬时负载' } } }
+      tooltip: { mark: { title: { value: 'Load' } } }
     }, { dom: timelineRef.value });
     timelineInstance.renderSync();
   }
 
-  // 唤醒所有系统
   engine.config.notifyAll();
 
-  let updates:any = []
-  list.forEach(node => {
-    updates.push({
-      path:node.path,
-      key:'count',
-      value:0
-    })
-  });
-  // engine.data.SetValues(updates)
-  engine.data.SetValue("N5", "count",   0);
+  // Auto-ignite for first-time viewers
+  setTimeout(() => {
+    resetSystem();
+  }, 500);
      
 });
 
@@ -312,7 +336,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* 1. 变量与基础重置 */
 .meshflow-dashboard {
   --primary-blue: #38bdf8;
   --accent-purple: #a78bfa;
@@ -335,7 +358,6 @@ onUnmounted(() => {
   margin: 0 auto;
 }
 
-/* 2. 响应式 Header 布局 */
 .dashboard-header {
   display: flex;
   flex-direction: column;
@@ -351,6 +373,10 @@ onUnmounted(() => {
     justify-content: space-between;
     align-items: flex-end;
   }
+}
+
+.header-titles {
+  max-width: 650px;
 }
 
 .header-titles h1 {
@@ -370,13 +396,22 @@ onUnmounted(() => {
   font-weight: 400;
 }
 
-.subtitle {
+/* 🌟 Explanation text styling */
+.description {
   color: #94a3b8;
-  font-size: 14px;
-  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 12px;
+  background: rgba(56, 189, 248, 0.05);
+  border-left: 3px solid var(--primary-blue);
+  padding: 10px 16px;
+  border-radius: 0 6px 6px 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.description strong {
+  color: #e2e8f0;
 }
 
-/* 3. 操作区 */
 .header-actions {
   display: flex;
   flex-direction: column;
@@ -445,7 +480,6 @@ onUnmounted(() => {
   text-align: right;
 }
 
-/* 4. 矩阵网格自适应 */
 .matrix-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -565,17 +599,12 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 
-/* ========================================== */
-/* 🌟 全新双图表容器样式 */
-/* ========================================== */
 .charts-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
   margin-top: 40px;
 }
-
-
 
 .chart-box {
   flex: 1;
@@ -598,6 +627,6 @@ input:checked + .slider:before {
 
 #heatmap-container, #timeline-container {
   width: 100%;
-  height: 400px; /* 明确高度，再也不会缩起来了 */
+  height: 400px;
 }
 </style>
