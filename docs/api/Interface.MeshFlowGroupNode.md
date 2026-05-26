@@ -6,7 +6,7 @@
 
 # Interface: MeshFlowGroupNode\<P\>
 
-Defined in: [types/types.ts:217](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L217)
+Defined in: [types/types.ts:217](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L217)
 
 ## Description
 
@@ -24,7 +24,7 @@ group节点类型
 
 > **children**: `P`[]
 
-Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L224)
+Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L224)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types/types.ts:224](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **createView**: (`extraProps?`) => `any`
 
-Defined in: [types/types.ts:227](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L227)
+Defined in: [types/types.ts:227](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L227)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [types/types.ts:227](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **dirtySignal**: `any`
 
-Defined in: [types/types.ts:225](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L225)
+Defined in: [types/types.ts:225](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L225)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [types/types.ts:225](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **meta**: `Record`\<`string`, `any`\>
 
-Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L226)
+Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L226)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: [types/types.ts:226](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **path**: `P`
 
-Defined in: [types/types.ts:218](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L218)
+Defined in: [types/types.ts:218](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L218)
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: [types/types.ts:218](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **type**: `"group"`
 
-Defined in: [types/types.ts:220](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L220)
+Defined in: [types/types.ts:220](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L220)
 
 ***
 
@@ -82,4 +82,4 @@ Defined in: [types/types.ts:220](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **uid**: `number`
 
-Defined in: [types/types.ts:219](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L219)
+Defined in: [types/types.ts:219](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L219)

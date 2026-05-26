@@ -6,7 +6,7 @@
 
 # Interface: MeshErrorContext
 
-Defined in: [types/types.ts:150](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L150)
+Defined in: [types/types.ts:150](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L150)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/types.ts:150](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **error**: `any`
 
-Defined in: [types/types.ts:152](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L152)
+Defined in: [types/types.ts:152](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L152)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [types/types.ts:152](https://github.com/Nzy19940403/meshflow/blob/40
 
 > **path**: `string`
 
-Defined in: [types/types.ts:151](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L151)
+Defined in: [types/types.ts:151](https://github.com/Nzy19940403/meshflow/blob/90dd785be5fe95d01ba59ea30f84f44b5ee369d4/utils/core/types/types.ts#L151)
