@@ -8,7 +8,7 @@
 
 > `const` **MeshError**: `object`
 
-Defined in: [types/types.ts:522](https://github.com/Nzy19940403/meshflow/blob/876af4b4791e8a6047e5ed7a130a00f93353ea78/utils/core/types/types.ts#L522)
+Defined in: [types/types.ts:522](https://github.com/Nzy19940403/meshflow/blob/409c929c8843356c73cf4b3c75dea27951a96593/utils/core/types/types.ts#L522)
 
 异常字典：汇总内核运行时的循环依赖、实例缺失等核心错误
 
