@@ -35,7 +35,7 @@
   const textureBuffer = new Uint8Array(COLS * ROWS * 4); 
   
   const engine = useMeshFlow('logic_domino', [] as any, {
-    config: { useGreedy: true },
+    config: { useGreedy: false },
     modules: {
       logicGates: useLogicGates,
       useMeshRenderGate,
@@ -206,8 +206,24 @@
   })
   
   onUnmounted(() => {
-    if (app) app.destroy(true, { children: true, texture: true });
+    if (app) {
+      app.destroy(true, { children: true, texture: true });
+      // 强制解除引用
+      app = null as any; 
+      logicTexture = null as any;
+    }
+
+    // 2. 清空 TypedArray，释放大块连续内存
+    textureBuffer.fill(0);
+
+    // 3. 彻底销毁引擎
     deleteEngine('logic_domino');
+
+    // 🌟 4. 最重要的一步：斩断组件上下文对庞然大物的最后念想
+    // 即使 button 没死干净，它顺着闭包摸到的 vnodes 也已经变成空数组了！
+    if (vnodes) {
+      vnodes.length = 0; 
+    }
   });
   </script>
   

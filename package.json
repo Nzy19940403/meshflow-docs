@@ -17,9 +17,9 @@
     "vue": "^3.5.28"
   },
   "dependencies": {
-    "@meshflow/core": "^0.8.4",
+    "@meshflow/core": "^0.8.8",
     "@meshflow/history": "^0.2.2",
-    "@meshflow/logger": "^0.2.4",
+    "@meshflow/logger": "^0.2.8",
     "@meshflow/pulse": "^1.0.5",
     "@meshflow/rendergate": "^0.1.7",
     "@visactor/vchart": "^2.0.22",

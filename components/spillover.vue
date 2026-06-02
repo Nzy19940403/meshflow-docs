@@ -211,7 +211,7 @@ const engine = useMeshFlow("layout", data, {
     signalCreator: () => ref(0),
     signalTrigger: (signal) => signal.value++,
   },
-  config: { useGreedy: true ,useEntangleStep:Infinity},
+  config: { useGreedy: false ,useEntangleStep:Infinity},
   modules: { flowLayoutModule: useFlowLayoutModule },
   metaType:{
     parent:"",
@@ -633,7 +633,12 @@ const initBoxEntangle = (path:any)=>{
       const seaMap = obs.publicSeaMinUid || {};
       const seaVals = Object.values(seaMap) as number[];
       const minUidInSea = seaVals.length > 0 ? Math.min(...seaVals) : Infinity;
-
+      
+      if (!currentZone || currentZone === "") {
+        // 在贪婪模式下，绝对不能让公海里所有格子一起醒来！
+        // 只有排在第一名（UID最小）的大佬，才允许放行去 emit 里找坑位。
+        return tgt.uid === minUidInSea;
+      }
       // 🌟 3. 正确解析当前 Zone 的最大 UID
       const zoneMap = obs.zoneMaxUidMap || {};
       const zoneVals = Object.values(zoneMap) as number[];
