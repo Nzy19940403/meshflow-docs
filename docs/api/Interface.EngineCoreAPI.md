@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:582](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L582)
+Defined in: [types/types.ts:582](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L582)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L587)
+Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L587)
 
 引擎配置与规则管理
 
@@ -101,7 +101,7 @@ Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/44
 
 ###### options
 
-[`SetRuleOptions`](Interface.SetRuleOptions.md)\<`NM`, `TKeys`\>
+[`SetRuleOptions`](Interface.SetRuleOptions.md)\<`NM`, `TKeys`, `K`\>
 
 ##### Returns
 
@@ -165,7 +165,7 @@ engine.config.SetRule('path/A', 'path/B', 'value', {
 
 ###### options
 
-[`SetRuleOptions`](Interface.SetRuleOptions.md)\<`NM`, `TKeys`\>
+[`SetRuleOptions`](Interface.SetRuleOptions.md)\<`NM`, `TKeys`, `K`\>
 
 ##### Returns
 
@@ -279,7 +279,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L687)
+Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L687)
 
 数据大盘读写接口
 
@@ -484,7 +484,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L746)
+Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L746)
 
 拓扑图与依赖分析
 
@@ -514,7 +514,7 @@ Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/44
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L758)
+Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L758)
 
 引擎生命周期钩子
 

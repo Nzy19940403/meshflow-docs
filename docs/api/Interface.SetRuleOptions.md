@@ -4,9 +4,9 @@
 
 [MeshFlow Core API](README.md) / SetRuleOptions
 
-# Interface: SetRuleOptions\<NM, TKeys\>
+# Interface: SetRuleOptions\<NM, TKeys, K\>
 
-Defined in: [types/types.ts:278](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L278)
+Defined in: [types/types.ts:278](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L278)
 
 节点规则配置接口
 
@@ -28,13 +28,17 @@ logic - 桶计算的逻辑块，一个桶里面可以装多个逻辑块，根据
 
 当前节点关联的键集合
 
+### K
+
+`K` *extends* `SuggestKey`\<`NM`\>
+
 ## Properties
 
 ### cacheStrategy?
 
 > `optional` **cacheStrategy?**: `"none"` \| `"shallow"`
 
-Defined in: [types/types.ts:328](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L328)
+Defined in: [types/types.ts:328](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L328)
 
 桶的缓存策略
 *
@@ -51,7 +55,7 @@ Defined in: [types/types.ts:328](https://github.com/Nzy19940403/meshflow/blob/44
 
 > `optional` **effect?**: (`args`) => `any`
 
-Defined in: [types/types.ts:313](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L313)
+Defined in: [types/types.ts:313](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L313)
 
 后置副作用 (Post-Settlement Effect)
 *
@@ -60,7 +64,7 @@ Defined in: [types/types.ts:313](https://github.com/Nzy19940403/meshflow/blob/44
 
 ##### args
 
-`any`
+`IsAny`\<`NM`\> *extends* `true` ? `Record`\<`string` & `object` \| [`InternalKeys`](TypeAlias.InternalKeys.md) \| `K`, `any`\> : `Record`\<[`InternalKeys`](TypeAlias.InternalKeys.md) \| `SuggestKey`\<`NM`\> \| `K`, `any`\>
 
 由 [effectArgs](#effectargs) 指定的实时数据快照。
 
@@ -78,9 +82,9 @@ Defined in: [types/types.ts:313](https://github.com/Nzy19940403/meshflow/blob/44
 
 ### effectArgs?
 
-> `optional` **effectArgs?**: `KeysOfUnion`\<`NM`\>[]
+> `optional` **effectArgs?**: `IsAny`\<`NM`\> *extends* `true` ? (`string` & `object` \| [`InternalKeys`](TypeAlias.InternalKeys.md) \| `K`)[] : ([`InternalKeys`](TypeAlias.InternalKeys.md) \| `SuggestKey`\<`NM`\> \| `K`)[]
 
-Defined in: [types/types.ts:320](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L320)
+Defined in: [types/types.ts:320](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L320)
 
 📥 副作用参数声明
 *
@@ -96,7 +100,7 @@ Defined in: [types/types.ts:320](https://github.com/Nzy19940403/meshflow/blob/44
 
 > `optional` **forceNotify?**: `boolean`
 
-Defined in: [types/types.ts:294](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L294)
+Defined in: [types/types.ts:294](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L294)
 
 ***
 
@@ -104,7 +108,7 @@ Defined in: [types/types.ts:294](https://github.com/Nzy19940403/meshflow/blob/44
 
 > **logic**: (`api`) => `any`
 
-Defined in: [types/types.ts:305](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L305)
+Defined in: [types/types.ts:305](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L305)
 
 核心逻辑片段 (Logic Fragment)
 *
@@ -136,7 +140,7 @@ Defined in: [types/types.ts:305](https://github.com/Nzy19940403/meshflow/blob/44
 
 > `optional` **priority?**: `number`
 
-Defined in: [types/types.ts:293](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L293)
+Defined in: [types/types.ts:293](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L293)
 
 逻辑优先级 (仅在 PRIORITY 策略下生效)
 
@@ -146,7 +150,7 @@ Defined in: [types/types.ts:293](https://github.com/Nzy19940403/meshflow/blob/44
 
 > `optional` **triggerKeys?**: `TKeys`[]
 
-Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L337)
+Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L337)
 
 触发键定义 (精准点火开关)
 *
@@ -164,7 +168,7 @@ Defined in: [types/types.ts:337](https://github.com/Nzy19940403/meshflow/blob/44
 
 > `optional` **value?**: `any`
 
-Defined in: [types/types.ts:289](https://github.com/Nzy19940403/meshflow/blob/444a6d012111564d00e9eeeb6babb913cfce47b7/utils/core/types/types.ts#L289)
+Defined in: [types/types.ts:289](https://github.com/Nzy19940403/meshflow/blob/9cf0173783c64e54131010f9839ee55672e20255/utils/core/types/types.ts#L289)
 
 结果覆盖值 (静态产出)
 *
