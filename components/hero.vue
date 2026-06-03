@@ -143,6 +143,7 @@ import { useMeshFlow,deleteEngine } from '@meshflow/core';
 import { useHero } from '../core/hero';
 import { ref, onMounted, onUnmounted,nextTick,watch } from 'vue';
 import mermaid from 'mermaid';
+import { useLogger } from '@meshflow/logger';
 
 // ==========================================
 // 🌌 观测台图形源码配置 (Mermaid 脚本定义)
@@ -252,6 +253,11 @@ const maxTick = ref(0);
 const sliderValue = ref(0);
 
 const { hero, heroPanel, boss, bossPanel, damageCourt, tick, weaponA, weaponPanel } = engine.modules.hero;
+const logger = useLogger( {
+    // locale:'en',
+    focusPaths:[heroPanel.path,bossPanel.path,damageCourt.path]
+})
+let cancel = engine.config.usePlugin(logger);
 
 const castSkill = (skill: any) => {
     if (!engine.data.GetValue(tick.path, 'running')) return;
