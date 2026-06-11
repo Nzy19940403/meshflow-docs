@@ -8,7 +8,7 @@
 
 > `const` **MeshError**: `object`
 
-Defined in: [types/types.ts:522](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L522)
+Defined in: [types/types.ts:552](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L552)
 
 异常字典：汇总内核运行时的循环依赖、实例缺失等核心错误
 
@@ -18,9 +18,13 @@ Defined in: [types/types.ts:522](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > `readonly` **cycle**: `"Circular dependency detected"` = `"Circular dependency detected"`
 
+[BOT] 检测到环路——DAG 中存在首尾相接的依赖链
+
 ### DuplicatePath
 
 > `readonly` **DuplicatePath**: (`path`) => `string`
+
+[BOT] 节点路径已被注册——检查是否误创建了重复节点
 
 #### Parameters
 
@@ -36,13 +40,19 @@ Defined in: [types/types.ts:522](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > `readonly` **EngineIdRepeated**: `"engineID repeated"` = `"engineID repeated"`
 
+[BOT] 引擎 ID 已被占用——请使用不同 ID 或先 deleteEngine
+
 ### EngineNotFound
 
 > `readonly` **EngineNotFound**: `"Engine not found."` = `"Engine not found."`
 
+[BOT] 引擎实例未找到——useEngine(id) 时 ID 不存在
+
 ### WrongId
 
 > `readonly` **WrongId**: `"Wrong id"` = `"Wrong id"`
+
+[BOT] 节点路径或 UID 无效——访问了不存在的节点
 
 ## Description
 

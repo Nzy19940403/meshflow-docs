@@ -6,7 +6,7 @@
 
 # Interface: EngineCoreAPI\<P, NM\>
 
-Defined in: [types/types.ts:582](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L582)
+Defined in: [types/types.ts:617](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L617)
 
 MeshFlow 引擎核心 API
 
@@ -30,7 +30,7 @@ MeshFlow 引擎核心 API
 
 > **config**: `object`
 
-Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L587)
+Defined in: [types/types.ts:622](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L622)
 
 引擎配置与规则管理
 
@@ -38,11 +38,13 @@ Defined in: [types/types.ts:587](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **hasRenderGate**: () => `boolean`
 
-检查当前引擎是否启用了渲染网关 (Render Gate)
+[BOT] 检查当前引擎是否启用了渲染网关
 
 ##### Returns
 
 `boolean`
+
+true 如果 modules 中注册了 useMeshRenderGate
 
 #### notifyAll
 
@@ -175,6 +177,13 @@ engine.config.SetRule('path/A', 'path/B', 'value', {
 
 建立多对一的聚合依赖关系，将多个源节点状态收敛至目标节点。
 
+**与 SetRule 的区别**: SetRule 第一个参数是单个路径；SetRules 是路径数组。
+当你需要多个节点的值共同决定一个下游时用这个。
+
+##### See
+
+SetRule 一对一依赖
+
 ##### Remarks
 
 **聚合逻辑**：只要 `outDegreePaths` 数组中的任何一个节点发生变更（匹配 `triggerKeys`），
@@ -239,7 +248,11 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **useEntangle**: \<`State`\>(`entangleFn`) => `void`
 
-挂载量子纠缠 (Entanglement) 机制
+[BOT] 挂载量子纠缠——解决循环依赖的核心机制
+
+当 A→B 和 B→A 同时存在时，传统事件监听会陷入死循环。
+useEntangle 将修改转化为"幽灵提案"暂存，引擎在纪元结束时
+按权重裁决后统一生效。
 
 ##### Type Parameters
 
@@ -253,15 +266,21 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 `any`
 
+— [EntangleArgType](TypeAlias.EntangleArgType.md) 纠缠配置
+
 ##### Returns
 
 `void`
+
+##### See
+
+GhostProposalApi 幽灵提案 API（在 emit 回调中使用）
 
 #### usePlugin
 
 > **usePlugin**: (`plugin`) => `void`
 
-挂载外部插件
+[BOT] 挂载外部插件——注册插件到引擎事件总线
 
 ##### Parameters
 
@@ -269,9 +288,13 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 `any`
 
+— 需实现 apply({ on }) 方法
+
 ##### Returns
 
 `void`
+
+卸载函数
 
 ***
 
@@ -279,7 +302,7 @@ engine.config.SetStrategy(DefaultStrategy.MERGE);
 
 > **data**: `object`
 
-Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L687)
+Defined in: [types/types.ts:743](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L743)
 
 数据大盘读写接口
 
@@ -303,7 +326,7 @@ Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **GetValue**: (`path`, `key`) => `any`
 
-读取指定节点的值
+[BOT] 读取节点指定 key 的当前值（默认 'value'）
 
 ##### Parameters
 
@@ -311,25 +334,35 @@ Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a
 
 `P`
 
+— 节点路径
+
 ###### key
 
 `SuggestKey`\<`NM`\>
+
+— 属性键名
 
 ##### Returns
 
 `any`
 
+当前值
+
 #### SettleTasks
 
 > **SettleTasks**: (`array`) => `void`
 
-事务性任务列表，支持传入回调，回调的入参是resolve和reject，在回调里面调用resolve就会启动task，这个task执行完就会执行下一个回调
+[BOT] 事务性任务列表——串行执行异步回调队列
+每个回调接收 resolve/reject，调用 resolve(updates) 后自动触发拓扑推演，
+推演结束后执行下一个回调。适合 Undo/Redo、向导式多步操作。
 
 ##### Parameters
 
 ###### array
 
 [`TransactionArray`](TypeAlias.TransactionArray.md)\<`P`, `NM`\>
+
+— 回调队列，每个元素签名为 (resolve, reject) => void
 
 ##### Returns
 
@@ -339,7 +372,15 @@ Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **SetValue**: (`path`, `key`, `value`) => `void`
 
-写入数据触发点火
+[BOT] 写入数据并立即点火——触发拓扑推演
+
+## 写入 API 差异速查
+| 方法 | 点火时机 | 适用场景 |
+|------|---------|---------|
+| `SetValue` | 立即 | 用户交互、表单输入 |
+| `SetValues` | 立即(合并) | 批量修改多个节点 |
+| `StageValue` | 微任务聚合 | WebSocket / 高频推送 |
+| `SilentSet` | 不点火 | 系统重置、背景降噪 |
 
 ##### Parameters
 
@@ -347,27 +388,36 @@ Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a
 
 `P`
 
-节点的唯一路径标识
+— 目标节点路径
 
 ###### key
 
 `SuggestKey`\<`NM`\>
 
+— 要修改的属性键名
+
 ###### value
 
 `any`
 
-要写入的最新值
+— 新值
 
 ##### Returns
 
 `void`
 
+##### See
+
+ - SetValues 批量写入
+ - StageValue 高频场景
+ - SilentSet 静默覆写
+
 #### SetValues
 
 > **SetValues**: (`updates`) => `void`
 
-批量写入数据
+[BOT] 批量写入并点火——多节点变更加入同一次 TaskRunner
+与 SetValue 逐条调用不同，引擎内部去重后仅启动一次 flushQueue。
 
 ##### Parameters
 
@@ -375,9 +425,15 @@ Defined in: [types/types.ts:687](https://github.com/Nzy19940403/meshflow/blob/8a
 
 `object`[]
 
+— { path, key, value } 数组
+
 ##### Returns
 
 `void`
+
+##### See
+
+SetValue 单节点写入
 
 #### SilentSet
 
@@ -484,7 +540,7 @@ engine.data.StageValue(path, 'isDead', false);
 
 > **dependency**: `object`
 
-Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L746)
+Defined in: [types/types.ts:828](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L828)
 
 拓扑图与依赖分析
 
@@ -514,7 +570,7 @@ Defined in: [types/types.ts:746](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **hooks**: `object`
 
-Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L758)
+Defined in: [types/types.ts:840](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L840)
 
 引擎生命周期钩子
 
@@ -522,13 +578,15 @@ Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **onError**: (`cb`) => `void`
 
-引擎执行过程发生错误时的回调
+[BOT] 引擎执行过程发生错误时触发
 
 ##### Parameters
 
 ###### cb
 
 (`err`) => `void`
+
+— 接收 MeshErrorContext（含 path 和 error）或原始 Error
 
 ##### Returns
 
@@ -538,13 +596,15 @@ Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **onStart**: (`cb`) => `void`
 
-引擎开始点火执行时的回调
+[BOT] 引擎每次点火执行时触发
 
 ##### Parameters
 
 ###### cb
 
 () => `void`
+
+— 回调，接收 { path } 表示触发源路径
 
 ##### Returns
 
@@ -554,13 +614,15 @@ Defined in: [types/types.ts:758](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **onSuccess**: (`cb`) => `void`
 
-当前批次任务全部执行成功时的回调
+[BOT] 当前批次全部拓扑任务执行成功后触发
 
 ##### Parameters
 
 ###### cb
 
 () => `void`
+
+— 无参数回调
 
 ##### Returns
 

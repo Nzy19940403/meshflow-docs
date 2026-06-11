@@ -6,7 +6,7 @@
 
 # Enumeration: NodeStatus
 
-Defined in: [types/types.ts:505](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L505)
+Defined in: [types/types.ts:528](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L528)
 
 ## Description
 
@@ -18,7 +18,9 @@ Defined in: [types/types.ts:505](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **DIRTY**: `8`
 
-Defined in: [types/types.ts:510](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L510)
+Defined in: [types/types.ts:538](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L538)
+
+[BOT] 预留——标记节点数据已脏需重算（当前版本未启用）
 
 ***
 
@@ -26,7 +28,9 @@ Defined in: [types/types.ts:510](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **NONE**: `0`
 
-Defined in: [types/types.ts:506](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L506)
+Defined in: [types/types.ts:530](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L530)
+
+[BOT] 初始态——节点尚未被本轮 Flow 触及
 
 ***
 
@@ -34,7 +38,9 @@ Defined in: [types/types.ts:506](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **PROCESSED**: `16`
 
-Defined in: [types/types.ts:511](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L511)
+Defined in: [types/types.ts:540](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L540)
+
+[BOT] 已完成——本轮不再参与调度（可被纠缠复活清除）
 
 ***
 
@@ -42,7 +48,9 @@ Defined in: [types/types.ts:511](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **PROCESSING**: `32`
 
-Defined in: [types/types.ts:512](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L512)
+Defined in: [types/types.ts:542](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L542)
+
+[BOT] 执行中——正在运行 executorNodeCalculate 桶计算
 
 ***
 
@@ -50,7 +58,9 @@ Defined in: [types/types.ts:512](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **READY**: `1`
 
-Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L507)
+Defined in: [types/types.ts:532](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L532)
+
+[BOT] 就绪——已通过安检，等待 flushQueue 取出执行
 
 ***
 
@@ -58,7 +68,9 @@ Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **RESURE**: `4`
 
-Defined in: [types/types.ts:509](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L509)
+Defined in: [types/types.ts:536](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L536)
+
+[BOT] 挂起——节点层级高于当前水位，等待水位推进后唤醒
 
 ***
 
@@ -66,4 +78,6 @@ Defined in: [types/types.ts:509](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **STAGING**: `2`
 
-Defined in: [types/types.ts:508](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L508)
+Defined in: [types/types.ts:534](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L534)
+
+[BOT] 阻塞——还有活跃上游父节点未完成，暂存 stagingQueue

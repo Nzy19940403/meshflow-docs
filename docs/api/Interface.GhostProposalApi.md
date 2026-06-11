@@ -6,10 +6,11 @@
 
 # Interface: GhostProposalApi\<State, NM\>
 
-Defined in: [types/types.ts:370](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L370)
+Defined in: [types/types.ts:393](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L393)
 
-幽灵提案 API (Ghost Proposal API)
-* ### 架构思想：延迟决议 (Deferred Resolution)
+[BOT] 幽灵提案 API (Ghost Proposal API) —— useEntangle 的 emit 回调中提交提案
+
+### 架构思想：延迟决议 (Deferred Resolution)
 在复杂的 DAG (有向无环图) 状态机中，如果在副作用函数中直接修改目标状态（如 `tgt.price = 100`），
 极易引发不可控的竞态条件 (Race Condition)、级联重绘或死循环。
   为了系统性地规避上述风险，MeshFlow 设计了 **“幽灵提案”** 机制。其核心交互模式借鉴了 **Git 的 Pull Request**：
@@ -17,6 +18,21 @@ Defined in: [types/types.ts:370](https://github.com/Nzy19940403/meshflow/blob/8a
 都不会立即生效，而是转化为数据对象并暂存于引擎的缓冲池 (`_ghostBuffer`) 中。
 2. **🛡️ 统一清算 (Resolve)**：当当前批次的所有计算流执行完毕后，引擎会作为调度中心，统一收集并合并这些提案。
 3. **⚖️ 权重裁决 (Weight)**：面对多源并发修改，引擎严格按照提案的**权重 (`weight`)** 和预设策略进行确定性计算，而非依赖执行的先后顺序。
+
+### 提案执行顺序（不依赖 emit 中的书写顺序）
+
+resolveGhosts 分两趟扫描同 key 的全部提案，**与 emit 中写 propose 的先后顺序无关**：
+
+  Pass 1 采集 — 扫描全部提案，找出最高权重的 set 作为基准值
+  Pass 2 应用 — 再次遍历全部提案
+    · set → 已在 Pass1 处理，跳过
+    · patch → finalValue = patchFn(finalValue)
+    · update → 按 op 修改 finalValue
+
+  例: emit 中写 propose.patch('v', v=>v+10); propose.set('v', 100);
+  结果仍是 110 而非 100 —— Pass1 先扫描全部提案找到 set，Pass2 才叠加 patch。
+  **不是按书写顺序 set 覆盖了 patch。**
+
 > **💡 总结**：幽灵提案机制将不可控的“时间依赖”转化为了安全的“逻辑依赖”，从而保证了每次状态计算的原子性与确定性。
 
 ## Example
@@ -48,7 +64,7 @@ propose.update('totalPrice', src.price, 'add');
 
 > **patch**: \<`K`, `V`\>(`key`, `patchFn`) => `void`
 
-Defined in: [types/types.ts:397](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L397)
+Defined in: [types/types.ts:420](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L420)
 
 提交【函数式补丁】提案
 
@@ -98,7 +114,7 @@ Defined in: [types/types.ts:397](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **set**: (`key`, `value`, `weight?`) => `void`
 
-Defined in: [types/types.ts:378](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L378)
+Defined in: [types/types.ts:401](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L401)
 
 提交【绝对值覆盖】提案
 
@@ -136,7 +152,7 @@ Defined in: [types/types.ts:378](https://github.com/Nzy19940403/meshflow/blob/8a
 
 > **update**: (`key`, `delta`, `op?`) => `void`
 
-Defined in: [types/types.ts:386](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/types/types.ts#L386)
+Defined in: [types/types.ts:409](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L409)
 
 提交【增量运算】提案
 

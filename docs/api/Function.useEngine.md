@@ -8,9 +8,11 @@
 
 > **useEngine**\<`M`, `P`, `NM`, `S`, `T`\>(`id`): `Engine`\<\{ `batchRenderExport`: \{ `init`: `any`; \}; `destroyPlugin`: () => `void`; `dispose`: () => `void`; `formExports`: \{ \}; `GetAllDependency`: () => `number`[][]; `GetDependencyOrder`: () => `number`[][]; `GetGroupByPath`: (`path`) => [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>; `GetValue`: (`path`, `key`) => `any`; `hasRenderGate`: () => `boolean`; `historyExports`: [`MeshFlowHistory`](TypeAlias.MeshFlowHistory.md); `notifyAll`: () => `Promise`\<`void`\>; `onError`: (`cb`) => `Unsubscribe`; `onStart`: (`cb`) => () => `void`; `onSuccess`: (`cb`) => () => `void`; `scheduler`: [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `any`, `NM`\>; `SetRule`: \<`K`, `TKeys`\>(`outDegreePath`, `inDegreePath`, `key`, `options`) => `void`; `SetRules`: \<`TKeys`, `K`\>(`outDegreePaths`, `inDegreePath`, `key`, `options`) => `void`; `SetStrategy`: (`path`, `key`, `strategy`) => `void`; `SettleTasks`: (`array`) => `void`; `SetValue`: (`path`, `key`, `value`) => `void`; `SetValues`: (`updates`) => `void`; `SilentSet`: (`path`, `key`, `value`) => `boolean`; `StageValue`: (`path`, `key`, `value`) => `void`; `useEntangle`: \<`State`\>(`config`) => `void`; `usePlugin`: (`plugin`) => () => `void`; `validatorExports`: \{ `SetValidators?`: (`path`, `options`) => `void`; \}; \}, `M`, `P`\>
 
-Defined in: [engine/useEngineManager.ts:386](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/engine/useEngineManager.ts#L386)
+Defined in: [engine/useEngineManager.ts:433](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/engine/useEngineManager.ts#L433)
 
-实例检索：跨文件/组件获取已激活的 Engine 实例
+[BOT] 实例检索——跨文件/组件获取已激活的 Engine 实例
+
+只要引擎通过 `useMeshFlow` 初始化过，任何地方通过 ID 即可获取，无需 Prop Drilling。
 
 ## Type Parameters
 
@@ -18,13 +20,13 @@ Defined in: [engine/useEngineManager.ts:386](https://github.com/Nzy19940403/mesh
 
 `M` *extends* `Record`\<`string`, `any`\> = \{ \}
 
-动态插件类型 (可选)
+— 动态插件类型 (可选)
 
 ### P
 
 `P` *extends* [`MeshPath`](TypeAlias.MeshPath.md) = `any`
 
-路径类型标识 (可选)
+— 路径类型标识 (可选)
 
 ### NM
 
@@ -44,17 +46,19 @@ Defined in: [engine/useEngineManager.ts:386](https://github.com/Nzy19940403/mesh
 
 [`MeshPath`](TypeAlias.MeshPath.md)
 
-引擎实例的唯一 ID
+— 引擎实例的唯一 ID
 
 ## Returns
 
 `Engine`\<\{ `batchRenderExport`: \{ `init`: `any`; \}; `destroyPlugin`: () => `void`; `dispose`: () => `void`; `formExports`: \{ \}; `GetAllDependency`: () => `number`[][]; `GetDependencyOrder`: () => `number`[][]; `GetGroupByPath`: (`path`) => [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>; `GetValue`: (`path`, `key`) => `any`; `hasRenderGate`: () => `boolean`; `historyExports`: [`MeshFlowHistory`](TypeAlias.MeshFlowHistory.md); `notifyAll`: () => `Promise`\<`void`\>; `onError`: (`cb`) => `Unsubscribe`; `onStart`: (`cb`) => () => `void`; `onSuccess`: (`cb`) => () => `void`; `scheduler`: [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `any`, `NM`\>; `SetRule`: \<`K`, `TKeys`\>(`outDegreePath`, `inDegreePath`, `key`, `options`) => `void`; `SetRules`: \<`TKeys`, `K`\>(`outDegreePaths`, `inDegreePath`, `key`, `options`) => `void`; `SetStrategy`: (`path`, `key`, `strategy`) => `void`; `SettleTasks`: (`array`) => `void`; `SetValue`: (`path`, `key`, `value`) => `void`; `SetValues`: (`updates`) => `void`; `SilentSet`: (`path`, `key`, `value`) => `boolean`; `StageValue`: (`path`, `key`, `value`) => `void`; `useEntangle`: \<`State`\>(`config`) => `void`; `usePlugin`: (`plugin`) => () => `void`; `validatorExports`: \{ `SetValidators?`: (`path`, `options`) => `void`; \}; \}, `M`, `P`\>
 
-## Description
-
-只要引擎通过 `useMeshFlow` 或 `defineMesh` 初始化过，你就可以在任何地方通过 ID 直接拿到它。
-无需 Prop Drilling，它是跨组件通讯的核心桥梁。
+Engine 对象，与 `useMeshFlow` 返回类型一致
 
 ## Throws
 
-如果 ID 对应实例不存在则抛错
+MeshError.EngineNotFound — ID 对应的实例不存在
+
+## See
+
+ - useMeshFlow 创建引擎
+ - deleteEngine 销毁引擎

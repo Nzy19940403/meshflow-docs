@@ -8,10 +8,11 @@
 
 > **deleteEngine**(`id`): `void`
 
-Defined in: [engine/useEngineManager.ts:414](https://github.com/Nzy19940403/meshflow/blob/8a167b54811c3d73ddbc63bff9609fbaf7ecfc82/utils/core/engine/useEngineManager.ts#L414)
+Defined in: [engine/useEngineManager.ts:464](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/engine/useEngineManager.ts#L464)
 
-🗑️ 实例销毁：从全局池中注销并释放引擎资源。
-*
+[BOT] 实例销毁——从全局池注销并释放引擎全部资源
+
+彻底切断引擎与其所有插件、异步任务的联系，并从内存中移除引用。
 
 ## Parameters
 
@@ -19,13 +20,13 @@ Defined in: [engine/useEngineManager.ts:414](https://github.com/Nzy19940403/mesh
 
 [`MeshPath`](TypeAlias.MeshPath.md)
 
-待销毁引擎的唯一标识符
+— 待销毁引擎的唯一标识符
 
 ## Returns
 
 `void`
 
-## Description
+## See
 
-彻底切断引擎与其所有插件、异步任务的联系，并从内存中移除引用。
-*
+ - useMeshFlow 创建引擎
+ - useEngine 获取引擎
