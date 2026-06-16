@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5e6d3"/>
+      <stop offset="100%" stop-color="#e8d5c4"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5A2B"/>
+      <stop offset="100%" stop-color="#A0522D"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2C1810"/>
+      <stop offset="100%" stop-color="#4A2F28"/>
+    </linearGradient>
+    <radialGradient id="coffee" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6F4E37"/>
+      <stop offset="70%" stop-color="#4A2F28"/>
+      <stop offset="100%" stop-color="#3E2310"/>
+    </radialGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#B0E0E6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景墙 -->
+  <rect width="600" height="700" fill="url(#wall)"/>
+
+  <!-- 地板 -->
+  <rect x="0" y="550" width="600" height="150" fill="#C4A882"/>
+  <line x1="0" y1="550" x2="600" y2="550" stroke="#B8956A" stroke-width="2"/>
+
+  <!-- 窗户 -->
+  <rect x="380" y="80" width="180" height="250" rx="8" fill="url(#window)" stroke="#8B7355" stroke-width="4"/>
+  <line x1="470" y1="80" x2="470" y2="330" stroke="#8B7355" stroke-width="3"/>
+  <line x1="380" y1="200" x2="560" y2="200" stroke="#8B7355" stroke-width="3"/>
+  <!-- 窗外风景 - 树 -->
+  <ellipse cx="440" cy="180" rx="35" ry="50" fill="#5B8C3A" opacity="0.6"/>
+  <ellipse cx="500" cy="160" rx="25" ry="40" fill="#4A7A2E" opacity="0.6"/>
+
+  <!-- 窗帘 -->
+  <rect x="375" y="75" width="15" height="260" rx="4" fill="#D4A574" opacity="0.7"/>
+  <rect x="550" y="75" width="15" height="260" rx="4" fill="#D4A574" opacity="0.7"/>
+  <rect x="372" y="70" width="200" height="18" rx="5" fill="#C49464"/>
+
+  <!-- 装饰画 -->
+  <rect x="50" y="100" width="120" height="80" rx="4" fill="#2C1810" stroke="#D4A574" stroke-width="3"/>
+  <circle cx="110" cy="135" r="15" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="100" cy="130" r="12" fill="#FF8E8E" opacity="0.5"/>
+  <ellipse cx="120" cy="145" rx="10" ry="6" fill="#4CAF50" opacity="0.6"/>
+
+  <!-- 人物 - 身体 -->
+  <!-- 裙子/上衣 -->
+  <path d="M 280 380 Q 260 340 270 300 L 330 300 Q 340 340 320 380 Z" fill="#E86B6B"/>
+  <!-- 领口装饰 -->
+  <path d="M 285 300 Q 300 310 315 300" fill="none" stroke="#FFD700" stroke-width="2"/>
+
+  <!-- 手臂 - 左臂放在桌上 -->
+  <path d="M 270 320 Q 230 340 220 380 Q 215 400 230 410" fill="none" stroke="#F5D0C5" stroke-width="12" stroke-linecap="round"/>
+  <!-- 手臂 - 右臂举杯 -->
+  <path d="M 330 320 Q 360 330 370 360 Q 380 380 380 400" fill="none" stroke="#F5D0C5" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- 手 - 右手握着杯子 -->
+  <circle cx="382" cy="405" r="8" fill="#F5D0C5"/>
+
+  <!-- 咖啡杯 -->
+  <path d="M 355 390 Q 355 420 370 425 L 400 425 Q 415 420 415 390 Z" fill="white" stroke="#8B7355" stroke-width="2"/>
+  <!-- 杯把 -->
+  <path d="M 415 398 Q 430 398 430 412 Q 430 422 415 420" fill="none" stroke="#8B7355" stroke-width="3"/>
+  <!-- 咖啡液面 -->
+  <ellipse cx="385" cy="395" rx="28" ry="6" fill="url(#coffee)"/>
+  <!-- 咖啡热气 -->
+  <path d="M 380 388 Q 375 375 380 365" fill="none" stroke="#D2B48C" stroke-width="2" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 388 386 Q 385 370 390 360" fill="none" stroke="#D2B48C" stroke-width="2" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.05;0.3" dur="2.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 桌子 -->
+  <ellipse cx="300" cy="450" rx="160" ry="30" fill="url(#table)"/>
+  <!-- 桌面厚度 -->
+  <rect x="140" y="450" width="320" height="8" rx="2" fill="#6B3A1F"/>
+  <!-- 桌腿 -->
+  <rect x="175" y="458" width="8" height="100" fill="#6B3A1F"/>
+  <rect x="417" y="458" width="8" height="100" fill="#6B3A1F"/>
+
+  <!-- 桌上一本书 -->
+  <rect x="190" y="430" width="55" height="38" rx="2" fill="#E8D5C4" stroke="#8B7355" stroke-width="1.5" transform="rotate(-15 217 449)"/>
+  <rect x="193" y="432" width="49" height="33" rx="1" fill="#FFF8DC" transform="rotate(-15 217 449)"/>
+  <line x1="205" y1="442" x2="228" y2="438" stroke="#999" stroke-width="1" transform="rotate(-15 217 449)"/>
+  <line x1="205" y1="448" x2="228" y2="444" stroke="#999" stroke-width="1" transform="rotate(-15 217 449)"/>
+  <line x1="205" y1="454" x2="222" y2="451" stroke="#999" stroke-width="1" transform="rotate(-15 217 449)"/>
+
+  <!-- 一个小碟子配饼干 -->
+  <ellipse cx="460" cy="445" rx="30" ry="8" fill="#F0E0D0" stroke="#C4A882" stroke-width="1"/>
+  <ellipse cx="460" cy="435" rx="10" ry="8" fill="#D4A574"/>
+  <ellipse cx="455" cy="436" rx="5" ry="4" fill="#8B5A2B"/>
+
+  <!-- 头部 -->
+  <ellipse cx="300" cy="260" rx="45" ry="52" fill="#F5D0C5"/>
+
+  <!-- 头发 - 长发披肩 -->
+  <path d="M 255 250 Q 240 200 250 170 Q 260 145 285 140 Q 300 135 315 140 Q 340 145 350 170 Q 360 200 345 250 Z" fill="url(#hair)"/>
+  <!-- 刘海 -->
+  <path d="M 260 200 Q 280 185 300 190 Q 320 185 340 200 Q 330 175 300 170 Q 270 175 260 200 Z" fill="url(#hair)"/>
+  <!-- 侧发 -->
+  <path d="M 255 240 Q 248 280 250 310" fill="none" stroke="url(#hair)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 345 240 Q 352 280 350 310" fill="none" stroke="url(#hair)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- 脸型修饰 -->
+  <ellipse cx="300" cy="268" rx="38" ry="44" fill="#F5D0C5"/>
+
+  <!-- 眉毛 -->
+  <path d="M 275 235 Q 285 230 292 233" fill="none" stroke="#4A2F28" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 308 233 Q 315 230 325 235" fill="none" stroke="#4A2F28" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- 眼睛 -->
+  <ellipse cx="284" cy="252" rx="9" ry="7" fill="white"/>
+  <circle cx="284" cy="252" r="5" fill="#4A2F28"/>
+  <circle cx="286" cy="250" r="2" fill="white"/>
+
+  <ellipse cx="316" cy="252" rx="9" ry="7" fill="white"/>
+  <circle cx="316" cy="252" r="5" fill="#4A2F28"/>
+  <circle cx="318" cy="250" r="2" fill="white"/>
+
+  <!-- 睫毛 -->
+  <path d="M 274 248 L 272 245" stroke="#4A2F28" stroke-width="1.5"/>
+  <path d="M 294 249 L 296 246" stroke="#4A2F28" stroke-width="1.5"/>
+  <path d="M 306 249 L 304 246" stroke="#4A2F28" stroke-width="1.5"/>
+  <path d="M 326 248 L 328 245" stroke="#4A2F28" stroke-width="1.5"/>
+
+  <!-- 腮红 -->
+  <ellipse cx="268" cy="270" rx="10" ry="5" fill="#FFB6C1" opacity="0.4"/>
+  <ellipse cx="332" cy="270" rx="10" ry="5" fill="#FFB6C1" opacity="0.4"/>
+
+  <!-- 鼻子 -->
+  <path d="M 298 258 Q 302 268 300 272 Q 298 268 298 258" fill="none" stroke="#D4A574" stroke-width="1.5"/>
+
+  <!-- 微笑的嘴巴 -->
+  <path d="M 288 280 Q 300 290 312 280" fill="none" stroke="#C4736A" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- 耳环 -->
+  <circle cx="255" cy="272" r="3" fill="#FFD700"/>
+  <circle cx="345" cy="272" r="3" fill="#FFD700"/>
+
+  <!-- 桌面上的灯光/气氛 -->
+  <ellipse cx="300" cy="460" rx="120" ry="15" fill="#FFE4B5" opacity="0.1"/>
+
+  <!-- 头顶的灯 -->
+  <line x1="300" y1="10" x2="300" y2="40" stroke="#8B7355" stroke-width="2"/>
+  <path d="M 270 40 Q 300 55 330 40 Z" fill="#FFD700" opacity="0.8"/>
+  <ellipse cx="300" cy="48" rx="30" ry="10" fill="#FFF8DC" opacity="0.3"/>
+</svg>

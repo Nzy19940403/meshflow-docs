@@ -23,6 +23,7 @@
     "@meshflow/pulse": "^1.0.5",
     "@meshflow/rendergate": "^0.1.7",
     "@visactor/vchart": "^2.0.22",
+    "@vue-flow/core": "^1.48.2",
     "consola": "^3.4.2",
     "mermaid": "^11.15.0",
     "pixi.js": "^8.18.1"

@@ -117,6 +117,22 @@ const engine = useMeshFlow("engine", schema, {
 import { useState } from "react";
 import { useMeshFlow } from "@meshflow/core";
 
+export class NodeSignal {
+  private _listeners = new Set<() => void>();
+  private _version = 0;
+
+  subscribe = (cb: () => void) => {
+    this._listeners.add(cb);
+    return () => this._listeners.delete(cb);
+  };
+  getSnapshot = () => this._version;
+  notify() { this._version++; this._listeners.forEach(cb => cb()); }
+}
+
+export function useNodeSignal(signal: NodeSignal) {
+  useSyncExternalStore(signal.subscribe, signal.getSnapshot);
+}
+
 const schema = {
   type: "group",
   path: "billing",
@@ -135,13 +151,8 @@ const schema = {
 };
 const engine = useMeshFlow("main", schema, {
   UITrigger: {
-    signalCreator: () => {
-      const [_, setTick] = useState(0);
-      return () => setTick((t) => t + 1);
-    },
-    signalTrigger(trigger) {
-      trigger();
-    },
+    signalCreator: () => new NodeSignal(),
+    signalTrigger: (signal) => signal.notify(),
   },
   modules: {
     useInternalForm,

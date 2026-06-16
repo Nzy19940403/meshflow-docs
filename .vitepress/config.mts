@@ -2,21 +2,23 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "@meshflow/core",
-  description: "确定性拓扑编排引擎",
+  description: "确定性拓扑编排引擎 — 基于逻辑力场的响应式拓扑调度，终结异步竞态与计算冗余。",
   head: [
-    // 这里的路径填刚才放在 public 里的文件名
-    ['link', { rel: 'icon', href: '/logo.svg' }] 
- 
+    ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['meta', { name: 'theme-color', content: '#0a0a0f' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }],
+    // Google Fonts - JetBrains Mono for cyberpunk feel
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap' }],
   ],
-  vite:{
+  vite: {
     ssr: {
-      // 告诉 Vite 不要尝试对 pixi.js 进行服务端处理
       noExternal: ['pixi.js']
     },
   },
-  // 核心：多语言配置
   locales: {
-    // 默认语言（简体中文）- 对应根目录 docs/*.md
     root: {
       label: '简体中文',
       lang: 'zh-CN',
@@ -25,13 +27,14 @@ export default defineConfig({
           { text: '主页', link: '/' },
           { text: '入门指南', link: '/guide/getting-started' },
           { text: '路线图', link: '/roadmap' },
-          {text:'API',link:'/docs/api/README'}
+          { text: 'API', link: '/docs/api/README' }
         ],
         sidebar: [
           {
             text: '核心架构',
             items: [
               { text: '快速开始', link: '/guide/getting-started' },
+              { text: '为什么选择 MeshFlow', link: '/guide/why-meshflow' },
               { text: '有向执行流 (SetRule)', link: '/guide/setrule-concepts' },
               { text: '对称纠缠场 (UseEntangle)', link: '/guide/useentangle-concepts' },
             ]
@@ -44,20 +47,19 @@ export default defineConfig({
               { text: '逻辑门演示', link: '/demos/logicGate' },
               { text: '纠缠震荡排序', link: '/demos/sort' },
               { text: '循环依赖收敛演示', link: '/demos/matrix' },
-              { text:'优先级溢流调度',link:'/demos/spillover'},
-              {text:'数独震荡',link:'/demos/sudoku'},
-              {text:'蜘蛛纸牌',link:'/demos/cardgame.md'},
-              {text:'战斗数值模拟',link:'/demos/hero.md'}
+              { text: '优先级溢流调度', link: '/demos/spillover' },
+              { text: '数独震荡', link: '/demos/sudoku' },
+              { text: '蜘蛛纸牌', link: '/demos/cardgame.md' },
+              { text: '战斗数值模拟', link: '/demos/hero.md' }
             ]
           }
         ]
       }
     },
-    // 英文配置 - 对应 docs/en/*.md
     en: {
       label: 'English',
       lang: 'en-US',
-      link: '/en/', 
+      link: '/en/',
       themeConfig: {
         nav: [
           { text: 'Home', link: '/en/' },
@@ -76,31 +78,20 @@ export default defineConfig({
           {
             text: 'Demos',
             items: [
-              // { text: 'Industrial Form', link: '/en/demos/factory' },
-              // { text: 'Cloud Computing', link: '/en/demos/cloud' },
-              // { text: 'Mesh Sorting', link: '/en/demos/sort' },
-              {text:'sudoku',link:'/en/demos/sudoku'}
+              { text: 'Sudoku', link: '/en/demos/sudoku' }
             ]
           }
         ]
       }
     }
   },
-
   themeConfig: {
-    // 这里放中英文通用的配置，如 Github 链接
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-repo/meshflow' }
-    ]
+      { icon: 'github', link: 'https://github.com/Nzy19940403/meshflow' }
+    ],
+    footer: {
+      message: '⧩ MeshFlow — 确定性拓扑编排引擎',
+      copyright: 'MIT License'
+    }
   },
-  // async buildEnd() {
-  //   console.log('🏗️  VitePress 渲染完成，准备强制退出进程...');
-    
-  //   // 给 100ms 缓冲让控制台日志打印完
-  //   setTimeout(() => {
-  //     console.log('🛑 Force exiting process...');
-  //     // @ts-ignore
-  //     process.exit(0);
-  //   }, 100);
-  // },
 })

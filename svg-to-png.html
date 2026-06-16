@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>SVG to PNG</title></head>
+<body>
+<script>
+const s1 = `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="256" fill="#0d0d1a"/>
+  <circle cx="256" cy="256" r="236" fill="#0d0d1a" stroke="#ffea00" stroke-width="16"/>
+  <polygon points="282,92 194,246 256,246 216,420 348,230 278,230 320,92" fill="#ffea00"/>
+</svg>`;
+const s2 = \`<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff176"/>
+      <stop offset="40%" stop-color="#ffea00"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="256" fill="url(#bgGrad)"/>
+  <circle cx="256" cy="256" r="236" fill="url(#bgGrad)" stroke="#ffd54f" stroke-width="14" filter="url(#outerGlow)" opacity="0.9"/>
+  <circle cx="256" cy="256" r="220" stroke="#ffea00" stroke-width="2" opacity="0.2"/>
+  <polygon points="282,92 194,246 256,246 216,420 348,230 278,230 320,92" fill="url(#boltGrad)" filter="url(#glow)"/>
+  <circle cx="320" cy="180" r="6" fill="#ffffff" opacity="0.8"/>
+  <circle cx="280" cy="140" r="4" fill="#ffffff" opacity="0.6"/>
+  <circle cx="340" cy="200" r="3" fill="#ffffff" opacity="0.5"/>
+  <circle cx="240" cy="380" r="4" fill="#ffea00" opacity="0.4"/>
+</svg>\`;
+
+async function toPng(svg, w, h) {
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+  const img = new Image();
+  const b = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+  const u = URL.createObjectURL(b);
+  await new Promise((ok, fail) => { img.onload=ok; img.onerror=fail; img.src=u; });
+  ctx.drawImage(img, 0, 0, w, h);
+  URL.revokeObjectURL(u);
+  return c.toDataURL('image/png');
+}
+
+(async () => {
+  const p1 = await toPng(s1, 512, 512);
+  const p2 = await toPng(s2, 512, 512);
+  document.body.innerHTML = '<h2>Classic</h2><img src="'+p1+'" style="width:200px;border-radius:50%"/> <a id="a1" download="bolt-avatar.png">Save</a><br><h2>Shiny</h2><img src="'+p2+'" style="width:200px;border-radius:50%"/> <a id="a2" download="bolt-avatar-shiny.png">Save</a>';
+  document.getElementById('a1').href = p1;
+  document.getElementById('a2').href = p2;
+  window.__p1 = p1;
+  window.__p2 = p2;
+  document.title = 'READY';
+})();
+</script>
+</body>
+</html>
