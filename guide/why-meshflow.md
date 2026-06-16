@@ -4,7 +4,7 @@ aside: true
 ---
 
 <script setup>
-import StartFlow from '../components/StartFlow.vue';
+import StartFlow from '../components/startFlow.vue';
 import StartDemo from '../components/startDemo.vue';
 </script>
 
