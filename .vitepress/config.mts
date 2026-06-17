@@ -71,6 +71,7 @@ export default defineConfig({
             text: 'Architecture',
             items: [
               { text: 'Getting Started', link: '/en/guide/getting-started' },
+              { text: 'Why MeshFlow', link: '/en/guide/why-meshflow' },
               { text: 'Directed Flow (SetRule)', link: '/en/guide/setrule-concepts' },
               { text: 'Symmetric Entangle (UseEntangle)', link: '/en/guide/useentangle-concepts' },
             ]
@@ -78,7 +79,8 @@ export default defineConfig({
           {
             text: 'Demos',
             items: [
-              { text: 'Sudoku', link: '/en/demos/sudoku' }
+              { text: 'Sudoku', link: '/en/demos/sudoku' },
+              { text: 'Circular Dependency Convergence', link: '/en/demos/matrix' },
             ]
           }
         ]

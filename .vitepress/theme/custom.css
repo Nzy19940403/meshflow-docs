@@ -4,6 +4,17 @@
    Only colors change per mode.
    ========================================== */
 
+/* ---------- Keyframes ---------- */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
 /* ---------- Fonts ---------- */
 :root {
   --font-body:  -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -63,13 +74,15 @@ body {
   --text-tertiary:  #999999;
   --text-inverse:   #ffffff;
 
-  --accent:     #3b82f6;
-  --accent-hov: #2563eb;
-  --accent-dim: rgba(59, 130, 246, 0.08);
-  --accent-glow: rgba(59, 130, 246, 0.04);
+  --accent:     #0891b2;
+  --accent-hov: #0e7490;
+  --accent-dim: rgba(8, 145, 178, 0.08);
+  --accent-glow: rgba(8, 145, 178, 0.04);
+  --accent-secondary: #d97706;
+  --accent-grad: linear-gradient(135deg, #0891b2 0%, #d97706 100%);
 
-  --link:       #3b82f6;
-  --link-hov:   #2563eb;
+  --link:       #0891b2;
+  --link-hov:   #0e7490;
 
   --code-bg:    #f5f5f5;
   --code-border:#e5e5e5;
@@ -88,12 +101,12 @@ body {
    Dark mode colors
    ========================================== */
 .dark {
-  --bg-base:     #0b0b0b;
-  --vp-c-divider: #0b0b0b;
-  --bg-surface:  #121212;
-  --bg-elevated: #181818;
-  --bg-card:     #1a1a1a;
-  --bg-hover:    #1f1f1f;
+  --bg-base:     #070c0e;
+  --vp-c-divider: #070c0e;
+  --bg-surface:  #0d1518;
+  --bg-elevated: #111c20;
+  --bg-card:     #0f1a1e;
+  --bg-hover:    #152028;
 
   --border-subtle: #222222;
   --border:        #2a2a2a;
@@ -102,18 +115,20 @@ body {
   --text-primary:   #e8e8e8;
   --text-secondary: #999999;
   --text-tertiary:  #666666;
-  --text-inverse:   #0b0b0b;
+  --text-inverse:   #070c0e;
 
-  --accent:     #60a5fa;
-  --accent-hov: #93c5fd;
-  --accent-dim: rgba(96, 165, 250, 0.10);
-  --accent-glow: rgba(96, 165, 250, 0.06);
+  --accent:     #4cb1f9;
+  --accent-hov: #7ac8fb;
+  --accent-dim: rgba(76, 177, 249, 0.10);
+  --accent-glow: rgba(76, 177, 249, 0.18);
+  --accent-secondary: #fb923c;
+  --accent-grad: linear-gradient(135deg, #4cb1f9 0%, #fb923c 100%);
 
-  --link:       #60a5fa;
-  --link-hov:   #93c5fd;
+  --link:       #4cb1f9;
+  --link-hov:   #7ac8fb;
 
-  --code-bg:    #151515;
-  --code-border:#262626;
+  --code-bg:    #06090e;
+  --code-border: rgba(76, 177, 249, 0.18);
 
   /* VitePress native vars */
   --vp-nav-bg-color: var(--bg-base);
@@ -123,10 +138,12 @@ body {
   --vp-c-bg-elv: var(--bg-elevated);
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(180deg, #1a6fa8 0%, #4cb1f9 100%);
+  opacity: 0.8;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #60a5fa, #a78bfa);
+  background: linear-gradient(180deg, #2a8fd4 0%, #7ac8fb 100%);
+  opacity: 1;
 }
 
 /* ==========================================
@@ -138,12 +155,24 @@ body {
   background-color: var(--bg-base);
   color: var(--text-primary);
 }
+/* 深色模式：极细网格背景 */
+.dark body {
+  background-image:
+    linear-gradient(rgba(76, 177, 249, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 177, 249, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
 
 /* ---------- Nav ---------- */
 .VPNav {
-  background: color-mix(in srgb, var(--bg-base) 88%, transparent) !important;
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg-base) 85%, transparent) !important;
+  backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid var(--border-subtle) !important;
+}
+/* 深色模式导航底边发光 */
+.dark .VPNav {
+  border-bottom-color: rgba(76, 177, 249, 0.15) !important;
+  box-shadow: 0 1px 0 rgba(76, 177, 249, 0.08), 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 .VPNavBar { background: transparent !important; }
 .VPNavBar .title {
@@ -164,6 +193,20 @@ body {
 .VPSidebar {
   background: var(--bg-surface) !important;
   border-right: 1px solid var(--border-subtle) !important;
+  position: relative;
+  overflow: hidden;
+}
+/* 颗粒感噪声层 */
+.VPSidebar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-repeat: repeat;
 }
 .VPSidebar .group h2 {
   color: var(--text-tertiary) !important;
@@ -194,10 +237,16 @@ body {
 
 /* ---------- Home Hero ---------- */
 .VPHero .name {
-  color: var(--text-primary) !important;
   font-size: 3rem !important;
   font-weight: 700;
   letter-spacing: -1px;
+  /* 渐变文字 */
+  background: var(--accent-grad, linear-gradient(135deg, #4cb1f9 0%, #fb923c 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
 }
 .VPHero .text {
   color: var(--text-secondary) !important;
@@ -205,11 +254,13 @@ body {
 }
 .VPHero .tagline {
   color: var(--text-tertiary) !important;
-  border-left: 2px solid var(--border);
+  border-left: 2px solid var(--accent);
   padding-left: 1rem;
+  opacity: 0.75;
 }
 .VPHero .image-container {
-  filter: drop-shadow(0 0 20px var(--accent-glow));
+  filter: drop-shadow(0 0 32px var(--accent-glow));
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
 /* ---------- Buttons ---------- */
@@ -235,21 +286,39 @@ body {
   background: var(--bg-card) !important;
   border: 1px solid var(--border-subtle) !important;
   border-radius: 10px !important;
-  transition: all .25s ease !important;
+  transition: all .3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+/* 卡片顶部扫描线 */
+.VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--accent-grad, linear-gradient(90deg, transparent, var(--accent), transparent));
+  opacity: 0;
+  transition: opacity .3s;
+}
+.VPFeature:hover::before {
+  opacity: 1;
 }
 .VPFeature:hover {
-  border-color: var(--border) !important;
+  border-color: var(--accent) !important;
   background: var(--bg-elevated) !important;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px var(--accent-glow) !important;
 }
 .VPFeature .icon {
   background: var(--accent-dim) !important;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1.4rem !important;
+  border: 1px solid var(--accent-dim);
 }
 .VPFeature .title {
   color: var(--text-primary) !important;
   font-weight: 600;
+  font-family: var(--font-code);
 }
 .VPFeature .details {
   color: var(--text-secondary) !important;
@@ -264,9 +333,18 @@ body {
 }
 .vp-doc h2 {
   color: var(--text-primary) !important;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: none;
   padding-bottom: .4rem;
   font-weight: 600;
+  position: relative;
+}
+.vp-doc h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary, #fb923c), transparent 70%);
+  opacity: 0.4;
 }
 .vp-doc h3 {
   color: var(--text-primary) !important;
@@ -295,11 +373,17 @@ body {
   background: var(--code-bg) !important;
   border: 1px solid var(--code-border);
   border-radius: 8px;
+  /* 代码块左侧 accent 条 */
+  border-left: 3px solid var(--accent) !important;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2), -2px 0 12px var(--accent-glow);
 }
 .vp-doc div[class*='language-']::before {
-  color: var(--text-tertiary) !important;
+  color: var(--accent) !important;
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 .vp-doc code {
   color: var(--accent) !important;
@@ -308,10 +392,12 @@ body {
   padding: 0.15em 0.4em;
   font-family: var(--font-code);
   font-size: 0.85em;
+  border: 1px solid rgba(76, 177, 249, 0.18);
 }
 .vp-doc pre code {
   color: var(--text-primary) !important;
   background: transparent !important;
+  border: none !important;
 }
 
 /* ---------- Tables ---------- */

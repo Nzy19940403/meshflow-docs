@@ -3,10 +3,10 @@
     <div v-show="false">{{ uiTick }}</div>
 
     <div class="header">
-      <h3>MeshFlow 异步管线对齐演示 (Watermark Barrier)</h3>
-      <p>观察管线流动：极速完成的 B 会向靶心 E 注入能量，但会被<strong>红色虚线栅栏</strong>死死挡住，直到龟速的 D 到达，能量才会瞬间汇聚。</p>
+      <h3>{{ t.title }}</h3>
+      <p v-html="t.desc"></p>
       <button class="trigger-btn" @click="triggerUpdate" :disabled="isComputing.A">
-        🚀 点击推倒骨牌 (源头 A +100)
+        {{ t.btn }}
       </button>
     </div>
 
@@ -35,7 +35,7 @@
               <div class="title">{{ data.label }}</div>
               <div class="val">{{ getDisplayValue(data.id) }}</div>
               <div class="status">{{ getStatusText(data.id) }}</div>
-               <div class="meta">真实执行次数: {{ getSignalValue(data.id) }}</div>
+               <div class="meta">{{ t.execCount }}: {{ getSignalValue(data.id) }}</div>
               
               <Handle v-if="data.id !== 'E'" type="source" :position="Position.Bottom" class="custom-handle" />
             </div>
@@ -49,9 +49,32 @@
 </template>
  
 <script setup lang="ts">
-import { ref, computed } from 'vue'; // 🌟 引入 computed
+import { ref, computed } from 'vue';
 import { MeshPath, useMeshFlow, useScheduler } from '@meshflow/core';
 import { VueFlow, Position, Handle } from '@vue-flow/core';
+
+const props = withDefaults(defineProps<{ lang?: 'zh' | 'en' }>(), { lang: 'zh' })
+
+const i18n = {
+  zh: {
+    title: 'MeshFlow 异步管线对齐演示 (Watermark Barrier)',
+    desc: '观察管线流动：极速完成的 B 会向靶心 E 注入能量，但会被<strong>红色虚线栅栏</strong>死死挡住，直到龟速的 D 到达，能量才会瞬间汇聚。',
+    btn: '🚀 点击推倒骨牌 (源头 A +100)',
+    execCount: '真实执行次数',
+    nodeLabels: { A: '源头节点 A(0ms)', B: '极速节点 B (800ms)', C: '节点 C (1000ms)', D: '龟速节点 D (2000ms)', E: '汇聚靶心 E' },
+    status: { computing: '🔄 计算中...', waiting: '🚧 水位线拦截中', idle: '✅ 闲置就绪' }
+  },
+  en: {
+    title: 'MeshFlow Async Pipeline Alignment Demo (Watermark Barrier)',
+    desc: 'Watch the pipeline flow: the lightning-fast Node B injects energy toward target E, but gets blocked by the <strong>red dashed barrier</strong> — until the slow Node D arrives, then energy merges instantly.',
+    btn: '🚀 Trigger Update (Source A +100)',
+    execCount: 'Actual executions',
+    nodeLabels: { A: 'Source A (0ms)', B: 'Fast Node B (800ms)', C: 'Node C (1000ms)', D: 'Slow Node D (2000ms)', E: 'Merge Target E' },
+    status: { computing: '🔄 Computing...', waiting: '🚧 Watermark hold', idle: '✅ Idle / Ready' }
+  }
+}
+
+const t = computed(() => i18n[props.lang])
 
 // @ts-ignore
 import '@vue-flow/core/dist/style.css';
@@ -155,12 +178,12 @@ engine.config.notifyAll();
 // ==========================================
 // 🎨 3. Vue Flow 拓扑图与【动态连线】
 // ==========================================
-const vueNodes = ref([
-  { id: 'A', type: 'mesh', position: { x: 280, y: 20 }, data: { id: 'A', label: '源头节点 A(0ms)' } },
-  { id: 'B', type: 'mesh', position: { x: 80, y: 250 }, data: { id: 'B', label: '极速节点 B (800ms)' } },
-  { id: 'C', type: 'mesh', position: { x: 480, y: 250 }, data: { id: 'C', label: '节点 C (1000ms)' } },
-  { id: 'D', type: 'mesh', position: { x: 480, y: 480 }, data: { id: 'D', label: '龟速节点 D (2000ms)' } },
-  { id: 'E', type: 'mesh', position: { x: 280, y: 720 }, data: { id: 'E', label: '汇聚靶心 E' } },
+const vueNodes = computed(() => [
+  { id: 'A', type: 'mesh', position: { x: 280, y: 20 }, data: { id: 'A', label: t.value.nodeLabels.A } },
+  { id: 'B', type: 'mesh', position: { x: 80, y: 250 }, data: { id: 'B', label: t.value.nodeLabels.B } },
+  { id: 'C', type: 'mesh', position: { x: 480, y: 250 }, data: { id: 'C', label: t.value.nodeLabels.C } },
+  { id: 'D', type: 'mesh', position: { x: 480, y: 480 }, data: { id: 'D', label: t.value.nodeLabels.D } },
+  { id: 'E', type: 'mesh', position: { x: 280, y: 720 }, data: { id: 'E', label: t.value.nodeLabels.E } },
 ]);
 
 // 🌟 最核心的可视化逻辑：连线状态与引擎状态严格物理映射
@@ -216,9 +239,9 @@ const getDisplayValue = (id: string) => {
 };
 
 const getStatusText = (id: string) => {
-  if (isComputing.value[id]) return '🔄 计算中...';
-  if (isWaiting.value[id]) return '🚧 水位线拦截中';
-  return '✅ 闲置就绪';
+  if (isComputing.value[id]) return t.value.status.computing;
+  if (isWaiting.value[id]) return t.value.status.waiting;
+  return t.value.status.idle;
 };
 const getSignalValue = (id: string) => {
   const map: Record<string, any> = { A: nodeA, B: nodeB, C: nodeC, D: nodeD, E: nodeE };

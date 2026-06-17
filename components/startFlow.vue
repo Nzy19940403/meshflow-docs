@@ -1,11 +1,11 @@
 <template>
   <div class="meshflow-arena">
     <div class="controls-panel">
-      <button @click="prevStep" :disabled="currentStep === 0">上一步</button>
-      <button @click="nextStep" :disabled="currentStep === 5">下一步</button>
-      <button @click="toggleAutoPlay">{{ isPlaying ? '暂停' : '自动演示' }}</button>
-      <button @click="resetSimulation">重置</button>
-      <span class="step-indicator">步骤: {{ currentStep }} / 5</span>
+      <button @click="prevStep" :disabled="currentStep === 0">{{ t.prev }}</button>
+      <button @click="nextStep" :disabled="currentStep === 5">{{ t.next }}</button>
+      <button @click="toggleAutoPlay">{{ isPlaying ? t.pause : t.auto }}</button>
+      <button @click="resetSimulation">{{ t.reset }}</button>
+      <span class="step-indicator">{{ t.step }}: {{ currentStep }} / 5</span>
     </div>
 
     <div class="flow-container">
@@ -32,14 +32,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onUnmounted,Ref } from 'vue'
+import { ref, watch, onUnmounted, Ref, computed } from 'vue'
 import { VueFlow } from '@vue-flow/core'
- 
 
 // @ts-ignore
 import '@vue-flow/core/dist/style.css'
 // @ts-ignore
 import '@vue-flow/core/dist/theme-default.css'
+
+const props = withDefaults(defineProps<{ lang?: 'zh' | 'en' }>(), { lang: 'zh' })
+
+const i18n = {
+  zh: {
+    prev: '上一步', next: '下一步', pause: '暂停', auto: '自动演示', reset: '重置', step: '步骤',
+    nodes: ['节点 A\n(数据源)', '节点 B\n(依赖 A)', '节点 C\n(依赖 A)', '节点 D\n(依赖 C)', '节点 E\n(最终汇总)'],
+    logs: [
+      '⏱️ 初始状态：逻辑阵列已就绪，等待推倒第一块骨牌 A。',
+      '🚀 Step 1: 节点 A 位能改变！能量激荡，单向引力轨道自发向下游传递。',
+      '⏳ Step 2: 链路分流！B 计算完毕进入【水位线挂起】；C 的能量顺利传导至 D。',
+      '⚙️ Step 3: D 正在高频对账重算中... B 节点持续在栅栏前原地阻尼拦截。',
+      '⚖️ Step 4: 依赖 100% 对齐！水位线越过临界大坝，阻尼解除，B 和 D 共同放行放水！',
+      '✅ Step 5: 汇总节点 E 在当前 Epoch 接收到全量一致快照，单次触发，整网完美收敛。'
+    ]
+  },
+  en: {
+    prev: 'Prev', next: 'Next', pause: 'Pause', auto: 'Auto Play', reset: 'Reset', step: 'Step',
+    nodes: ['Node A\n(Source)', 'Node B\n(depends on A)', 'Node C\n(depends on A)', 'Node D\n(depends on C)', 'Node E\n(Final Merge)'],
+    logs: [
+      '⏱️ Initial state: Logic array ready, waiting to push domino A.',
+      '🚀 Step 1: Node A potential changed! Energy propagates down unidirectional gravity tracks.',
+      '⏳ Step 2: Pipeline splits! B finishes and enters [Watermark Hold]; C\'s energy flows to D.',
+      '⚙️ Step 3: D is computing... Node B remains blocked at the watermark barrier.',
+      '⚖️ Step 4: Dependencies 100% aligned! Watermark dam breaks — B and D release simultaneously!',
+      '✅ Step 5: Node E receives a fully consistent snapshot in this Epoch. Single trigger, perfect convergence.'
+    ]
+  }
+}
+
+const t = computed(() => i18n[props.lang])
 
 // ==========================================
 // 🎨 1. 基础样式定义
@@ -51,12 +81,12 @@ const courtStyle = { background: '#181825', color: '#f9e2af', border: '2px solid
 // ==========================================
 // 📐 2. 拓扑图结构定义（非对称管线）
 // ==========================================
-const nodes:Ref<any> = ref([
-  { id: 'node-A', label: '节点 A\n(数据源)', position: { x: 50, y: 240 }, type: 'input', style: { ...baseNodeStyle }, class: 'mesh-node' },
-  { id: 'node-B', label: '节点 B\n(依赖 A)', position: { x: 350, y: 100 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
-  { id: 'node-C', label: '节点 C\n(依赖 A)', position: { x: 350, y: 380 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
-  { id: 'node-D', label: '节点 D\n(依赖 C)', position: { x: 600, y: 380 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
-  { id: 'node-E', label: '节点 E\n(最终汇总)', position: { x: 800, y: 240 }, type: 'output', style: { ...courtStyle }, class: 'mesh-node' },
+const nodes: Ref<any> = ref([
+  { id: 'node-A', label: t.value.nodes[0], position: { x: 50, y: 240 }, type: 'input', style: { ...baseNodeStyle }, class: 'mesh-node' },
+  { id: 'node-B', label: t.value.nodes[1], position: { x: 350, y: 100 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
+  { id: 'node-C', label: t.value.nodes[2], position: { x: 350, y: 380 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
+  { id: 'node-D', label: t.value.nodes[3], position: { x: 600, y: 380 }, type: 'default', style: { ...panelStyle }, class: 'mesh-node' },
+  { id: 'node-E', label: t.value.nodes[4], position: { x: 800, y: 240 }, type: 'output', style: { ...courtStyle }, class: 'mesh-node' },
 ])
 
 const edges = ref([
@@ -74,14 +104,7 @@ const currentStep = ref(0)
 const isPlaying = ref(false)
 let playTimer: any = null
 
-const stepLogs = [
-  '⏱️ 初始状态：逻辑阵列已就绪，等待推倒第一块骨牌 A。',
-  '🚀 Step 1: 节点 A 位能改变！能量激荡，单向引力轨道自发向下游传递。',
-  '⏳ Step 2: 链路分流！B 计算完毕进入【水位线挂起】；C 的能量顺利传导至 D。',
-  '⚙️ Step 3: D 正在高频对账重算中... B 节点持续在栅栏前原地阻尼拦截。',
-  '⚖️ Step 4: 依赖 100% 对齐！水位线越过临界大坝，阻尼解除，B 和 D 共同放行放水！',
-  '✅ Step 5: 汇总节点 E 在当前 Epoch 接收到全量一致快照，单次触发，整网完美收敛。'
-]
+const stepLogs = computed(() => t.value.logs)
 
 // ==========================================
 // 🎛️ 4. 动画状态机控制核心 (精准突变 Class)
