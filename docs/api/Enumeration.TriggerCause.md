@@ -6,7 +6,7 @@
 
 # Enumeration: TriggerCause
 
-Defined in: [types/types.ts:495](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L495)
+Defined in: [types/types.ts:495](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/types/types.ts#L495)
 
 引擎点火溯源标识 (Trigger Cause)
 *
@@ -23,7 +23,7 @@ Defined in: [types/types.ts:495](https://github.com/Nzy19940403/meshflow/blob/0a
 
 > **CAUSALITY**: `0`
 
-Defined in: [types/types.ts:501](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L501)
+Defined in: [types/types.ts:501](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/types/types.ts#L501)
 
 **正向因果推导 (CAUSALITY)**
 
@@ -41,7 +41,7 @@ Defined in: [types/types.ts:501](https://github.com/Nzy19940403/meshflow/blob/0a
 
 > **INVERSION**: `1`
 
-Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L507)
+Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/types/types.ts#L507)
 
 **纠缠源头 (INVERSION)**
 
@@ -56,7 +56,7 @@ Defined in: [types/types.ts:507](https://github.com/Nzy19940403/meshflow/blob/0a
 
 > **REPERCUSSION**: `2`
 
-Defined in: [types/types.ts:513](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L513)
+Defined in: [types/types.ts:513](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/types/types.ts#L513)
 
 **纠缠连锁余波 (REPERCUSSION)**
 
@@ -71,7 +71,7 @@ Defined in: [types/types.ts:513](https://github.com/Nzy19940403/meshflow/blob/0a
 
 > **VOLITION**: `3`
 
-Defined in: [types/types.ts:520](https://github.com/Nzy19940403/meshflow/blob/0aa9aa4ca802d007f7bdb0a89e97b12aa9103ab7/utils/core/types/types.ts#L520)
+Defined in: [types/types.ts:520](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/types/types.ts#L520)
 
 **外部自由意志 (VOLITION)**
 
