@@ -8,7 +8,7 @@
 
 > **useMeshFlow**\<`S`, `T`, `M`, `NM`, `P`\>(`id`, `Schema`, `options`): `Engine`\<\{ `batchRenderExport`: \{ `init`: `any`; \}; `destroyPlugin`: () => `void`; `dispose`: () => `void`; `formExports`: \{ \}; `GetAllDependency`: () => `number`[][]; `GetDependencyOrder`: () => `number`[][]; `GetGroupByPath`: (`path`) => [`MeshFlowGroupNode`](Interface.MeshFlowGroupNode.md)\<[`MeshPath`](TypeAlias.MeshPath.md)\>; `GetValue`: (`path`, `key`) => `any`; `hasRenderGate`: () => `boolean`; `historyExports`: [`MeshFlowHistory`](TypeAlias.MeshFlowHistory.md); `notifyAll`: () => `Promise`\<`void`\>; `onError`: (`cb`) => `Unsubscribe`; `onStart`: (`cb`) => () => `void`; `onSuccess`: (`cb`) => () => `void`; `scheduler`: [`MeshScheduler`](Class.MeshScheduler.md)\<`T`, `P`, `any`, `NM`\>; `SetRule`: \<`K`, `TKeys`\>(`outDegreePath`, `inDegreePath`, `key`, `options`) => `void`; `SetRules`: \<`TKeys`, `K`\>(`outDegreePaths`, `inDegreePath`, `key`, `options`) => `void`; `SetStrategy`: (`path`, `key`, `strategy`) => `void`; `SettleTasks`: (`array`) => `void`; `SetValue`: (`path`, `key`, `value`) => `void`; `SetValues`: (`updates`) => `void`; `SilentSet`: (`path`, `key`, `value`) => `boolean`; `StageValue`: (`path`, `key`, `value`) => `void`; `useEntangle`: \<`State`\>(`config`) => `void`; `usePlugin`: (`plugin`) => () => `void`; `validatorExports`: \{ `SetValidators?`: (`path`, `options`) => `void`; \}; \}, `M`, `P`\>
 
-Defined in: [engine/useEngineManager.ts:172](https://github.com/Nzy19940403/meshflow/blob/05e9c57e32f574e6032c4c7cb9387eb2db979ec3/utils/core/engine/useEngineManager.ts#L172)
+Defined in: [engine/useEngineManager.ts:172](https://github.com/Nzy19940403/meshflow/blob/265fbbaf4a2f94939a97c5a49f82c48c483acb86/utils/core/engine/useEngineManager.ts#L172)
 
 [BOT] 初始化并获取 MeshFlow 引擎实例——**这是所有 API 的入口**
 
@@ -83,7 +83,15 @@ Defined in: [engine/useEngineManager.ts:172](https://github.com/Nzy19940403/mesh
 
 #### config?
 
-\{ `NODE_QUOTA_PER_FRAME?`: `number`; `useEntangleStep?`: `number`; `useGreedy?`: `boolean`; \}
+\{ `BACKPRESSURE_LIMIT?`: `number`; `MAX_CONCURRENT_TASKS?`: `number`; `NODE_QUOTA_PER_FRAME?`: `number`; `useEntangleStep?`: `number`; `useGreedy?`: `boolean`; \}
+
+#### config.BACKPRESSURE_LIMIT?
+
+`number`
+
+#### config.MAX_CONCURRENT_TASKS?
+
+`number`
 
 #### config.NODE_QUOTA_PER_FRAME?
 
